@@ -14,7 +14,7 @@
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		947BF3CF1194CA590044AB96 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF3CE1194CA590044AB96 /* MainController.m */; };
-		947BF3D21194CA630044AB96 /* FacebookProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF3D11194CA630044AB96 /* FacebookProxy.m */; };
+		947BF3D21194CA630044AB96 /* FacebookGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF3D11194CA630044AB96 /* FacebookGraph.m */; };
 		947BF4641194CC320044AB96 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF44F1194CC320044AB96 /* Util.m */; };
 		947BF4651194CC320044AB96 /* rcloudlibconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4501194CC320044AB96 /* rcloudlibconstants.m */; };
 		947BF4661194CC320044AB96 /* UIControl-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4521194CC320044AB96 /* UIControl-Expanded.m */; };
@@ -63,8 +63,8 @@
 		8D1107310486CEB800E47090 /* friendgraph-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "friendgraph-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		947BF3CD1194CA590044AB96 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = Shared/MainController.h; sourceTree = "<group>"; };
 		947BF3CE1194CA590044AB96 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = Shared/MainController.m; sourceTree = "<group>"; };
-		947BF3D01194CA630044AB96 /* FacebookProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookProxy.h; path = Shared/FacebookProxy.h; sourceTree = "<group>"; };
-		947BF3D11194CA630044AB96 /* FacebookProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookProxy.m; path = Shared/FacebookProxy.m; sourceTree = "<group>"; };
+		947BF3D01194CA630044AB96 /* FacebookGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookGraph.h; path = Shared/FacebookGraph.h; sourceTree = "<group>"; };
+		947BF3D11194CA630044AB96 /* FacebookGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookGraph.m; path = Shared/FacebookGraph.m; sourceTree = "<group>"; };
 		947BF3E41194CAF20044AB96 /* FBConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBConnect.xcodeproj; path = "../../../facebook-iphone-sdk/src/FBConnect.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		947BF43A1194CC320044AB96 /* rcloudlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcloudlib.h; sourceTree = "<group>"; };
 		947BF43B1194CC320044AB96 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
@@ -156,8 +156,8 @@
 			children = (
 				947BF48A1194CD3E0044AB96 /* Constants.h */,
 				947BF48B1194CD3E0044AB96 /* Constants.m */,
-				947BF3D01194CA630044AB96 /* FacebookProxy.h */,
-				947BF3D11194CA630044AB96 /* FacebookProxy.m */,
+				947BF3D01194CA630044AB96 /* FacebookGraph.h */,
+				947BF3D11194CA630044AB96 /* FacebookGraph.m */,
 				947BF3CD1194CA590044AB96 /* MainController.h */,
 				947BF3CE1194CA590044AB96 /* MainController.m */,
 			);
@@ -417,7 +417,7 @@
 				2860E328111B887F00E27156 /* AppDelegate_Phone.m in Sources */,
 				2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */,
 				947BF3CF1194CA590044AB96 /* MainController.m in Sources */,
-				947BF3D21194CA630044AB96 /* FacebookProxy.m in Sources */,
+				947BF3D21194CA630044AB96 /* FacebookGraph.m in Sources */,
 				947BF4641194CC320044AB96 /* Util.m in Sources */,
 				947BF4651194CC320044AB96 /* rcloudlibconstants.m in Sources */,
 				947BF4661194CC320044AB96 /* UIControl-Expanded.m in Sources */,

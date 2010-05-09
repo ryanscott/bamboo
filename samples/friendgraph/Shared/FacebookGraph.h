@@ -1,6 +1,6 @@
 #import "FBConnect/FBConnect.h"
 
-@interface FacebookProxy : NSObject <NSCoding, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
+@interface FacebookGraph : NSObject <NSCoding, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
 {
 	FBSession* _session;
 	FBUID _uid;
@@ -37,7 +37,7 @@
 @property (nonatomic, retain) NSURLConnection* _accessTokenConnection;
 
 
-+(FacebookProxy*)instance;
++(FacebookGraph*)instance;
 +(void)loadDefaults;
 //+(void)updateDefaults;
 
@@ -46,3 +46,9 @@
 -(void)loginAndAuthorizeWithTarget:(id)target callback:(SEL)authCallback;
 
 @end
+
+//graph = Koala::Facebook::GraphAPI.new(oauth_access_token)
+//profile = graph.get_object("me")
+//friends = graph.get_connections("me", "friends")
+//graph.put_object("me", "feed", :message => "I am writing on my wall!")
+

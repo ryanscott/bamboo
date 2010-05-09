@@ -37,6 +37,7 @@
 		947BF4941194CEE30044AB96 /* libFBPlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BF4931194CEE30044AB96 /* libFBPlatform.a */; };
 		947BF4961194CEF50044AB96 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BF4951194CEF50044AB96 /* QuartzCore.framework */; };
 		9495A1841191650F00BA21E3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9495A1831191650F00BA21E3 /* Entitlements.plist */; };
+		94E95BC31197470900A462E1 /* GraphAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E95BC21197470900A462E1 /* GraphAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		947BF4931194CEE30044AB96 /* libFBPlatform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBPlatform.a; path = "../../../facebook-iphone-sdk/src/build/Debug-iphonesimulator/libFBPlatform.a"; sourceTree = SOURCE_ROOT; };
 		947BF4951194CEF50044AB96 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9495A1831191650F00BA21E3 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		94E95BC11197470900A462E1 /* GraphAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphAPI.h; path = Shared/GraphAPI.h; sourceTree = "<group>"; };
+		94E95BC21197470900A462E1 /* GraphAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphAPI.m; path = Shared/GraphAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				947BF3D11194CA630044AB96 /* FacebookProxy.m */,
 				947BF3CD1194CA590044AB96 /* MainController.h */,
 				947BF3CE1194CA590044AB96 /* MainController.m */,
+				94E95BC11197470900A462E1 /* GraphAPI.h */,
+				94E95BC21197470900A462E1 /* GraphAPI.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				947BF4731194CC320044AB96 /* BusyViewController.m in Sources */,
 				947BF4741194CC320044AB96 /* RoundedView.m in Sources */,
 				947BF48C1194CD3E0044AB96 /* Constants.m in Sources */,
+				94E95BC31197470900A462E1 /* GraphAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

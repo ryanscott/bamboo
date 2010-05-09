@@ -1,5 +1,7 @@
 #import "FBConnect/FBConnect.h"
 
+@class GraphAPI;
+
 @interface FacebookProxy : NSObject <NSCoding, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
 {
 	FBSession* _session;
@@ -44,6 +46,8 @@
 //-(void)postMessageToWall:(NSString*)message delegate:(id<FBDialogDelegate>)inDelegate;
 
 -(void)loginAndAuthorizeWithTarget:(id)target callback:(SEL)authCallback;
+
+-(GraphAPI*)newGraph;
 
 @end
 

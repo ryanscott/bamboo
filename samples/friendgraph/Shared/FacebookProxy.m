@@ -2,6 +2,7 @@
 #import "Constants.h"
 #import "AppDelegate_Phone.h"
 #import "MainController.h"
+#import "GraphAPI.h"
 
 // Serialization keys
 NSString* const kFacebookProxyKey = @"kFacebookProxyKey";
@@ -419,6 +420,18 @@ static FacebookProxy* gFacebookProxy = NULL;
 	{
 		[self authorize];
 	}
+}
+
+-(GraphAPI*)newGraph
+{
+	GraphAPI* n_graph = nil;
+	
+	if ( nil != self._oAuthAccessToken )
+	{
+		n_graph = [[GraphAPI alloc] initWithAccessToken:self._oAuthAccessToken];
+	}
+	
+	return n_graph;
 }
 
 #pragma mark Event Handlers

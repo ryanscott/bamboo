@@ -1,5 +1,6 @@
 #import "MainController.h"
 #import "FacebookProxy.h"
+#import "GraphAPI.h"
 
 @implementation MainController
 
@@ -8,12 +9,16 @@
 @synthesize _statusInfo;
 @synthesize _profileImage;
 
+@synthesize _graph;
+
 #pragma mark Initialization
 
 -(void)initControls
 {
 	self._statusInfo = nil;
 	self._profileImage = nil;
+	self._graph = nil;
+	
 	//	CGFloat h_buf = 10.0f;
 	//	CGFloat inset = 10.0f;
 	//	
@@ -105,6 +110,7 @@
 	//	[self stopEvents];
 	[_statusInfo release];
 	[_profileImage release];
+	[_graph release];
 	[super dealloc];
 }
 
@@ -119,7 +125,9 @@
 
 -(void)doneAuthorizing
 {
-	self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;	
+	self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;
+	
+	self._graph = [[FacebookProxy instance] newGraph];
 }
 
 #pragma mark Button Handlers

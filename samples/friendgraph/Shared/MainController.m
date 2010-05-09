@@ -151,6 +151,8 @@
 
 	self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];
 
+	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@", [self._graph getConnections:@"likes" forObject:@"me"], self._fullText.text];
+
 	if ( nil == self._profileImage.superview )
 		[self.view addSubview:self._profileImage];
 }

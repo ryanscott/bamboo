@@ -52,6 +52,11 @@ NSString* const kRequestVerbGet = @"get";
 	return [[[UIImage alloc] initWithData:[self api:path args:nil]] autorelease];
 }
 
+-(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id
+{
+	NSString* path = [NSString stringWithFormat:@"%@/%@", obj_id, connection_name];
+	return [[[NSString alloc] initWithData:[self api:path args:nil] encoding:NSASCIIStringEncoding] autorelease];
+}
 
 #pragma mark Private Implementation Methods
 
@@ -108,6 +113,7 @@ NSString* const kRequestVerbGet = @"get";
 		NSError* error;
 		
 		// synchronous call
+		NSLog( @"fetching url:\n%@", urlString );
 		self._responseData = [NSURLConnection sendSynchronousRequest:r_url returningResponse:&response error:&error];
 		
 		if ( nil == self._responseData )

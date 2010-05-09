@@ -15,4 +15,6 @@
 -(NSString*)getObject:(NSString*)obj_id;
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id;
 
+-(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id;
+
 @end

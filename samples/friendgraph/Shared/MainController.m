@@ -1,30 +1,34 @@
-    //
-//  MainController.m
-//  friendgraph
-//
-//  Created by Ryan Stubblefield on 5/7/10.
-//  Copyright 2010 Context Optional Inc. All rights reserved.
-//
-
 #import "MainController.h"
 #import "FacebookProxy.h"
 
-
 @implementation MainController
+
+@synthesize _responseText;
+
+@synthesize _statusInfo;
+@synthesize _profileImage;
 
 #pragma mark Initialization
 
 -(void)initControls
 {
+	self._statusInfo = nil;
+	self._profileImage = nil;
 	//	CGFloat h_buf = 10.0f;
 	//	CGFloat inset = 10.0f;
 	//	
-	//	CGFloat x = inset;
-	//	CGFloat y = inset;
-	//	CGFloat width = 0.0f;
-	//	CGFloat height = 0.0f;
-	//	
-	//	CGRect l_frame = CGRectMake(x, y, width, height);
+
+	CGFloat x = 10.0f;
+	CGFloat y = 150.0f;
+	CGFloat width = 300.0f;
+	CGFloat height = 25.0f;
+	
+	CGRect l_frame = CGRectMake(x, y, width, height);
+	
+	self._statusInfo = [[UILabel alloc] initWithFrame:l_frame];
+	self._statusInfo.backgroundColor = [UIColor blueColor];
+	self._statusInfo.textColor = [UIColor whiteColor];
+	self._statusInfo.text = @"waiting on API";	
 }
 
 -(id)init
@@ -66,7 +70,11 @@
 	[authButton setTitle:@"Auth FB" forState:UIControlStateNormal];
 	
 	[self.view addSubview:authButton];
+	[self.view addSubview:self._statusInfo];
 	//[authButton release];
+
+//	[self.view addSubview:self._statusInfo];
+//	[self.view addSubview:self._profileImage];
 }
 
 -(void)viewDidLoad 
@@ -74,6 +82,10 @@
 	//	[self initEvents];
 	
 	[self addSubviews];
+	
+	// [rya:5-9-10] kinda weird place to do this, but works for now
+	[FacebookProxy loadDefaults];
+	
 	[super viewDidLoad];
 }
 
@@ -91,6 +103,8 @@
 - (void)dealloc 
 {
 	//	[self stopEvents];
+	[_statusInfo release];
+	[_profileImage release];
 	[super dealloc];
 }
 
@@ -100,100 +114,21 @@
 
 
 #pragma mark Event Handlers
+
+#pragma mark FacebookProxy Callback
+
+-(void)doneAuthorizing
+{
+	self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;	
+}
+
 #pragma mark Button Handlers
 
 -(void)doAuth
 {
-	[[FacebookProxy instance] postMessageToWall:@"test message" delegate:nil];
+	self._statusInfo.text = @"authorizing...";
+	[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(doneAuthorizing)];
 }
-
-#pragma mark login Callback
-
--(void)doneLoggingIn
-{
-	NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://graph.facebook.com/oauth/authorize?client_id=119908831367602&redirect_uri=http://oauth.twoalex.com/"]
-																						cachePolicy:NSURLRequestUseProtocolCachePolicy
-																				timeoutInterval:60.0];
-	// create the connection with the request
-	// and start loading the data
-	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-	if (theConnection) 
-	{
-    // Create the NSMutableData to hold the received data.
-    // receivedData is an instance variable declared elsewhere.
-    _responseText = [[NSMutableData data] retain];
-	} 
-	else 
-	{
-		RCLog( @"NSURLConnection fail" );
-    // Inform the user that the connection failed.
-	}
-}
-
-#pragma mark NSURLConnectionDelegate
-
-- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response 
-{
-	RCLog( @"didReceiveResponse" );
-  _responseText = [[NSMutableData alloc] init];
-	
-  NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-	
-	RCLog( @"status: %@", [NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]] );
-
-	RCLog( @"headers: %@", [httpResponse allHeaderFields] );
-	RCLog( @"header keys: %@", [[httpResponse allHeaderFields] allKeys] );
-	RCLog( @"header values: %@", [[httpResponse allHeaderFields] allValues]);
-	
-//	httpResponse = nil;
-	
-//  if ([_delegate respondsToSelector:@selector(request:didReceiveResponse:)]) {    
-//    [_delegate request:self didReceiveResponse:httpResponse];
-//  }
-}
-
--(void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data 
-{
-	RCLog( @"didReceiveData" );
-  [_responseText appendData:data];
-}
-
-//- (NSCachedURLResponse*)connection:(NSURLConnection*)connection
-//								 willCacheResponse:(NSCachedURLResponse*)cachedResponse {
-//  return nil;
-//}
-
-- (void)handleResponseData:(NSData*)data 
-{
-  RCLog(@"DATA: %s", data.bytes);
-	
-	NSString* responseBody = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-	RCLog( @"response: %@", responseBody );
-	responseBody = nil;
-	
-//  NSError* error = nil;
-//  id result = [self parseXMLResponse:data error:&error];
-//  if (error) {
-//    [self failWithError:error];
-//  } else if ([_delegate respondsToSelector:@selector(request:didLoad:)]) {
-//    [_delegate request:self didLoad:result];
-//  }
-}
-
--(void)connectionDidFinishLoading:(NSURLConnection*)connection 
-{
-	RCLog( @"connectionDidFinishLoading" );
-	[self handleResponseData:_responseText];
-}
-
-//- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {  
-//  [self failWithError:error];
-//	
-//  [_responseText release];
-//  _responseText = nil;
-//  [_connection release];
-//  _connection = nil;
-//}
-
 
 @end
+

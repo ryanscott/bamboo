@@ -1,19 +1,17 @@
-//
-//  MainController.h
-//  friendgraph
-//
-//  Created by Ryan Stubblefield on 5/7/10.
-//  Copyright 2010 Context Optional Inc. All rights reserved.
-//
-
-#import <UIKit/UIKit.h>
-
-
 @interface MainController : UIViewController
 {
 	NSMutableData* _responseText;
+	
+	UILabel* _statusInfo;
+	UIImageView* _profileImage;
 }
 
--(void)doneLoggingIn;
+@property (nonatomic, retain) NSMutableData* _responseText;
+
+@property (nonatomic, retain) UILabel* _statusInfo;
+@property (nonatomic, retain) UIImageView* _profileImage;
+
+
+-(void)doneAuthorizing;
 
 @end

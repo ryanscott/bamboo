@@ -44,7 +44,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 947BF3E41194CAF20044AB96 /* FBConnect.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9 /* libFBPlatform.a */;
+			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9;
 			remoteInfo = FBPlatform;
 		};
 /* End PBXContainerItemProxy section */

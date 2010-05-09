@@ -21,3 +21,13 @@ NSString* const kShareEmailSubject = @"Check out my awesome iPhone application";
 NSString* const kShareText = @"This is a test, of my awesome iPhone application";
 NSString* const kTwitterShareText = @"This is a tweet, from my awesome iPhone application";
 
+// App Constants
+//
+//@implementation Globals
+//
+//@synthesize kScreenFrame;
+//
+//-(void)initialize
+//{
+//	kScreenFrame = CGRectMake( kApplicationFrame.origin.x, kApplicationFrame.origin.y + kTopBarHeight, kApplicationFrame.size.width, kApplicationFrame.size.height - kTopBarHeight - kGridMenuBarHeight );
+//}

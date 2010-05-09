@@ -55,6 +55,9 @@ static FacebookProxy* gFacebookProxy = NULL;
 	if ( self = [super init] )
 	{
 		self._uid = 0;
+//		[self getSession];
+		self._session = nil;
+		
 		self._oAuthAccessToken = nil;
 		self._authTarget = nil;
 		self._authCallback = nil;
@@ -63,7 +66,6 @@ static FacebookProxy* gFacebookProxy = NULL;
 		self._codeString = nil;
 		self._authConnection = nil;
 		self._accessTokenConnection = nil;
-		[self getSession];
 	}
 	return self;
 }
@@ -82,7 +84,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 {
 	//	[self stopEvents];
 	if ( self._session != nil )
-		[self._session.delegates removeObject: self];	
+		[self._session.delegates removeObject:self];	
 	
 	[_oAuthAccessToken release];
 	[_authResponse release];
@@ -172,6 +174,9 @@ static FacebookProxy* gFacebookProxy = NULL;
 
 -(void)login
 {
+	if ( nil == self._session )
+		[self getSession];
+	
 	if ( self._session )
 	{
 		FBLoginDialog* dialog = [[[FBLoginDialog alloc] initWithSession:self._session] autorelease];

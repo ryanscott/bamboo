@@ -8,6 +8,8 @@
 	UIImageView* _profileImage;
 
 	GraphAPI* _graph;
+	
+	UITextView* _fullText;
 }
 
 @property (nonatomic, retain) NSMutableData* _responseText;
@@ -16,6 +18,8 @@
 @property (nonatomic, retain) UIImageView* _profileImage;
 
 @property (nonatomic, retain) GraphAPI* _graph;
+
+@property (nonatomic, retain) UITextView* _fullText;
 
 -(void)doneAuthorizing;
 

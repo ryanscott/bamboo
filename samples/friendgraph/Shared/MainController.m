@@ -10,6 +10,7 @@
 @synthesize _profileImage;
 
 @synthesize _graph;
+@synthesize _fullText;
 
 #pragma mark Initialization
 
@@ -19,12 +20,10 @@
 	self._profileImage = nil;
 	self._graph = nil;
 	
-	//	CGFloat h_buf = 10.0f;
-	//	CGFloat inset = 10.0f;
-	//	
+	CGFloat h_buf = 10.0f;
 
 	CGFloat x = 10.0f;
-	CGFloat y = 150.0f;
+	CGFloat y = 120.0f;
 	CGFloat width = 300.0f;
 	CGFloat height = 25.0f;
 	
@@ -34,6 +33,17 @@
 	self._statusInfo.backgroundColor = [UIColor blueColor];
 	self._statusInfo.textColor = [UIColor whiteColor];
 	self._statusInfo.text = @"waiting on API";	
+	
+	y += height + h_buf;
+	height = (kApplicationFrame.size.height - h_buf) - y;
+	
+	l_frame = CGRectMake(x, y, width, height);
+	self._fullText = [[UITextView alloc] initWithFrame:l_frame];
+	self._fullText.text = @"";
+	self._fullText.backgroundColor = [UIColor blueColor];
+	self._fullText.textColor = [UIColor whiteColor];
+	self._fullText.editable = NO;
+	
 }
 
 -(id)init
@@ -76,6 +86,7 @@
 	
 	[self.view addSubview:authButton];
 	[self.view addSubview:self._statusInfo];
+	[self.view addSubview:self._fullText];
 	//[authButton release];
 
 //	[self.view addSubview:self._statusInfo];
@@ -98,6 +109,7 @@
 
 - (void)didReceiveMemoryWarning 
 {
+	RCLibFreeMemory();
 	[super didReceiveMemoryWarning];
 }
 
@@ -111,6 +123,7 @@
 	[_statusInfo release];
 	[_profileImage release];
 	[_graph release];
+	[_fullText release];
 	[super dealloc];
 }
 
@@ -128,6 +141,7 @@
 	self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;
 	
 	self._graph = [[FacebookProxy instance] newGraph];
+	self._fullText.text = [self._graph getObject:@"me"];
 }
 
 #pragma mark Button Handlers

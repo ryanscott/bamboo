@@ -12,3 +12,17 @@ extern NSString* const kFBAccessTokenURLFormat;
 extern NSString* const kShareEmailSubject;
 extern NSString* const kShareText;
 extern NSString* const kTwitterShareText;
+
+
+// App Constants
+//
+//@interface Globals : NSObject
+//{
+//	CGRect kScreenFrame;
+//}
+//
+//@property (nonatomic, assign, readonly) CGRect kScreenFrame;
+//
+//+(void)freeMemory;
+//
+//@end

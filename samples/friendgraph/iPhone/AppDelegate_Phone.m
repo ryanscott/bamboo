@@ -8,6 +8,7 @@
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
+	initRCLib();
 	_mainController = [[MainController alloc] init];
 	
 	window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];	
@@ -22,6 +23,7 @@
 
 -(void)dealloc 
 {
+	terminateRCLib();
 	[_mainController release];
 	[window release];
 	[super dealloc];

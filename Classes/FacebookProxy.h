@@ -51,8 +51,6 @@ extern NSString* const kFBRedirectURI;
 +(void)loadDefaults;
 //+(void)updateDefaults;
 
-//-(void)postMessageToWall:(NSString*)message delegate:(id<FBDialogDelegate>)inDelegate;
-
 -(void)loginAndAuthorizeWithTarget:(id)target callback:(SEL)authCallback;
 
 -(GraphAPI*)newGraph;

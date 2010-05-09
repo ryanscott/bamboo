@@ -33,26 +33,26 @@
 		947BF4741194CC320044AB96 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4611194CC320044AB96 /* RoundedView.m */; };
 		947BF4751194CC320044AB96 /* 1_bar_table_transcorners.png in Resources */ = {isa = PBXBuildFile; fileRef = 947BF4631194CC320044AB96 /* 1_bar_table_transcorners.png */; };
 		947BF48C1194CD3E0044AB96 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF48B1194CD3E0044AB96 /* Constants.m */; };
-		947BF4941194CEE30044AB96 /* libFBPlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BF4931194CEE30044AB96 /* libFBPlatform.a */; };
 		947BF4961194CEF50044AB96 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BF4951194CEF50044AB96 /* QuartzCore.framework */; };
 		9495A1841191650F00BA21E3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9495A1831191650F00BA21E3 /* Entitlements.plist */; };
 		94E95D85119761D000A462E1 /* libbamboo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E95D84119761D000A462E1 /* libbamboo.a */; };
+		94E95DB41197639900A462E1 /* libFBPlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E95DB31197639900A462E1 /* libFBPlatform.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		947BF3E81194CAF20044AB96 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 947BF3E41194CAF20044AB96 /* FBConnect.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9;
-			remoteInfo = FBPlatform;
-		};
 		94E95CD91197600600A462E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94E95CD51197600600A462E1 /* bamboo.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libbamboo.a */;
 			remoteInfo = bamboo;
+		};
+		94E95DC91197646200A462E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94E95DC51197646200A462E1 /* FBConnect.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9 /* libFBPlatform.a */;
+			remoteInfo = FBPlatform;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -70,7 +70,6 @@
 		8D1107310486CEB800E47090 /* friendgraph-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "friendgraph-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		947BF3CD1194CA590044AB96 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = Shared/MainController.h; sourceTree = "<group>"; };
 		947BF3CE1194CA590044AB96 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = Shared/MainController.m; sourceTree = "<group>"; };
-		947BF3E41194CAF20044AB96 /* FBConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBConnect.xcodeproj; path = "../../../facebook-iphone-sdk/src/FBConnect.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		947BF43A1194CC320044AB96 /* rcloudlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcloudlib.h; sourceTree = "<group>"; };
 		947BF43B1194CC320044AB96 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		947BF43C1194CC320044AB96 /* rcloudlibconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcloudlibconstants.h; sourceTree = "<group>"; };
@@ -109,11 +108,12 @@
 		947BF4631194CC320044AB96 /* 1_bar_table_transcorners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1_bar_table_transcorners.png; path = ../../../rcloudlib/Images/1_bar_table_transcorners.png; sourceTree = SOURCE_ROOT; };
 		947BF48A1194CD3E0044AB96 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Shared/Constants.h; sourceTree = "<group>"; };
 		947BF48B1194CD3E0044AB96 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = Shared/Constants.m; sourceTree = "<group>"; };
-		947BF4931194CEE30044AB96 /* libFBPlatform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBPlatform.a; path = "../../../facebook-iphone-sdk/src/build/Debug-iphonesimulator/libFBPlatform.a"; sourceTree = SOURCE_ROOT; };
 		947BF4951194CEF50044AB96 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9495A1831191650F00BA21E3 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		94E95CD51197600600A462E1 /* bamboo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bamboo.xcodeproj; path = ../../bamboo.xcodeproj; sourceTree = SOURCE_ROOT; };
 		94E95D84119761D000A462E1 /* libbamboo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbamboo.a; path = "../../build/Debug-iphonesimulator/libbamboo.a"; sourceTree = SOURCE_ROOT; };
+		94E95DB31197639900A462E1 /* libFBPlatform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBPlatform.a; path = "../../../facebook-iphone-sdk/src/build/Debug-iphonesimulator/libFBPlatform.a"; sourceTree = SOURCE_ROOT; };
+		94E95DC51197646200A462E1 /* FBConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBConnect.xcodeproj; path = "../../../facebook-iphone-sdk/src/FBConnect.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +124,9 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
-				947BF4941194CEE30044AB96 /* libFBPlatform.a in Frameworks */,
 				947BF4961194CEF50044AB96 /* QuartzCore.framework in Frameworks */,
 				94E95D85119761D000A462E1 /* libbamboo.a in Frameworks */,
+				94E95DB41197639900A462E1 /* libFBPlatform.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,8 +195,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				94E95DB31197639900A462E1 /* libFBPlatform.a */,
 				94E95D84119761D000A462E1 /* libbamboo.a */,
-				947BF4931194CEE30044AB96 /* libFBPlatform.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -218,19 +218,11 @@
 		947BF3E31194CAE90044AB96 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				94E95DC51197646200A462E1 /* FBConnect.xcodeproj */,
 				94E95CD51197600600A462E1 /* bamboo.xcodeproj */,
 				947BF41B1194CBF30044AB96 /* rcloudlib */,
-				947BF3E41194CAF20044AB96 /* FBConnect.xcodeproj */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		947BF3E51194CAF20044AB96 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				947BF3E91194CAF20044AB96 /* libFBPlatform.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		947BF41B1194CBF30044AB96 /* rcloudlib */ = {
@@ -359,6 +351,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		94E95DC61197646200A462E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94E95DCA1197646200A462E1 /* libFBPlatform.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -395,8 +395,8 @@
 					ProjectRef = 94E95CD51197600600A462E1 /* bamboo.xcodeproj */;
 				},
 				{
-					ProductGroup = 947BF3E51194CAF20044AB96 /* Products */;
-					ProjectRef = 947BF3E41194CAF20044AB96 /* FBConnect.xcodeproj */;
+					ProductGroup = 94E95DC61197646200A462E1 /* Products */;
+					ProjectRef = 94E95DC51197646200A462E1 /* FBConnect.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -407,18 +407,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		947BF3E91194CAF20044AB96 /* libFBPlatform.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libFBPlatform.a;
-			remoteRef = 947BF3E81194CAF20044AB96 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		94E95CDA1197600600A462E1 /* libbamboo.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libbamboo.a;
 			remoteRef = 94E95CD91197600600A462E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		94E95DCA1197646200A462E1 /* libFBPlatform.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFBPlatform.a;
+			remoteRef = 94E95DC91197646200A462E1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -516,8 +516,8 @@
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"${PROJECT_DIR}/../../Classes",
 					"${PROJECT_DIR}/../../../facebook-iphone-sdk/src",
+					"${PROJECT_DIR}/../../Classes",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DDEBUG";
@@ -538,7 +538,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../../../facebook-iphone-sdk/src";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/../../../facebook-iphone-sdk/src",
+					"${PROJECT_DIR}/../../Classes",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;

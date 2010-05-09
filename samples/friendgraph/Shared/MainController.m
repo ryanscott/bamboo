@@ -4,12 +4,12 @@
 
 @implementation MainController
 
-@synthesize _responseText;
+@synthesize _graph;
 
+@synthesize _authButton;
 @synthesize _statusInfo;
 @synthesize _profileImage;
 
-@synthesize _graph;
 @synthesize _fullText;
 
 #pragma mark Initialization
@@ -43,7 +43,11 @@
 	self._fullText.backgroundColor = [UIColor blueColor];
 	self._fullText.textColor = [UIColor whiteColor];
 	self._fullText.editable = NO;
-	
+
+	self._authButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	self._authButton.frame = CGRectMake(10, 10, 80, 30);
+	[self._authButton addTarget:self action:@selector(doAuth) forControlEvents:UIControlEventTouchUpInside];
+	[self._authButton setTitle:@"Auth FB" forState:UIControlStateNormal];
 }
 
 -(id)init
@@ -77,20 +81,11 @@
 
 -(void)addSubviews
 {
-	//	[self.view addSubview:self._someview];
-	
-	UIButton* authButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	authButton.frame = CGRectMake(10, 10, 80, 30);
-	[authButton addTarget:self action:@selector(doAuth) forControlEvents:UIControlEventTouchUpInside];
-	[authButton setTitle:@"Auth FB" forState:UIControlStateNormal];
-	
-	[self.view addSubview:authButton];
+	[self.view addSubview:self._authButton];
 	[self.view addSubview:self._statusInfo];
 	[self.view addSubview:self._fullText];
-	//[authButton release];
 
-//	[self.view addSubview:self._statusInfo];
-//	[self.view addSubview:self._profileImage];
+	//	[self.view addSubview:self._profileImage];
 }
 
 -(void)viewDidLoad 
@@ -140,7 +135,9 @@
 {
 	self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;
 	
-	self._graph = [[FacebookProxy instance] newGraph];
+	if ( nil == self._graph )
+		self._graph = [[FacebookProxy instance] newGraph];
+	
 	self._fullText.text = [self._graph getObject:@"me"];
 }
 

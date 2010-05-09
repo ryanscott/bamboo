@@ -97,7 +97,7 @@ NSString* const kRequestVerbGet = @"get";
 		} 
 		else 
 		{
-			RCLog(@"Connection failed!\n URL = %@\n Error - %@ %@",
+			NSLog(@"Connection failed!\n URL = %@\n Error - %@ %@",
 						urlString,
 						[error localizedDescription],						
 						[[error userInfo] objectForKey:@"NSUnderlyingError"]);

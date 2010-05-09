@@ -1,5 +1,13 @@
 #import "FBConnect/FBConnect.h"
 
+// Facebook API
+// all of these values need to be set in the client application
+extern NSString* const kFBAPIKey;
+extern NSString* const kFBAppSecret;
+
+extern NSString* const kFBClientID;
+extern NSString* const kFBRedirectURI;
+
 @class GraphAPI;
 
 @interface FacebookProxy : NSObject <NSCoding, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>

@@ -7,11 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94E95CBD11975F4B00A462E1 /* FacebookProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E95CB911975F4B00A462E1 /* FacebookProxy.h */; };
+		94E95CBE11975F4B00A462E1 /* FacebookProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E95CBA11975F4B00A462E1 /* FacebookProxy.m */; };
+		94E95CBF11975F4B00A462E1 /* GraphAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E95CBB11975F4B00A462E1 /* GraphAPI.h */; };
+		94E95CC011975F4B00A462E1 /* GraphAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E95CBC11975F4B00A462E1 /* GraphAPI.m */; };
 		AA747D9F0F9514B9006C5449 /* bamboo_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* bamboo_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		94E95D031197603700A462E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94E95CFF1197603700A462E1 /* FBConnect.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9 /* libFBPlatform.a */;
+			remoteInfo = FBPlatform;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		94E95CB911975F4B00A462E1 /* FacebookProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookProxy.h; path = Classes/FacebookProxy.h; sourceTree = "<group>"; };
+		94E95CBA11975F4B00A462E1 /* FacebookProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookProxy.m; path = Classes/FacebookProxy.m; sourceTree = "<group>"; };
+		94E95CBB11975F4B00A462E1 /* GraphAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphAPI.h; path = Classes/GraphAPI.h; sourceTree = "<group>"; };
+		94E95CBC11975F4B00A462E1 /* GraphAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphAPI.m; path = Classes/GraphAPI.m; sourceTree = "<group>"; };
+		94E95CFF1197603700A462E1 /* FBConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBConnect.xcodeproj; path = "../facebook-iphone-sdk/src/FBConnect.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		AA747D9E0F9514B9006C5449 /* bamboo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bamboo_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libbamboo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libbamboo.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +61,7 @@
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
+				94E95CE41197602D00A462E1 /* Libraries */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -59,6 +79,10 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				94E95CB911975F4B00A462E1 /* FacebookProxy.h */,
+				94E95CBA11975F4B00A462E1 /* FacebookProxy.m */,
+				94E95CBB11975F4B00A462E1 /* GraphAPI.h */,
+				94E95CBC11975F4B00A462E1 /* GraphAPI.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -71,6 +95,22 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		94E95CE41197602D00A462E1 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				94E95CFF1197603700A462E1 /* FBConnect.xcodeproj */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		94E95D001197603700A462E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94E95D041197603700A462E1 /* libFBPlatform.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -79,6 +119,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* bamboo_Prefix.pch in Headers */,
+				94E95CBD11975F4B00A462E1 /* FacebookProxy.h in Headers */,
+				94E95CBF11975F4B00A462E1 /* GraphAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +155,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* bamboo */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 94E95D001197603700A462E1 /* Products */;
+					ProjectRef = 94E95CFF1197603700A462E1 /* FBConnect.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* bamboo */,
@@ -120,11 +168,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		94E95D041197603700A462E1 /* libFBPlatform.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFBPlatform.a;
+			remoteRef = 94E95D031197603700A462E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D2AAC07B0554694100DB518D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E95CBE11975F4B00A462E1 /* FacebookProxy.m in Sources */,
+				94E95CC011975F4B00A462E1 /* GraphAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +231,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../facebook-iphone-sdk/src";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.2;
@@ -184,6 +245,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../facebook-iphone-sdk/src";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.2;

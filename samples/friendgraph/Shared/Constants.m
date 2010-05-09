@@ -13,14 +13,6 @@ NSString* const kFBAppSecret = @"e45e55a333eec232d4206d2703de1307";
 NSString* const kFBClientID = @"119908831367602";
 NSString* const kFBRedirectURI = @"http://oauth.twoalex.com/";
 
-NSString* const kFBAuthURLFormat = @"https://graph.facebook.com/oauth/authorize?client_id=%@&redirect_uri=%@";
-NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@";
-
-// Sharing text
-NSString* const kShareEmailSubject = @"Check out my awesome iPhone application";
-NSString* const kShareText = @"This is a test, of my awesome iPhone application";
-NSString* const kTwitterShareText = @"This is a tweet, from my awesome iPhone application";
-
 // App Constants
 //
 //@implementation Globals

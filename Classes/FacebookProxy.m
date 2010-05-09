@@ -1,8 +1,9 @@
 #import "FacebookProxy.h"
-#import "Constants.h"
-#import "AppDelegate_Phone.h"
-#import "MainController.h"
 #import "GraphAPI.h"
+
+// URL Formats for code & access_token
+NSString* const kFBAuthURLFormat = @"https://graph.facebook.com/oauth/authorize?client_id=%@&redirect_uri=%@";
+NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@";
 
 // Serialization keys
 NSString* const kFacebookProxyKey = @"kFacebookProxyKey";
@@ -158,12 +159,12 @@ static FacebookProxy* gFacebookProxy = NULL;
 {
 	if ( ![self._session resume] )
 	{
-		RCLog( @"Starting new session" );
+		NSLog( @"Starting new session" );
 		self._session = [FBSession sessionForApplication:kFBAPIKey secret:kFBAppSecret delegate:self];
 	}
 	else 
 	{
-		RCLog( @"Session resumed!" );
+		NSLog( @"Session resumed!" );
 	}
 }
 
@@ -243,7 +244,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 		} 
 		else 
 		{
-			RCLog( @"authorize NSURLConnection fail" );
+			NSLog( @"authorize NSURLConnection fail" );
 		}
 	}
 	else
@@ -273,7 +274,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 	} 
 	else 
 	{
-		RCLog( @"authorize NSURLConnection fail" );
+		NSLog( @"authorize NSURLConnection fail" );
 	}
 }
 
@@ -287,7 +288,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 
 -(void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response 
 {
-	RCLog( @"didReceiveResponse" );
+	NSLog( @"didReceiveResponse" );
  
 	if ( connection == self._authConnection )
 	{
@@ -303,11 +304,11 @@ static FacebookProxy* gFacebookProxy = NULL;
 		if ( [splitStrings count] > 1 )
 		{
 			self._codeString = [splitStrings objectAtIndex:1];
-			RCLog( @"codeString = [%@]", self._codeString );
+			NSLog( @"codeString = [%@]", self._codeString );
 		}
 		else
 		{
-			RCLog( @"something is wrong with the URL: %@", responseURL );
+			NSLog( @"something is wrong with the URL: %@", responseURL );
 			assert( false );
 		}
 	}
@@ -321,12 +322,12 @@ static FacebookProxy* gFacebookProxy = NULL;
 {
 	if ( connection == self._authConnection )
 	{
-		RCLog( @"didReceiveData._auth" );
+		NSLog( @"didReceiveData._auth" );
 		[self._authResponse appendData:data];
 	}
 	else if ( connection = self._accessTokenConnection )
 	{		
-		RCLog( @"didReceiveData._token" );
+		NSLog( @"didReceiveData._token" );
 		[self._accessTokenResponse appendData:data];
 	}
 }
@@ -335,10 +336,10 @@ static FacebookProxy* gFacebookProxy = NULL;
 {
 	if ( connection == self._authConnection )
 	{
-		RCLog( @"connectionDidFinishLoading._auth" );
+		NSLog( @"connectionDidFinishLoading._auth" );
 		
 		NSString* responseBody = [[NSString alloc] initWithData:self._authResponse encoding:NSASCIIStringEncoding];
-		RCLog( @"response: %@", responseBody );
+		NSLog( @"response: %@", responseBody );
 		[responseBody release];
 		responseBody = nil;
 		
@@ -348,9 +349,9 @@ static FacebookProxy* gFacebookProxy = NULL;
 	}
 	else if ( connection == self._accessTokenConnection )
 	{
-		RCLog( @"connectionDidFinishLoading._token" );
+		NSLog( @"connectionDidFinishLoading._token" );
 		NSString* responseBody = [[NSString alloc] initWithData:self._accessTokenResponse encoding:NSASCIIStringEncoding];
-		RCLog( @"response: %@", responseBody );
+		NSLog( @"response: %@", responseBody );
 		
 		// the entire response body is just access_token=xxx, the access token is the goods that we're doing all this for. example is:
 		// access_token=119908831367602|674667c45691cbca6a03d480-1394987957|dRiaWMp7ZoqrRy_jHDEutHC5AP0.
@@ -360,13 +361,13 @@ static FacebookProxy* gFacebookProxy = NULL;
 		if ( [splitStrings count] > 1 )
 		{
 			self._oAuthAccessToken = [splitStrings objectAtIndex:1];
-			RCLog( @"accessToken = [%@]", self._oAuthAccessToken );
+			NSLog( @"accessToken = [%@]", self._oAuthAccessToken );
 			[FacebookProxy updateDefaults];
 			[self finishedAuthorizing];
 		}
 		else
 		{
-			RCLog( @"something is wrong with the access_code response: %@", responseBody );
+			NSLog( @"something is wrong with the access_code response: %@", responseBody );
 			assert( false );
 		}
 		
@@ -381,11 +382,11 @@ static FacebookProxy* gFacebookProxy = NULL;
 {
 	if ( connection == self._authConnection )
 	{
-		RCLog( @"_auth connectionDidFail" );
+		NSLog( @"_auth connectionDidFail" );
 	}
 	else if ( connection == self._accessTokenConnection )
 	{
-		RCLog( @"_token connectionDidFail" );
+		NSLog( @"_token connectionDidFail" );
 	}
 	
 	// release the connection, and the data object
@@ -395,7 +396,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 //	[receivedData release];
 	
 	// inform the user
-	RCLog(@"Connection failed! Error - %@ %@",
+	NSLog(@"Connection failed! Error - %@ %@",
 				[error localizedDescription],
 				[[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
 }

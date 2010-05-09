@@ -428,6 +428,17 @@ static FacebookProxy* gFacebookProxy = NULL;
 	}
 }
 
+-(void)forgetToken
+{
+	self._oAuthAccessToken = nil;
+	[FacebookProxy updateDefaults];
+}
+
+-(void)logout
+{
+	self._uid = 0;
+}
+
 -(GraphAPI*)newGraph
 {
 	GraphAPI* n_graph = nil;

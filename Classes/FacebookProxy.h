@@ -53,6 +53,10 @@ extern NSString* const kFBRedirectURI;
 
 -(void)loginAndAuthorizeWithTarget:(id)target callback:(SEL)authCallback;
 
+// use this to clear the memory, in case the user wants to logout, or any other similar situation
+-(void)forgetToken;
+-(void)logout;
+
 -(GraphAPI*)newGraph;
 
 @end

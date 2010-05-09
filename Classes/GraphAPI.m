@@ -9,8 +9,8 @@ NSString* const kRequestVerbGet = @"get";
 
 @interface GraphAPI (_PrivateMethods)
 
--(NSString*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args;
--(NSString*)makeSynchronousRequest:(NSString*)path args:(NSDictionary*)request_args verb:(NSString*)verb;
+-(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args;
+-(NSData*)makeSynchronousRequest:(NSString*)path args:(NSDictionary*)request_args verb:(NSString*)verb;
 
 -(NSString*)encodeParams:(NSDictionary*)request_args;
 
@@ -21,6 +21,8 @@ NSString* const kRequestVerbGet = @"get";
 @synthesize _accessToken;
 @synthesize _connection;
 @synthesize _responseData;
+
+#pragma mark Initialization
 
 -(id)initWithAccessToken:(NSString*)access_token
 {
@@ -33,12 +35,25 @@ NSString* const kRequestVerbGet = @"get";
 	return self;	
 }
 
+#pragma mark Public API
+
 -(NSString*)getObject:(NSString*)obj_id;
 {
-	return [self api:obj_id args:nil];
+	return [[[NSString alloc] initWithData:[self api:obj_id args:nil] encoding:NSASCIIStringEncoding] autorelease];
 }
 
--(NSString*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args
+// example url:
+// http://graph.facebook.com/ryan.stubblefield/picture
+
+-(UIImage*)getProfilePhotoForObject:(NSString*)obj_id
+{
+	return nil;
+}
+
+
+#pragma mark Private Implementation Methods
+
+-(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args
 {
 	if ( nil != self._accessToken )
 	{
@@ -54,7 +69,8 @@ NSString* const kRequestVerbGet = @"get";
 	}
 
 	// will probably want to generally use async calls, but building this with sync first is easiest
-	NSString* response = [self makeSynchronousRequest:obj_id args:request_args verb:kRequestVerbGet];
+//	NSString* response = [self makeSynchronousRequest:obj_id args:request_args verb:kRequestVerbGet];
+	NSData* response = [self makeSynchronousRequest:obj_id args:request_args verb:kRequestVerbGet];
 	
 	// todo
 	// 1. parse JSON response (and handle true/false responses)
@@ -63,14 +79,15 @@ NSString* const kRequestVerbGet = @"get";
 	return response;
 }
 
--(NSString*)makeSynchronousRequest:(NSString*)path args:(NSDictionary*)request_args verb:(NSString*)verb
+-(NSData*)makeSynchronousRequest:(NSString*)path args:(NSDictionary*)request_args verb:(NSString*)verb
 {
 	// todo - this
 	//# if the verb isn't get or post, send it as a post argument
 	//args.merge!({:method => verb}) && verb = "post" if verb != "get" && verb != "post"
 	
-	NSString* responseString = nil;
-	
+//	NSString* responseString = nil;
+	self._responseData = nil;
+
 	// handle get first, add post support next
 	if ( [verb isEqualToString:kRequestVerbGet] )
 	{
@@ -89,13 +106,9 @@ NSString* const kRequestVerbGet = @"get";
 		NSError* error;
 		
 		// synchronous call
-		NSData* responseData = [NSURLConnection sendSynchronousRequest:r_url returningResponse:&response error:&error];
+		self._responseData = [NSURLConnection sendSynchronousRequest:r_url returningResponse:&response error:&error];
 		
-		if ( nil != responseData )
-		{
-			responseString = [[[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding] autorelease];
-		} 
-		else 
+		if ( nil == self._responseData )
 		{
 			NSLog(@"Connection failed!\n URL = %@\n Error - %@ %@",
 						urlString,
@@ -104,7 +117,7 @@ NSString* const kRequestVerbGet = @"get";
 //			[[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
 		}
 	}
-	return responseString;
+	return self._responseData;
 }
 
 -(NSString*)encodeParams:(NSDictionary*)request_args

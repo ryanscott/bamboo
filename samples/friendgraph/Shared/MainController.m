@@ -139,6 +139,8 @@
 		self._graph = [[FacebookProxy instance] newGraph];
 	
 	self._fullText.text = [self._graph getObject:@"me"];
+
+	//_profileImage
 }
 
 #pragma mark Button Handlers

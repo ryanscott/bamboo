@@ -149,10 +149,12 @@
 	
 	self._fullText.text = [self._graph getObject:@"me"];
 
-	self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];
-
-	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@", [self._graph getConnections:@"likes" forObject:@"me"], self._fullText.text];
-
+	NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
+	NSString* searchText = [self._graph search:@"context" objectType:@"user"];
+	
+	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@", likesText, self._fullText.text, searchText];
+	
+	self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];	
 	if ( nil == self._profileImage.superview )
 		[self.view addSubview:self._profileImage];
 }

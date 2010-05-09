@@ -5,6 +5,11 @@ NSString* const kGraphAPIServer = @"http://graph.facebook.com/";
 // Graph API Argument Keys
 NSString* const kAPIKeyAccessToken = @"access_token";
 
+// other dictionary keys
+NSString* const kKeySearchQuery = @"q";
+NSString* const kKeySearchObjectType = @"type";
+
+// other things...
 NSString* const kRequestVerbGet = @"get";
 
 @interface GraphAPI (_PrivateMethods)
@@ -40,7 +45,10 @@ NSString* const kRequestVerbGet = @"get";
 -(NSString*)getObject:(NSString*)obj_id;
 {
 	NSString* path = obj_id;
-	return [[[NSString alloc] initWithData:[self api:path args:nil] encoding:NSASCIIStringEncoding] autorelease];
+
+	NSData* response = [self api:path args:nil];
+	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding] autorelease];
+	return r_string;
 }
 
 // example url:
@@ -49,13 +57,30 @@ NSString* const kRequestVerbGet = @"get";
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id
 {
 	NSString* path = [NSString stringWithFormat:@"%@/picture", obj_id];
-	return [[[UIImage alloc] initWithData:[self api:path args:nil]] autorelease];
+
+	NSData* response = [self api:path args:nil];
+	UIImage* r_image = [[[UIImage alloc] initWithData:response] autorelease];
+	return r_image;
 }
 
 -(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id
 {
 	NSString* path = [NSString stringWithFormat:@"%@/%@", obj_id, connection_name];
-	return [[[NSString alloc] initWithData:[self api:path args:nil] encoding:NSASCIIStringEncoding] autorelease];
+
+	NSData* response = [self api:path args:nil];
+	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding] autorelease];
+	return r_string;
+}
+
+-(NSString*)search:(NSString*)search_terms objectType:(NSString*)objType
+{
+	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:search_terms, kKeySearchQuery,
+																																				 objType, kKeySearchObjectType, nil];
+
+	NSString* path = @"search";
+	NSData* response = [self api:path args:args];
+	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding] autorelease];
+	return r_string;
 }
 
 #pragma mark Private Implementation Methods

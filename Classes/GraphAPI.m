@@ -39,7 +39,8 @@ NSString* const kRequestVerbGet = @"get";
 
 -(NSString*)getObject:(NSString*)obj_id;
 {
-	return [[[NSString alloc] initWithData:[self api:obj_id args:nil] encoding:NSASCIIStringEncoding] autorelease];
+	NSString* path = obj_id;
+	return [[[NSString alloc] initWithData:[self api:path args:nil] encoding:NSASCIIStringEncoding] autorelease];
 }
 
 // example url:
@@ -47,7 +48,8 @@ NSString* const kRequestVerbGet = @"get";
 
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id
 {
-	return nil;
+	NSString* path = [NSString stringWithFormat:@"%@/picture", obj_id];
+	return [[[UIImage alloc] initWithData:[self api:path args:nil]] autorelease];
 }
 
 

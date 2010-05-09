@@ -48,6 +48,15 @@
 	self._authButton.frame = CGRectMake(10, 10, 80, 30);
 	[self._authButton addTarget:self action:@selector(doAuth) forControlEvents:UIControlEventTouchUpInside];
 	[self._authButton setTitle:@"Auth FB" forState:UIControlStateNormal];
+	
+	width = 50.0f;
+	height = 50.0f;
+	x = kApplicationFrame.size.width - h_buf - width;
+	y = h_buf;
+	
+	l_frame = CGRectMake(x, y, width, height);
+
+	self._profileImage = [[UIImageView alloc] initWithFrame:l_frame];
 }
 
 -(id)init
@@ -140,7 +149,10 @@
 	
 	self._fullText.text = [self._graph getObject:@"me"];
 
-	//_profileImage
+	self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];
+
+	if ( nil == self._profileImage.superview )
+		[self.view addSubview:self._profileImage];
 }
 
 #pragma mark Button Handlers

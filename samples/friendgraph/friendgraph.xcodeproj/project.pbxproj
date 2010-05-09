@@ -54,6 +54,13 @@
 			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9 /* libFBPlatform.a */;
 			remoteInfo = FBPlatform;
 		};
+		94E95E1511976B3B00A462E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94E95CD51197600600A462E1 /* bamboo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* bamboo */;
+			remoteInfo = bamboo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -373,6 +380,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				94E95E1611976B3B00A462E1 /* PBXTargetDependency */,
 			);
 			name = friendgraph;
 			productName = friendgraph;
@@ -466,6 +474,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94E95E1611976B3B00A462E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = bamboo;
+			targetProxy = 94E95E1511976B3B00A462E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

@@ -1,5 +1,5 @@
 #import "MainController.h"
-#import "FacebookGraph.h"
+#import "FacebookProxy.h"
 
 @implementation MainController
 
@@ -84,7 +84,7 @@
 	[self addSubviews];
 	
 	// [rya:5-9-10] kinda weird place to do this, but works for now
-	[FacebookGraph loadDefaults];
+	[FacebookProxy loadDefaults];
 	
 	[super viewDidLoad];
 }
@@ -115,11 +115,11 @@
 
 #pragma mark Event Handlers
 
-#pragma mark FacebookGraph Callback
+#pragma mark FacebookProxy Callback
 
 -(void)doneAuthorizing
 {
-	self._statusInfo.text = [FacebookGraph instance]._oAuthAccessToken;	
+	self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;	
 }
 
 #pragma mark Button Handlers
@@ -127,7 +127,7 @@
 -(void)doAuth
 {
 	self._statusInfo.text = @"authorizing...";
-	[[FacebookGraph instance] loginAndAuthorizeWithTarget:self callback:@selector(doneAuthorizing)];
+	[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(doneAuthorizing)];
 }
 
 @end

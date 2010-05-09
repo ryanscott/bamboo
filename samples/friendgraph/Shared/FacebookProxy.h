@@ -1,6 +1,6 @@
 #import "FBConnect/FBConnect.h"
 
-@interface FacebookGraph : NSObject <NSCoding, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
+@interface FacebookProxy : NSObject <NSCoding, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
 {
 	FBSession* _session;
 	FBUID _uid;
@@ -37,7 +37,7 @@
 @property (nonatomic, retain) NSURLConnection* _accessTokenConnection;
 
 
-+(FacebookGraph*)instance;
++(FacebookProxy*)instance;
 +(void)loadDefaults;
 //+(void)updateDefaults;
 

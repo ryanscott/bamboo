@@ -1,20 +1,20 @@
-#import "FacebookGraph.h"
+#import "FacebookProxy.h"
 #import "Constants.h"
 #import "AppDelegate_Phone.h"
 #import "MainController.h"
 
 // Serialization keys
-NSString* const kFacebookGraphKey = @"kFacebookGraphKey";
+NSString* const kFacebookProxyKey = @"kFacebookProxyKey";
 NSString* const kKeyAccessToken = @"kKeyAccessToken";
 
-@interface FacebookGraph (_PrivateMethods)
+@interface FacebookProxy (_PrivateMethods)
 
 -(void)authorize;
 -(void)getSession;
 
 @end
 
-@implementation FacebookGraph
+@implementation FacebookProxy
 
 @synthesize _session;
 @synthesize _uid;
@@ -33,18 +33,18 @@ NSString* const kKeyAccessToken = @"kKeyAccessToken";
 
 #pragma mark Singleton Methods
 
-static FacebookGraph* gFacebookGraph = NULL;
+static FacebookProxy* gFacebookProxy = NULL;
 
-+(FacebookGraph*)instance
++(FacebookProxy*)instance
 {
 	@synchronized(self)
 	{
-    if (gFacebookGraph == NULL)
+    if (gFacebookProxy == NULL)
 		{
-			gFacebookGraph = [[FacebookGraph alloc] init];
+			gFacebookProxy = [[FacebookProxy alloc] init];
 		}
 	}
-	return gFacebookGraph;
+	return gFacebookProxy;
 }
 
 #pragma mark Initialization
@@ -103,7 +103,7 @@ static FacebookGraph* gFacebookGraph = NULL;
 
 - (id)initWithCoder:(NSCoder *)coder;
 {
-	self = [[FacebookGraph alloc] init];
+	self = [[FacebookProxy alloc] init];
 	if (self != nil)
 	{
 		self._oAuthAccessToken = [coder decodeObjectForKey:kKeyAccessToken]; 
@@ -122,13 +122,13 @@ static FacebookGraph* gFacebookGraph = NULL;
 {
 	@try
 	{
-		NSData* dataRepresentingSavedObject = [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookGraphKey];
+		NSData* dataRepresentingSavedObject = [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookProxyKey];
 		
 		if ( dataRepresentingSavedObject != nil )
 		{
-			if ( gFacebookGraph != nil )
-				[gFacebookGraph release];			
-			gFacebookGraph = [[NSKeyedUnarchiver unarchiveObjectWithData:dataRepresentingSavedObject] retain];
+			if ( gFacebookProxy != nil )
+				[gFacebookProxy release];			
+			gFacebookProxy = [[NSKeyedUnarchiver unarchiveObjectWithData:dataRepresentingSavedObject] retain];
 		}
 		else
 		{
@@ -136,14 +136,14 @@ static FacebookGraph* gFacebookGraph = NULL;
 	}
 	@catch (id theException) 
 	{
-//		[FlurryAPI logError:kErrorStatsLoadException message:@"FacebookGraph::loadDefaults" exception:theException];
+//		[FlurryAPI logError:kErrorStatsLoadException message:@"FacebookProxy::loadDefaults" exception:theException];
 	} 
 	
 }
 
 +(void)updateDefaults
 {
-	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[FacebookGraph instance]] forKey:kFacebookGraphKey];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[FacebookProxy instance]] forKey:kFacebookProxyKey];
 	[[NSUserDefaults standardUserDefaults] synchronize];	
 }
 
@@ -355,7 +355,7 @@ static FacebookGraph* gFacebookGraph = NULL;
 		{
 			self._oAuthAccessToken = [splitStrings objectAtIndex:1];
 			RCLog( @"accessToken = [%@]", self._oAuthAccessToken );
-			[FacebookGraph updateDefaults];
+			[FacebookProxy updateDefaults];
 			[self finishedAuthorizing];
 		}
 		else

@@ -143,7 +143,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 
 +(void)updateDefaults
 {
-	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[FacebookProxy instance]] forKey:kKeyAccessToken];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[FacebookProxy instance]] forKey:kFacebookProxyKey];
 	[[NSUserDefaults standardUserDefaults] synchronize];	
 }
 

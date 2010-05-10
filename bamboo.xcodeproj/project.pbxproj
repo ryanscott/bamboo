@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		942616301198BFF8002FDB6F /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 942616231198BFF8002FDB6F /* JSON.h */; };
+		942616311198BFF8002FDB6F /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 942616241198BFF8002FDB6F /* NSObject+SBJSON.h */; };
+		942616321198BFF8002FDB6F /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616251198BFF8002FDB6F /* NSObject+SBJSON.m */; };
+		942616331198BFF8002FDB6F /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 942616261198BFF8002FDB6F /* NSString+SBJSON.h */; };
+		942616341198BFF8002FDB6F /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616271198BFF8002FDB6F /* NSString+SBJSON.m */; };
+		942616351198BFF8002FDB6F /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 942616281198BFF8002FDB6F /* SBJSON.h */; };
+		942616361198BFF8002FDB6F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616291198BFF8002FDB6F /* SBJSON.m */; };
+		942616371198BFF8002FDB6F /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 9426162A1198BFF8002FDB6F /* SBJsonBase.h */; };
+		942616381198BFF8002FDB6F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426162B1198BFF8002FDB6F /* SBJsonBase.m */; };
+		942616391198BFF8002FDB6F /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9426162C1198BFF8002FDB6F /* SBJsonParser.h */; };
+		9426163A1198BFF8002FDB6F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426162D1198BFF8002FDB6F /* SBJsonParser.m */; };
+		9426163B1198BFF8002FDB6F /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9426162E1198BFF8002FDB6F /* SBJsonWriter.h */; };
+		9426163C1198BFF8002FDB6F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426162F1198BFF8002FDB6F /* SBJsonWriter.m */; };
 		94E95CBD11975F4B00A462E1 /* FacebookProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E95CB911975F4B00A462E1 /* FacebookProxy.h */; };
 		94E95CBE11975F4B00A462E1 /* FacebookProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E95CBA11975F4B00A462E1 /* FacebookProxy.m */; };
 		94E95CBF11975F4B00A462E1 /* GraphAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E95CBB11975F4B00A462E1 /* GraphAPI.h */; };
@@ -20,12 +33,25 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 94E95CFF1197603700A462E1 /* FBConnect.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9 /* libFBPlatform.a */;
+			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9;
 			remoteInfo = FBPlatform;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		942616231198BFF8002FDB6F /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		942616241198BFF8002FDB6F /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		942616251198BFF8002FDB6F /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		942616261198BFF8002FDB6F /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		942616271198BFF8002FDB6F /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		942616281198BFF8002FDB6F /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		942616291198BFF8002FDB6F /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		9426162A1198BFF8002FDB6F /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		9426162B1198BFF8002FDB6F /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		9426162C1198BFF8002FDB6F /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		9426162D1198BFF8002FDB6F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		9426162E1198BFF8002FDB6F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		9426162F1198BFF8002FDB6F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		94E95CB911975F4B00A462E1 /* FacebookProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookProxy.h; path = Classes/FacebookProxy.h; sourceTree = "<group>"; };
 		94E95CBA11975F4B00A462E1 /* FacebookProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookProxy.m; path = Classes/FacebookProxy.m; sourceTree = "<group>"; };
 		94E95CBB11975F4B00A462E1 /* GraphAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphAPI.h; path = Classes/GraphAPI.h; sourceTree = "<group>"; };
@@ -95,9 +121,31 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		942616221198BFF8002FDB6F /* json-framework */ = {
+			isa = PBXGroup;
+			children = (
+				942616231198BFF8002FDB6F /* JSON.h */,
+				942616241198BFF8002FDB6F /* NSObject+SBJSON.h */,
+				942616251198BFF8002FDB6F /* NSObject+SBJSON.m */,
+				942616261198BFF8002FDB6F /* NSString+SBJSON.h */,
+				942616271198BFF8002FDB6F /* NSString+SBJSON.m */,
+				942616281198BFF8002FDB6F /* SBJSON.h */,
+				942616291198BFF8002FDB6F /* SBJSON.m */,
+				9426162A1198BFF8002FDB6F /* SBJsonBase.h */,
+				9426162B1198BFF8002FDB6F /* SBJsonBase.m */,
+				9426162C1198BFF8002FDB6F /* SBJsonParser.h */,
+				9426162D1198BFF8002FDB6F /* SBJsonParser.m */,
+				9426162E1198BFF8002FDB6F /* SBJsonWriter.h */,
+				9426162F1198BFF8002FDB6F /* SBJsonWriter.m */,
+			);
+			name = "json-framework";
+			path = "../bamboo/Libraries/json-framework";
+			sourceTree = SOURCE_ROOT;
+		};
 		94E95CE41197602D00A462E1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				942616221198BFF8002FDB6F /* json-framework */,
 				94E95CFF1197603700A462E1 /* FBConnect.xcodeproj */,
 			);
 			name = Libraries;
@@ -121,6 +169,13 @@
 				AA747D9F0F9514B9006C5449 /* bamboo_Prefix.pch in Headers */,
 				94E95CBD11975F4B00A462E1 /* FacebookProxy.h in Headers */,
 				94E95CBF11975F4B00A462E1 /* GraphAPI.h in Headers */,
+				942616301198BFF8002FDB6F /* JSON.h in Headers */,
+				942616311198BFF8002FDB6F /* NSObject+SBJSON.h in Headers */,
+				942616331198BFF8002FDB6F /* NSString+SBJSON.h in Headers */,
+				942616351198BFF8002FDB6F /* SBJSON.h in Headers */,
+				942616371198BFF8002FDB6F /* SBJsonBase.h in Headers */,
+				942616391198BFF8002FDB6F /* SBJsonParser.h in Headers */,
+				9426163B1198BFF8002FDB6F /* SBJsonWriter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +204,7 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "bamboo" */;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Bamboo" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 0867D691FE84028FC02AAC07 /* bamboo */;
@@ -185,6 +240,12 @@
 			files = (
 				94E95CBE11975F4B00A462E1 /* FacebookProxy.m in Sources */,
 				94E95CC011975F4B00A462E1 /* GraphAPI.m in Sources */,
+				942616321198BFF8002FDB6F /* NSObject+SBJSON.m in Sources */,
+				942616341198BFF8002FDB6F /* NSString+SBJSON.m in Sources */,
+				942616361198BFF8002FDB6F /* SBJSON.m in Sources */,
+				942616381198BFF8002FDB6F /* SBJsonBase.m in Sources */,
+				9426163A1198BFF8002FDB6F /* SBJsonParser.m in Sources */,
+				9426163C1198BFF8002FDB6F /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +329,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "bamboo" */ = {
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Bamboo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,

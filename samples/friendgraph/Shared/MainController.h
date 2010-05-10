@@ -5,6 +5,7 @@
 	GraphAPI* _graph;
 	
 	UIButton* _authButton;
+	UIButton* _postButton;
 	UILabel* _statusInfo;
 	UIImageView* _profileImage;
 
@@ -14,6 +15,7 @@
 @property (nonatomic, retain) GraphAPI* _graph;
 
 @property (nonatomic, retain) UIButton* _authButton;
+@property (nonatomic, retain) UIButton* _postButton;
 @property (nonatomic, retain) UILabel* _statusInfo;
 @property (nonatomic, retain) UIImageView* _profileImage;
 

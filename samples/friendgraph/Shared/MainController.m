@@ -7,6 +7,7 @@
 @synthesize _graph;
 
 @synthesize _authButton;
+@synthesize _postButton;
 @synthesize _statusInfo;
 @synthesize _profileImage;
 
@@ -44,10 +45,15 @@
 	self._fullText.textColor = [UIColor whiteColor];
 	self._fullText.editable = NO;
 
-	self._authButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	self._authButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	self._authButton.frame = CGRectMake(10, 10, 80, 30);
 	[self._authButton addTarget:self action:@selector(doAuth) forControlEvents:UIControlEventTouchUpInside];
 	[self._authButton setTitle:@"Auth FB" forState:UIControlStateNormal];
+	
+	self._postButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	self._postButton.frame = CGRectMake(10, 50, 80, 30);
+	[self._postButton addTarget:self action:@selector(doPost) forControlEvents:UIControlEventTouchUpInside];
+	[self._postButton setTitle:@"Post" forState:UIControlStateNormal];
 	
 	width = 50.0f;
 	height = 50.0f;
@@ -91,6 +97,7 @@
 -(void)addSubviews
 {
 	[self.view addSubview:self._authButton];
+	[self.view addSubview:self._postButton];
 	[self.view addSubview:self._statusInfo];
 	[self.view addSubview:self._fullText];
 
@@ -128,6 +135,9 @@
 	[_profileImage release];
 	[_graph release];
 	[_fullText release];
+	[_authButton release];
+	[_postButton release];
+	
 	[super dealloc];
 }
 
@@ -169,6 +179,31 @@
 {
 	self._statusInfo.text = @"authorizing...";
 	[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(doneAuthorizing)];
+}
+
+-(void)doPost
+{
+	if ( nil != self._graph )
+	{
+		//post something 
+		// 	graph.put_object("me", "feed", :message => "Hello, world")
+		
+//		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Hello, world", @"message", nil];
+//		[self._graph putToObject:@"me" connectionType:@"feed" args:args];
+		
+//		1394987957_115365565169546
+
+//		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
+//		if ( [self._graph putToObject:@"1394987957_115365565169546" connectionType:@"comments" args:args] )
+//		{
+//			self._statusInfo.text = @"Post success!";
+//		}
+//		else
+//		{
+//			self._statusInfo.text = @"Post failure, probably auth";
+//		}
+
+	}
 }
 
 @end

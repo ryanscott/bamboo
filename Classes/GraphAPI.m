@@ -1,4 +1,5 @@
 #import "GraphAPI.h"
+#import "JSON.h"
 
 NSString* const kGraphAPIServer = @"http://graph.facebook.com/";
 
@@ -11,6 +12,9 @@ NSString* const kKeySearchObjectType = @"type";
 
 // other things...
 NSString* const kRequestVerbGet = @"get";
+NSString* const kRequestVerbPost = @"post";
+
+NSString* const kPostStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
 
 #pragma mark Public Constants
 
@@ -25,9 +29,11 @@ NSString* const kSearchGroups = @"group";
 @interface GraphAPI (_PrivateMethods)
 
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args;
+-(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args verb:(NSString*)verb;
 -(NSData*)makeSynchronousRequest:(NSString*)path args:(NSDictionary*)request_args verb:(NSString*)verb;
 
 -(NSString*)encodeParams:(NSDictionary*)request_args;
+-(NSData*)generatePostBody:(NSDictionary*)request_args;
 
 @end
 
@@ -104,9 +110,33 @@ NSString* const kSearchGroups = @"group";
 	return r_string;	
 }
 
+-(bool)putToObject:(NSString*)parent_obj_id connectionType:(NSString*)connection args:(NSDictionary*)request_args
+{
+	// [ryan:5-10-10] this will not work until we implement extended permissions
+	NSMutableDictionary* mutableArgs = [NSMutableDictionary dictionaryWithDictionary:request_args];
+	
+	NSString* path = [NSString stringWithFormat:@"%@/%@", parent_obj_id, connection];
+	NSData* responseData	= [self api:path args:mutableArgs verb:kRequestVerbPost];
+	NSString* r_string = [[[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding] autorelease];
+	bool response = true;
+	r_string = nil;
+	
+	NSDictionary* jsonDict = [r_string JSONValue];
+
+	NSLog( @"response NSString: %@", r_string );
+	NSLog( @"response JSON Dictionary: %@", jsonDict );
+
+	return response;		
+}
+
 #pragma mark Private Implementation Methods
 
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args
+{
+	return [self api:obj_id args:request_args verb:kRequestVerbGet];
+}
+
+-(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args verb:(NSString*)verb
 {
 	if ( nil != self._accessToken )
 	{
@@ -123,7 +153,7 @@ NSString* const kSearchGroups = @"group";
 
 	// will probably want to generally use async calls, but building this with sync first is easiest
 //	NSString* response = [self makeSynchronousRequest:obj_id args:request_args verb:kRequestVerbGet];
-	NSData* response = [self makeSynchronousRequest:obj_id args:request_args verb:kRequestVerbGet];
+	NSData* response = [self makeSynchronousRequest:obj_id args:request_args verb:verb];
 	
 	// todo
 	// 1. parse JSON response (and handle true/false responses)
@@ -140,37 +170,65 @@ NSString* const kSearchGroups = @"group";
 	
 //	NSString* responseString = nil;
 	self._responseData = nil;
-
+	NSString* urlString;
+	NSMutableURLRequest* r_url;
+	
 	// handle get first, add post support next
 	if ( [verb isEqualToString:kRequestVerbGet] )
 	{
 		NSString* argString = [self encodeParams:request_args];
 		
-		NSString* urlString = [NSString stringWithFormat:@"%@%@?%@", kGraphAPIServer, path, argString];
-		
-		NSURLRequest* r_url = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
-																								cachePolicy:NSURLRequestUseProtocolCachePolicy
-																						timeoutInterval:60.0];
-		// create the connection with the request
-		// and start loading the data
-//		self._connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-
-		NSURLResponse* response;
-		NSError* error;
-		
-		// synchronous call
-		NSLog( @"fetching url:\n%@", urlString );
-		self._responseData = [NSURLConnection sendSynchronousRequest:r_url returningResponse:&response error:&error];
-		
-		if ( nil == self._responseData )
-		{
-			NSLog(@"Connection failed!\n URL = %@\n Error - %@ %@",
-						urlString,
-						[error localizedDescription],						
-						[[error userInfo] objectForKey:@"NSUnderlyingError"]);
-//			[[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
-		}
+		urlString = [NSString stringWithFormat:@"%@%@?%@", kGraphAPIServer, path, argString];
+	
+		r_url = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
+														 cachePolicy:NSURLRequestUseProtocolCachePolicy
+												 timeoutInterval:60.0];
 	}
+	else
+	{
+		urlString = [NSString stringWithFormat:@"%@%@", kGraphAPIServer, path];
+		
+		r_url = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
+														 cachePolicy:NSURLRequestUseProtocolCachePolicy
+												 timeoutInterval:60.0];
+		
+		NSData* postBody = [self generatePostBody:request_args];
+		NSString* contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kPostStringBoundary];
+
+		[r_url setHTTPMethod:kRequestVerbPost];
+		[r_url setValue:contentType forHTTPHeaderField:@"Content-Type"];
+		[r_url setHTTPBody:postBody];			
+//		[r_url setHTTPBody:[@"message=bambootesting" dataUsingEncoding:NSISOLatin1StringEncoding]];
+	}
+	
+	NSURLResponse* response;
+	NSError* error;
+	
+	NSLog( @"fetching url:\n%@", urlString );
+	// synchronous call
+	self._responseData = [NSURLConnection sendSynchronousRequest:r_url returningResponse:&response error:&error];
+	// async
+	//		self._connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+	
+	if ( [verb isEqualToString:kRequestVerbPost] )
+	{
+		NSLog( @"Post response:" );
+		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+
+		NSLog( @"status: %d, %@", [httpResponse statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]] );	
+		NSLog( @"headers: %@", [httpResponse allHeaderFields] );
+		NSLog( @"response: %@", self._responseData );
+	}
+	
+	if ( nil == self._responseData )
+	{
+		NSLog(@"Connection failed!\n URL = %@\n Error - %@ %@",
+					urlString,
+					[error localizedDescription],						
+					[[error userInfo] objectForKey:@"NSUnderlyingError"]);
+//			[[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
+	}
+
 	return self._responseData;
 }
 
@@ -190,64 +248,55 @@ NSString* const kSearchGroups = @"group";
 	return [argString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 }
 
-
-//def self.make_request(path, args, verb)
-//# We translate args to a valid query string. If post is specified,
-//# we send a POST request to the given path with the given arguments.
-//
-//# if the verb isn't get or post, send it as a post argument
-//args.merge!({:method => verb}) && verb = "post" if verb != "get" && verb != "post"
-//
-//http = Net::HTTP.new(Facebook::GRAPH_SERVER, 443)
-//http.use_ssl = true
-//# we turn off certificate validation to avoid the 
-//# "warning: peer certificate won't be verified in this SSL session" warning
-//# not sure if this is the right way to handle it
-//# see http://redcorundum.blogspot.com/2008/03/ssl-certificates-and-nethttps.html
-//http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-//
-//result = http.start { |http|
-//response, body = (verb == "post" ? http.post(path, encode_params(args)) : http.get("#{path}?#{encode_params(args)}")) 
-//body
-//}
-//end
-
-//def self.encode_params(param_hash)
-//# TODO investigating whether a built-in method handles this
-//# if no hash (e.g. no auth token) return empty string
-//((param_hash || {}).collect do |key_and_value| 
-// key_and_value[1] = key_and_value[1].to_json if key_and_value[1].class != String
-// "#{key_and_value[0].to_s}=#{CGI.escape key_and_value[1]}"
-// end).join("&")
-//end
-
-
-
-//def get_object(id, args = {})
-//# Fetchs the given object from the graph.
-//api(id, args)
-//end
-
-//def api(path, args = {}, verb = "get")
-//# Fetches the given path in the Graph API.
-//args["access_token"] = @access_token if @access_token
-//
-//# make the request via the provided service
-//result = Koala.make_request(path, args, verb)
-//
-//# Facebook sometimes sends results like "true" and "false", which aren't strictly object
-//# and cause JSON.parse to fail
-//# so we account for that
-//response = JSON.parse("[#{result}]")[0]
-//
-//# check for errors
-//if response.is_a?(Hash) && error_details = response["error"]
-//raise GraphAPIError.new(error_details)
-//end
-//
-//response
-//end
-
-
+-(NSData*)generatePostBody:(NSDictionary*)request_args
+{
+  NSMutableData *body = [NSMutableData data];
+  NSString *beginLine = [NSString stringWithFormat:@"\r\n--%@\r\n", kPostStringBoundary];
+	
+  [body appendData:[[NSString stringWithFormat:@"--%@\r\n", kPostStringBoundary]
+										dataUsingEncoding:NSUTF8StringEncoding]];
+  
+  for (id key in [request_args keyEnumerator])
+	{
+    NSString* value = [request_args valueForKey:key];
+    if (![value isKindOfClass:[UIImage class]]) 
+		{
+      [body appendData:[beginLine dataUsingEncoding:NSUTF8StringEncoding]];        
+      [body appendData:[[NSString
+												 stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key]
+												dataUsingEncoding:NSUTF8StringEncoding]];
+      [body appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+  }
+	
+  for (id key in [request_args keyEnumerator]) 
+	{
+    if ([[request_args objectForKey:key] isKindOfClass:[UIImage class]]) 
+		{
+      UIImage* image = [request_args objectForKey:key];
+      CGFloat quality =  0.75;
+      NSData* data = UIImageJPEGRepresentation(image, quality);
+      
+      [body appendData:[beginLine dataUsingEncoding:NSUTF8StringEncoding]];
+      [body appendData:[[NSString stringWithFormat:
+												 @"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n",
+												 key]
+												dataUsingEncoding:NSUTF8StringEncoding]];
+      [body appendData:[[NSString
+												 stringWithFormat:@"Content-Length: %d\r\n", data.length]
+												dataUsingEncoding:NSUTF8StringEncoding]];  
+      [body appendData:[[NSString
+												 stringWithString:@"Content-Type: image/jpeg\r\n\r\n"]
+												dataUsingEncoding:NSUTF8StringEncoding]];  
+      [body appendData:data];
+    }
+  }
+  	
+  [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", kPostStringBoundary]
+										dataUsingEncoding:NSUTF8StringEncoding]];
+	
+  NSLog(@"post body sending\n%s", [body bytes]);
+  return body;
+}
 
 @end

@@ -22,6 +22,8 @@
 // This doesn't appear to be working right now
 -(NSString*)searchNewsFeedForUser:(NSString*)user_id searchTerms:(NSString*)search_terms;
 
+-(bool)putToObject:(NSString*)parent_obj_id connectionType:(NSString*)connection args:(NSDictionary*)request_args;
+
 @end
 
 

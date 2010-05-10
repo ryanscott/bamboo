@@ -44,21 +44,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 94E95CD51197600600A462E1 /* bamboo.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libbamboo.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = bamboo;
 		};
 		94E95DC91197646200A462E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94E95DC51197646200A462E1 /* FBConnect.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9 /* libFBPlatform.a */;
+			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9;
 			remoteInfo = FBPlatform;
 		};
 		94E95E1511976B3B00A462E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94E95CD51197600600A462E1 /* bamboo.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* bamboo */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = bamboo;
 		};
 /* End PBXContainerItemProxy section */

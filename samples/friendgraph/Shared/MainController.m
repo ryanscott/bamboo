@@ -151,8 +151,12 @@
 
 	NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
 	NSString* searchText = [self._graph searchTerms:@"context" objectType:kSearchUsers];
+
+	// this doesn't seem to work at all
+	//	NSString* searchNewsText = [self._graph searchNewsFeedForUser:@"me" searchTerms:@"mother"];
 	
 	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@", likesText, self._fullText.text, searchText];
+//	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@\n\nNews for mother\n%@", likesText, self._fullText.text, searchText, searchNewsText];
 	
 	self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];	
 	if ( nil == self._profileImage.superview )

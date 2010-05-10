@@ -16,7 +16,11 @@
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id;
 
 -(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id;
+
 -(NSString*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType;
+
+// This doesn't appear to be working right now
+-(NSString*)searchNewsFeedForUser:(NSString*)user_id searchTerms:(NSString*)search_terms;
 
 @end
 

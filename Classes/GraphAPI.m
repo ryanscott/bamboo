@@ -93,6 +93,17 @@ NSString* const kSearchGroups = @"group";
 	return r_string;
 }
 
+// This doesn't appear to be working right now
+-(NSString*)searchNewsFeedForUser:(NSString*)user_id searchTerms:(NSString*)search_terms
+{
+	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:search_terms, kKeySearchQuery, nil];
+	
+	NSString* path = [NSString stringWithFormat:@"%@/home", user_id];
+	NSData* response = [self api:path args:args];
+	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding] autorelease];
+	return r_string;	
+}
+
 #pragma mark Private Implementation Methods
 
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args

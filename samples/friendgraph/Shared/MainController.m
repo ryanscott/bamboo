@@ -188,8 +188,8 @@
 		//post something 
 		// 	graph.put_object("me", "feed", :message => "Hello, world")
 		
-//		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Hello, world", @"message", nil];
-//		[self._graph putToObject:@"me" connectionType:@"feed" args:args];
+		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"bamboo test", @"message", nil];
+		[self._graph putToObject:@"me" connectionType:@"feed" args:args];
 		
 //		1394987957_115365565169546
 

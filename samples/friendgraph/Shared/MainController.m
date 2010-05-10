@@ -150,7 +150,7 @@
 	self._fullText.text = [self._graph getObject:@"me"];
 
 	NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
-	NSString* searchText = [self._graph search:@"context" objectType:@"user"];
+	NSString* searchText = [self._graph searchTerms:@"context" objectType:kSearchUsers];
 	
 	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@", likesText, self._fullText.text, searchText];
 	

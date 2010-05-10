@@ -12,6 +12,16 @@ NSString* const kKeySearchObjectType = @"type";
 // other things...
 NSString* const kRequestVerbGet = @"get";
 
+#pragma mark Public Constants
+
+// search method objectType parameter values
+NSString* const kSearchPosts = @"post";
+NSString* const kSearchUsers = @"user";
+NSString* const kSearchPages = @"page";
+NSString* const kSearchEvents = @"event";
+NSString* const kSearchGroups = @"group";
+
+
 @interface GraphAPI (_PrivateMethods)
 
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args;
@@ -72,7 +82,7 @@ NSString* const kRequestVerbGet = @"get";
 	return r_string;
 }
 
--(NSString*)search:(NSString*)search_terms objectType:(NSString*)objType
+-(NSString*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType
 {
 	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:search_terms, kKeySearchQuery,
 																																				 objType, kKeySearchObjectType, nil];

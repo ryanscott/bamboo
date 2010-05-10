@@ -16,6 +16,15 @@
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id;
 
 -(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id;
--(NSString*)search:(NSString*)search_terms objectType:(NSString*)objType;
+-(NSString*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType;
 
 @end
+
+
+// search method objectType parameter values
+extern NSString* const kSearchPosts;
+extern NSString* const kSearchUsers;
+extern NSString* const kSearchPages;
+extern NSString* const kSearchEvents;
+extern NSString* const kSearchGroups;
+

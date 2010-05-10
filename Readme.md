@@ -44,3 +44,5 @@ The lib isn't finish't yet, most API calls & methods still unfinished.
 No asynchronous Graph access
 
 No JSON parsing
+
+no extended permissions (auth scope)

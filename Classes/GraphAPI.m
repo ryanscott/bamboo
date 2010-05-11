@@ -99,14 +99,32 @@ NSString* const kConnectionGroups = @"groups";
 // example url:
 // http://graph.facebook.com/ryan.stubblefield/picture
 
+-(UIImage*)getProfilePhotoForObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args
+{
+	NSMutableDictionary* mutableArgs = [NSMutableDictionary dictionaryWithDictionary:request_args];
+	NSString* path = [NSString stringWithFormat:@"%@/picture", obj_id];
+	
+	NSData* response = [self api:path args:mutableArgs];
+	UIImage* r_image = [[[UIImage alloc] initWithData:response] autorelease];
+	return r_image;	
+}
+
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id
 {
-	NSString* path = [NSString stringWithFormat:@"%@/picture", obj_id];
-
-	NSData* response = [self api:path args:nil];
-	UIImage* r_image = [[[UIImage alloc] initWithData:response] autorelease];
-	return r_image;
+	return [self getProfilePhotoForObject:obj_id withArgs:nil];
+//	NSString* path = [NSString stringWithFormat:@"%@/picture", obj_id];
+//
+//	NSData* response = [self api:path args:nil];
+//	UIImage* r_image = [[[UIImage alloc] initWithData:response] autorelease];
+//	return r_image;
 }
+
+-(UIImage*)getLargeProfilePhotoForObject:(NSString*)obj_id
+{
+	NSDictionary* args = [NSDictionary dictionaryWithObject:@"large" forKey:@"type"];
+	return [self getProfilePhotoForObject:obj_id withArgs:args];
+}
+
 
 -(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id
 {

@@ -58,6 +58,12 @@
 	
 	width = 50.0f;
 	height = 50.0f;
+#ifdef __IPHONE_3_2 && IS_IPAD
+//	if ( IS_IPAD )
+//	{
+		width = 200.0f;
+		height = 200.0f;
+#endif
 	x = kApplicationFrame.size.width - h_buf - width;
 	y = h_buf;
 	
@@ -170,18 +176,30 @@
 	
 	RCLog( @"connection types = %@", metadata );
 
-//	self._fullText.text = me;
+	self._fullText.text = me;
 
 	NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
-	NSString* searchText = [self._graph searchTerms:@"context" objectType:kSearchUsers];
+//	NSString* searchText = [self._graph searchTerms:@"context" objectType:kSearchUsers];
 
 	// this doesn't seem to work at all
 	//	NSString* searchNewsText = [self._graph searchNewsFeedForUser:@"me" searchTerms:@"mother"];
 	
-	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@\n\nSearch\n%@", name, likesText, self._fullText.text, searchText];
+	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@", name, likesText, self._fullText.text];
+//	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@\n\nSearch\n%@", name, likesText, self._fullText.text, searchText];
 //	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@\n\nNews for mother\n%@", likesText, self._fullText.text, searchText, searchNewsText];
 	
+	
+#ifdef __IPHONE_3_2 && IS_IPAD
+//	if ( IS_IPAD )
+//		self._profileImage.image = [self._graph getLargeProfilePhotoForObject:@"me"];	
+//	else
+//	self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];	
+
+	self._profileImage.image = [self._graph getLargeProfilePhotoForObject:@"me"];	
+#else
 	self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];	
+#endif
+	
 	if ( nil == self._profileImage.superview )
 		[self.view addSubview:self._profileImage];
 }

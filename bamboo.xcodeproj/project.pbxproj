@@ -52,6 +52,8 @@
 		9426162D1198BFF8002FDB6F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		9426162E1198BFF8002FDB6F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		9426162F1198BFF8002FDB6F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		942616BD1198D0B0002FDB6F /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.txt; path = ../bamboo/License.txt; sourceTree = SOURCE_ROOT; };
+		942616BE1198D0B0002FDB6F /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Readme.md; path = ../bamboo/Readme.md; sourceTree = SOURCE_ROOT; };
 		94E95CB911975F4B00A462E1 /* FacebookProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookProxy.h; path = Classes/FacebookProxy.h; sourceTree = "<group>"; };
 		94E95CBA11975F4B00A462E1 /* FacebookProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookProxy.m; path = Classes/FacebookProxy.m; sourceTree = "<group>"; };
 		94E95CBB11975F4B00A462E1 /* GraphAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphAPI.h; path = Classes/GraphAPI.h; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				94E95CE41197602D00A462E1 /* Libraries */,
+				942616BC1198D0A2002FDB6F /* Documents */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -141,6 +144,15 @@
 			name = "json-framework";
 			path = "../bamboo/Libraries/json-framework";
 			sourceTree = SOURCE_ROOT;
+		};
+		942616BC1198D0A2002FDB6F /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				942616BE1198D0B0002FDB6F /* Readme.md */,
+				942616BD1198D0B0002FDB6F /* License.txt */,
+			);
+			name = Documents;
+			sourceTree = "<group>";
 		};
 		94E95CE41197602D00A462E1 /* Libraries */ = {
 			isa = PBXGroup;

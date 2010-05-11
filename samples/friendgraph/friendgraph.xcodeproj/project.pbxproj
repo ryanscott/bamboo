@@ -13,6 +13,14 @@
 		2860E328111B887F00E27156 /* AppDelegate_Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E326111B887F00E27156 /* AppDelegate_Phone.m */; };
 		2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_Pad.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		942616D51198D372002FDB6F /* FacebookProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616D21198D372002FDB6F /* FacebookProxy.m */; };
+		942616D61198D372002FDB6F /* GraphAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616D41198D372002FDB6F /* GraphAPI.m */; };
+		942616EC1198D395002FDB6F /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616E11198D395002FDB6F /* NSObject+SBJSON.m */; };
+		942616ED1198D395002FDB6F /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616E31198D395002FDB6F /* NSString+SBJSON.m */; };
+		942616EE1198D395002FDB6F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616E51198D395002FDB6F /* SBJSON.m */; };
+		942616EF1198D395002FDB6F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616E71198D395002FDB6F /* SBJsonBase.m */; };
+		942616F01198D395002FDB6F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616E91198D395002FDB6F /* SBJsonParser.m */; };
+		942616F11198D395002FDB6F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 942616EB1198D395002FDB6F /* SBJsonWriter.m */; };
 		947BF3CF1194CA590044AB96 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF3CE1194CA590044AB96 /* MainController.m */; };
 		947BF4641194CC320044AB96 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF44F1194CC320044AB96 /* Util.m */; };
 		947BF4651194CC320044AB96 /* rcloudlibconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4501194CC320044AB96 /* rcloudlibconstants.m */; };
@@ -35,31 +43,16 @@
 		947BF48C1194CD3E0044AB96 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF48B1194CD3E0044AB96 /* Constants.m */; };
 		947BF4961194CEF50044AB96 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BF4951194CEF50044AB96 /* QuartzCore.framework */; };
 		9495A1841191650F00BA21E3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9495A1831191650F00BA21E3 /* Entitlements.plist */; };
-		94E95D85119761D000A462E1 /* libbamboo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E95D84119761D000A462E1 /* libbamboo.a */; };
 		94E95DB41197639900A462E1 /* libFBPlatform.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E95DB31197639900A462E1 /* libFBPlatform.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		94E95CD91197600600A462E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94E95CD51197600600A462E1 /* bamboo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = bamboo;
-		};
 		94E95DC91197646200A462E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94E95DC51197646200A462E1 /* FBConnect.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BE61A71B0DE2551300D4F7B9;
 			remoteInfo = FBPlatform;
-		};
-		94E95E1511976B3B00A462E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94E95CD51197600600A462E1 /* bamboo.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = bamboo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -75,6 +68,23 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* friendgraph_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendgraph_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* friendgraph-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "friendgraph-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		942616D11198D372002FDB6F /* FacebookProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookProxy.h; path = ../../Classes/FacebookProxy.h; sourceTree = SOURCE_ROOT; };
+		942616D21198D372002FDB6F /* FacebookProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookProxy.m; path = ../../Classes/FacebookProxy.m; sourceTree = SOURCE_ROOT; };
+		942616D31198D372002FDB6F /* GraphAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphAPI.h; path = ../../Classes/GraphAPI.h; sourceTree = SOURCE_ROOT; };
+		942616D41198D372002FDB6F /* GraphAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphAPI.m; path = ../../Classes/GraphAPI.m; sourceTree = SOURCE_ROOT; };
+		942616DF1198D395002FDB6F /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		942616E01198D395002FDB6F /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		942616E11198D395002FDB6F /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		942616E21198D395002FDB6F /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		942616E31198D395002FDB6F /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		942616E41198D395002FDB6F /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		942616E51198D395002FDB6F /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		942616E61198D395002FDB6F /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		942616E71198D395002FDB6F /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		942616E81198D395002FDB6F /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		942616E91198D395002FDB6F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		942616EA1198D395002FDB6F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		942616EB1198D395002FDB6F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		947BF3CD1194CA590044AB96 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = Shared/MainController.h; sourceTree = "<group>"; };
 		947BF3CE1194CA590044AB96 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = Shared/MainController.m; sourceTree = "<group>"; };
 		947BF43A1194CC320044AB96 /* rcloudlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcloudlib.h; sourceTree = "<group>"; };
@@ -117,8 +127,6 @@
 		947BF48B1194CD3E0044AB96 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = Shared/Constants.m; sourceTree = "<group>"; };
 		947BF4951194CEF50044AB96 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9495A1831191650F00BA21E3 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
-		94E95CD51197600600A462E1 /* bamboo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bamboo.xcodeproj; path = ../../bamboo.xcodeproj; sourceTree = SOURCE_ROOT; };
-		94E95D84119761D000A462E1 /* libbamboo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbamboo.a; path = "../../build/Debug-iphonesimulator/libbamboo.a"; sourceTree = SOURCE_ROOT; };
 		94E95DB31197639900A462E1 /* libFBPlatform.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFBPlatform.a; path = "../../../facebook-iphone-sdk/src/build/Debug-iphonesimulator/libFBPlatform.a"; sourceTree = SOURCE_ROOT; };
 		94E95DC51197646200A462E1 /* FBConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FBConnect.xcodeproj; path = "../../../facebook-iphone-sdk/src/FBConnect.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -132,7 +140,6 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				947BF4961194CEF50044AB96 /* QuartzCore.framework in Frameworks */,
-				94E95D85119761D000A462E1 /* libbamboo.a in Frameworks */,
 				94E95DB41197639900A462E1 /* libFBPlatform.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				94E95DB31197639900A462E1 /* libFBPlatform.a */,
-				94E95D84119761D000A462E1 /* libbamboo.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -211,6 +217,38 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		942616D01198D35E002FDB6F /* bamboo */ = {
+			isa = PBXGroup;
+			children = (
+				942616D11198D372002FDB6F /* FacebookProxy.h */,
+				942616D21198D372002FDB6F /* FacebookProxy.m */,
+				942616D31198D372002FDB6F /* GraphAPI.h */,
+				942616D41198D372002FDB6F /* GraphAPI.m */,
+			);
+			name = bamboo;
+			sourceTree = "<group>";
+		};
+		942616DE1198D395002FDB6F /* json-framework */ = {
+			isa = PBXGroup;
+			children = (
+				942616DF1198D395002FDB6F /* JSON.h */,
+				942616E01198D395002FDB6F /* NSObject+SBJSON.h */,
+				942616E11198D395002FDB6F /* NSObject+SBJSON.m */,
+				942616E21198D395002FDB6F /* NSString+SBJSON.h */,
+				942616E31198D395002FDB6F /* NSString+SBJSON.m */,
+				942616E41198D395002FDB6F /* SBJSON.h */,
+				942616E51198D395002FDB6F /* SBJSON.m */,
+				942616E61198D395002FDB6F /* SBJsonBase.h */,
+				942616E71198D395002FDB6F /* SBJsonBase.m */,
+				942616E81198D395002FDB6F /* SBJsonParser.h */,
+				942616E91198D395002FDB6F /* SBJsonParser.m */,
+				942616EA1198D395002FDB6F /* SBJsonWriter.h */,
+				942616EB1198D395002FDB6F /* SBJsonWriter.m */,
+			);
+			name = "json-framework";
+			path = "../../Libraries/json-framework";
+			sourceTree = SOURCE_ROOT;
 		};
 		947BF3CC1194CA270044AB96 /* Classes */ = {
 			isa = PBXGroup;
@@ -225,8 +263,9 @@
 		947BF3E31194CAE90044AB96 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				942616DE1198D395002FDB6F /* json-framework */,
+				942616D01198D35E002FDB6F /* bamboo */,
 				94E95DC51197646200A462E1 /* FBConnect.xcodeproj */,
-				94E95CD51197600600A462E1 /* bamboo.xcodeproj */,
 				947BF41B1194CBF30044AB96 /* rcloudlib */,
 			);
 			name = Libraries;
@@ -350,14 +389,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		94E95CD61197600600A462E1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				94E95CDA1197600600A462E1 /* libbamboo.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		94E95DC61197646200A462E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,7 +411,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				94E95E1611976B3B00A462E1 /* PBXTargetDependency */,
 			);
 			name = friendgraph;
 			productName = friendgraph;
@@ -399,10 +429,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 94E95CD61197600600A462E1 /* Products */;
-					ProjectRef = 94E95CD51197600600A462E1 /* bamboo.xcodeproj */;
-				},
-				{
 					ProductGroup = 94E95DC61197646200A462E1 /* Products */;
 					ProjectRef = 94E95DC51197646200A462E1 /* FBConnect.xcodeproj */;
 				},
@@ -415,13 +441,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		94E95CDA1197600600A462E1 /* libbamboo.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libbamboo.a;
-			remoteRef = 94E95CD91197600600A462E1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		94E95DCA1197646200A462E1 /* libFBPlatform.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -470,18 +489,18 @@
 				947BF4731194CC320044AB96 /* BusyViewController.m in Sources */,
 				947BF4741194CC320044AB96 /* RoundedView.m in Sources */,
 				947BF48C1194CD3E0044AB96 /* Constants.m in Sources */,
+				942616D51198D372002FDB6F /* FacebookProxy.m in Sources */,
+				942616D61198D372002FDB6F /* GraphAPI.m in Sources */,
+				942616EC1198D395002FDB6F /* NSObject+SBJSON.m in Sources */,
+				942616ED1198D395002FDB6F /* NSString+SBJSON.m in Sources */,
+				942616EE1198D395002FDB6F /* SBJSON.m in Sources */,
+				942616EF1198D395002FDB6F /* SBJsonBase.m in Sources */,
+				942616F01198D395002FDB6F /* SBJsonParser.m in Sources */,
+				942616F11198D395002FDB6F /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		94E95E1611976B3B00A462E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = bamboo;
-			targetProxy = 94E95E1511976B3B00A462E1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

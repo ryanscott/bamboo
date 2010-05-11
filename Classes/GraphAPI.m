@@ -25,6 +25,18 @@ NSString* const kSearchPages = @"page";
 NSString* const kSearchEvents = @"event";
 NSString* const kSearchGroups = @"group";
 
+// connection types
+NSString* const kConnectionFriends = @"friends";
+NSString* const kConnectionNews = @"home";
+NSString* const kConnectionWall = @"feed";
+NSString* const kConnectionLikes = @"likes";
+NSString* const kConnectionMovies = @"movies";
+NSString* const kConnectionBooks = @"books";
+NSString* const kConnectionNotes = @"notes";
+NSString* const kConnectionPhotos = @"photos";
+NSString* const kConnectionVideos = @"videos";
+NSString* const kConnectionEvents = @"events";
+NSString* const kConnectionGroups = @"groups";
 
 @interface GraphAPI (_PrivateMethods)
 
@@ -60,10 +72,21 @@ NSString* const kSearchGroups = @"group";
 
 -(NSString*)getObject:(NSString*)obj_id;
 {
-	NSString* path = obj_id;
+	return [self getObject:obj_id withArgs:nil];
+//	NSString* path = obj_id;
+//
+//	NSData* response = [self api:path args:nil];
+//	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
+//	return r_string;
+}
 
-	NSData* response = [self api:path args:nil];
-	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding] autorelease];
+-(NSString*)getObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args
+{
+	NSString* path = obj_id;
+	NSMutableDictionary* mutableArgs = [NSMutableDictionary dictionaryWithDictionary:request_args];
+	
+	NSData* response = [self api:path args:mutableArgs];
+	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
 	return r_string;
 }
 
@@ -84,7 +107,7 @@ NSString* const kSearchGroups = @"group";
 	NSString* path = [NSString stringWithFormat:@"%@/%@", obj_id, connection_name];
 
 	NSData* response = [self api:path args:nil];
-	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding] autorelease];
+	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
 	return r_string;
 }
 
@@ -95,7 +118,7 @@ NSString* const kSearchGroups = @"group";
 
 	NSString* path = @"search";
 	NSData* response = [self api:path args:args];
-	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding] autorelease];
+	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
 	return r_string;
 }
 
@@ -106,7 +129,7 @@ NSString* const kSearchGroups = @"group";
 	
 	NSString* path = [NSString stringWithFormat:@"%@/home", user_id];
 	NSData* response = [self api:path args:args];
-	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSASCIIStringEncoding] autorelease];
+	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
 	return r_string;	
 }
 
@@ -117,13 +140,16 @@ NSString* const kSearchGroups = @"group";
 	
 	NSString* path = [NSString stringWithFormat:@"%@/%@", parent_obj_id, connection];
 	NSData* responseData	= [self api:path args:mutableArgs verb:kRequestVerbPost];
-	NSString* r_string = [[[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding] autorelease];
+	NSString* r_string = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+	NSLog( @"response NSString: %@", r_string );
+
 	bool response = true;
-	r_string = nil;
 	
 	NSDictionary* jsonDict = [r_string JSONValue];
 
-	NSLog( @"response NSString: %@", r_string );
+	if ( nil == jsonDict )
+		response = false;
+	
 	NSLog( @"response JSON Dictionary: %@", jsonDict );
 
 	return response;		

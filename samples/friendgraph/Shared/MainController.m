@@ -1,6 +1,7 @@
 #import "MainController.h"
 #import "FacebookProxy.h"
 #import "GraphAPI.h"
+#import "JSON.h"
 
 @implementation MainController
 
@@ -157,7 +158,15 @@
 	if ( nil == self._graph )
 		self._graph = [[FacebookProxy instance] newGraph];
 	
-	self._fullText.text = [self._graph getObject:@"me"];
+	NSString* me = [self._graph getObject:@"me"];
+	
+	NSDictionary* jsonDict = [me JSONValue];
+
+	RCLog( @"json dictionary: %@", jsonDict );
+	
+	NSString* name = [NSString stringWithFormat:@"%@, %@ (%@)", [jsonDict objectForKey:@"last_name"], [jsonDict objectForKey:@"first_name"], [jsonDict objectForKey:@"gender"]];
+	
+//	self._fullText.text = me;
 
 	NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
 	NSString* searchText = [self._graph searchTerms:@"context" objectType:kSearchUsers];
@@ -165,7 +174,7 @@
 	// this doesn't seem to work at all
 	//	NSString* searchNewsText = [self._graph searchNewsFeedForUser:@"me" searchTerms:@"mother"];
 	
-	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@", likesText, self._fullText.text, searchText];
+	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@\n\nSearch\n%@", name, likesText, self._fullText.text, searchText];
 //	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@\n\nNews for mother\n%@", likesText, self._fullText.text, searchText, searchNewsText];
 	
 	self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];	

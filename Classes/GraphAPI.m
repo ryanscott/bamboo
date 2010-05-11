@@ -18,6 +18,12 @@ NSString* const kPostStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f
 
 #pragma mark Public Constants
 
+// Graph API Argument Keys
+NSString* const kKeyArgumentMetadata = @"metadata";
+
+NSString* const kKeyAttachmentMessage = @"message";
+
+
 // search method objectType parameter values
 NSString* const kSearchPosts = @"post";
 NSString* const kSearchUsers = @"user";
@@ -111,6 +117,23 @@ NSString* const kConnectionGroups = @"groups";
 	return r_string;
 }
 
+-(NSArray*)getConnectionTypesForObject:(NSString*)obj_id
+{
+	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", kKeyArgumentMetadata, nil];
+	
+	NSString* responseString = [self getObject:obj_id withArgs:args];
+	
+	NSDictionary* jsonDict = [responseString JSONValue];
+	
+	NSArray* connections = nil;
+	
+	if ( nil != jsonDict )
+		connections = [[[jsonDict objectForKey:@"metadata"] objectForKey:@"connections"] allKeys];
+	
+	return connections;
+}
+
+
 -(NSString*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType
 {
 	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:search_terms, kKeySearchQuery,
@@ -155,6 +178,53 @@ NSString* const kConnectionGroups = @"groups";
 	return response;		
 }
 
+//# attachment adds a structured attachment to the status message being
+//# posted to the Wall. It should be a dictionary of the form:
+//# 
+//#     {"name": "Link name"
+//#      "link": "http://www.example.com/",
+//#      "caption": "{*actor*} posted a new review",
+//#      "description": "This is a longer description of the attachment",
+//#      "picture": "http://www.example.com/thumbnail.jpg"}
+
+-(bool)putWallPost:(NSString*)profile_id message:(NSString*)message attachment:(NSDictionary*)attachment_args
+{
+	NSMutableDictionary* mutableArgs = nil;
+
+	if ( nil != attachment_args )
+	{
+		mutableArgs = [NSMutableDictionary dictionaryWithDictionary:attachment_args];
+	}
+	else
+	{
+		mutableArgs = [NSMutableDictionary dictionaryWithCapacity:2];
+	}
+	[mutableArgs setObject:message forKey:kKeyAttachmentMessage];
+
+	bool successResponse = [self putToObject:profile_id connectionType:kConnectionWall args:mutableArgs];
+	
+	return successResponse;
+}
+
+// stuff from Koala, left to do.  convenience posting methods
+//
+//def put_comment(object_id, message)
+//# Writes the given comment on the given post.
+//self.put_object(object_id, "comments", {:message => message})
+//end
+//
+//def put_like(object_id)
+//# Likes the given post.
+//self.put_object(object_id, "likes")
+//end
+//
+//def delete_object(id)
+//# Deletes the object with the given ID from the graph.
+//api(id, {}, "delete")
+//end
+
+
+
 #pragma mark Private Implementation Methods
 
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args
@@ -166,17 +236,13 @@ NSString* const kConnectionGroups = @"groups";
 {
 	if ( nil != self._accessToken )
 	{
-		if ( nil != request_args )
+		if ( nil == request_args )
 		{
-			[request_args setObject:self._accessToken forKey:kAPIKeyAccessToken];
+			request_args = [NSMutableDictionary dictionaryWithCapacity:1];
 		}
-		else
-		{
-			request_args = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self._accessToken, 
-																																				 kAPIKeyAccessToken, nil];
-		}
+		[request_args setObject:self._accessToken forKey:kAPIKeyAccessToken];
 	}
-
+								 
 	// will probably want to generally use async calls, but building this with sync first is easiest
 //	NSString* response = [self makeSynchronousRequest:obj_id args:request_args verb:kRequestVerbGet];
 	NSData* response = [self makeSynchronousRequest:obj_id args:request_args verb:verb];
@@ -324,5 +390,7 @@ NSString* const kConnectionGroups = @"groups";
   NSLog(@"post body sending\n%s", [body bytes]);
   return body;
 }
+
+
 
 @end

@@ -18,6 +18,9 @@
 
 -(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id;
 
+// this uses the introspection feature of the graph API, returns an array of possible connection types (use with self.getConnections) for this object
+-(NSArray*)getConnectionTypesForObject:(NSString*)obj_id;
+
 -(NSString*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType;
 
 // This doesn't appear to be working right now
@@ -27,6 +30,9 @@
 
 @end
 
+// Graph API Argument Keys
+extern NSString* const kKeyArgumentMetadata;
+extern NSString* const kKeyAttachmentMessage;
 
 // search method objectType parameter values
 extern NSString* const kSearchPosts;

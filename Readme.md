@@ -39,10 +39,9 @@ vis-a-vis the to the actual Graph API, most of the complexity is going to be in 
 
 Known Issues
 -----
-The lib isn't finish't yet, most API calls & methods still unfinished.
+The lib isn't finish't yet, many API calls & methods still unfinished.
 
-No asynchronous Graph access
+No asynchronous network access
 
-No JSON parsing
+post not working, maybe syntax, maybe auth
 
-no extended permissions (auth scope)

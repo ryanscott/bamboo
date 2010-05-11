@@ -166,6 +166,10 @@
 	
 	NSString* name = [NSString stringWithFormat:@"%@, %@ (%@)", [jsonDict objectForKey:@"last_name"], [jsonDict objectForKey:@"first_name"], [jsonDict objectForKey:@"gender"]];
 	
+	NSArray* metadata = [self._graph getConnectionTypesForObject:@"me"];
+	
+	RCLog( @"connection types = %@", metadata );
+
 //	self._fullText.text = me;
 
 	NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
@@ -192,6 +196,13 @@
 
 -(void)doPost
 {
+	// if we have a saved access_token, but no graph...make one
+	// but if not, we don't try to login, just do nothing
+	if ( nil == self._graph && nil != [FacebookProxy instance]._oAuthAccessToken )
+	{
+		self._graph = [[FacebookProxy instance] newGraph];
+	}
+	
 	if ( nil != self._graph )
 	{
 		//post something 

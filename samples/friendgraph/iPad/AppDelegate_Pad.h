@@ -1,13 +1,13 @@
-@class MainController;
+@class PadRootController;
 
 @interface AppDelegate_Pad : NSObject <UIApplicationDelegate> 
 {
 	UIWindow *window;
-	MainController* _mainController;
+	PadRootController* _mainController;
 }
 
 @property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) MainController* _mainController;
+@property (nonatomic, retain) PadRootController* _mainController;
 
 @end
 

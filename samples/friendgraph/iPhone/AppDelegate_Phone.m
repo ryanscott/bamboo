@@ -1,5 +1,6 @@
 #import "AppDelegate_Phone.h"
 #import "MainController.h"
+#import "FacebookProxy.h"
 
 @implementation AppDelegate_Phone
 
@@ -9,6 +10,7 @@
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
 	initRCLib();
+	[FacebookProxy loadDefaults];
 	_mainController = [[MainController alloc] init];
 	
 	window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];	

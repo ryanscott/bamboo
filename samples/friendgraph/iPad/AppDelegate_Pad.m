@@ -1,5 +1,6 @@
 #import "AppDelegate_Pad.h"
-#import "MainController.h"
+#import "PadRootController.h"
+#import "FacebookProxy.h"
 
 @implementation AppDelegate_Pad
 
@@ -9,7 +10,8 @@
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
 	initRCLib();
-	_mainController = [[MainController alloc] init];
+	[FacebookProxy loadDefaults];
+	_mainController = [[PadRootController alloc] init];
 	
 	window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	window.backgroundColor = [UIColor greenColor];

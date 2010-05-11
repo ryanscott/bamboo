@@ -117,9 +117,6 @@
 	
 	[self addSubviews];
 	
-	// [rya:5-9-10] kinda weird place to do this, but works for now
-	[FacebookProxy loadDefaults];
-	
 	[super viewDidLoad];
 }
 

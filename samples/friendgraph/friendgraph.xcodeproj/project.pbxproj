@@ -32,6 +32,7 @@
 		9426183E1199ED56002FDB6F /* FBStreamDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 942618341199ED56002FDB6F /* FBStreamDialog.m */; };
 		9426183F1199ED56002FDB6F /* FBConnect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 942618351199ED56002FDB6F /* FBConnect.bundle */; };
 		9426185E1199F2C1002FDB6F /* PadRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426185D1199F2C1002FDB6F /* PadRootController.m */; };
+		9426190B119A03A0002FDB6F /* GraphObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426190A119A03A0002FDB6F /* GraphObject.m */; };
 		947BF3CF1194CA590044AB96 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF3CE1194CA590044AB96 /* MainController.m */; };
 		947BF4641194CC320044AB96 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF44F1194CC320044AB96 /* Util.m */; };
 		947BF4651194CC320044AB96 /* rcloudlibconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4501194CC320044AB96 /* rcloudlibconstants.m */; };
@@ -105,10 +106,12 @@
 		942618331199ED56002FDB6F /* FBStreamDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBStreamDialog.h; path = "../../../facebook-iphone-sdk/src/FBConnect/FBStreamDialog.h"; sourceTree = SOURCE_ROOT; };
 		942618341199ED56002FDB6F /* FBStreamDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBStreamDialog.m; path = "../../../facebook-iphone-sdk/src/FBStreamDialog.m"; sourceTree = SOURCE_ROOT; };
 		942618351199ED56002FDB6F /* FBConnect.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBConnect.bundle; path = "../../../facebook-iphone-sdk/src/FBConnect.bundle"; sourceTree = SOURCE_ROOT; };
-		9426185C1199F2C1002FDB6F /* PadRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PadRootController.h; path = iPad/PadRootController.h; sourceTree = "<group>"; };
-		9426185D1199F2C1002FDB6F /* PadRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PadRootController.m; path = iPad/PadRootController.m; sourceTree = "<group>"; };
-		947BF3CD1194CA590044AB96 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = Shared/MainController.h; sourceTree = "<group>"; };
-		947BF3CE1194CA590044AB96 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = Shared/MainController.m; sourceTree = "<group>"; };
+		9426185C1199F2C1002FDB6F /* PadRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadRootController.h; sourceTree = "<group>"; };
+		9426185D1199F2C1002FDB6F /* PadRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadRootController.m; sourceTree = "<group>"; };
+		94261909119A03A0002FDB6F /* GraphObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphObject.h; path = Shared/Model/GraphObject.h; sourceTree = "<group>"; };
+		9426190A119A03A0002FDB6F /* GraphObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphObject.m; path = Shared/Model/GraphObject.m; sourceTree = "<group>"; };
+		947BF3CD1194CA590044AB96 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = ../Shared/MainController.h; sourceTree = "<group>"; };
+		947BF3CE1194CA590044AB96 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = ../Shared/MainController.m; sourceTree = "<group>"; };
 		947BF43A1194CC320044AB96 /* rcloudlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcloudlib.h; sourceTree = "<group>"; };
 		947BF43B1194CC320044AB96 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		947BF43C1194CC320044AB96 /* rcloudlibconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcloudlibconstants.h; sourceTree = "<group>"; };
@@ -179,6 +182,8 @@
 			children = (
 				2860E325111B887F00E27156 /* AppDelegate_Phone.h */,
 				2860E326111B887F00E27156 /* AppDelegate_Phone.m */,
+				947BF3CD1194CA590044AB96 /* MainController.h */,
+				947BF3CE1194CA590044AB96 /* MainController.m */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
@@ -188,6 +193,8 @@
 			children = (
 				2860E32B111B888700E27156 /* AppDelegate_Pad.h */,
 				2860E32C111B888700E27156 /* AppDelegate_Pad.m */,
+				9426185C1199F2C1002FDB6F /* PadRootController.h */,
+				9426185D1199F2C1002FDB6F /* PadRootController.m */,
 			);
 			path = iPad;
 			sourceTree = "<group>";
@@ -197,10 +204,6 @@
 			children = (
 				947BF48A1194CD3E0044AB96 /* Constants.h */,
 				947BF48B1194CD3E0044AB96 /* Constants.m */,
-				947BF3CD1194CA590044AB96 /* MainController.h */,
-				947BF3CE1194CA590044AB96 /* MainController.m */,
-				9426185C1199F2C1002FDB6F /* PadRootController.h */,
-				9426185D1199F2C1002FDB6F /* PadRootController.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -297,9 +300,19 @@
 			name = FBConnect;
 			sourceTree = "<group>";
 		};
+		94261908119A02C9002FDB6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				94261909119A03A0002FDB6F /* GraphObject.h */,
+				9426190A119A03A0002FDB6F /* GraphObject.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		947BF3CC1194CA270044AB96 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				94261908119A02C9002FDB6F /* Model */,
 				2860E324111B887F00E27156 /* iPhone */,
 				2860E32A111B888700E27156 /* iPad */,
 				28EEBF621118D79A00187D67 /* Shared */,
@@ -531,6 +544,7 @@
 				9426183D1199ED56002FDB6F /* FBPermissionDialog.m in Sources */,
 				9426183E1199ED56002FDB6F /* FBStreamDialog.m in Sources */,
 				9426185E1199F2C1002FDB6F /* PadRootController.m in Sources */,
+				9426190B119A03A0002FDB6F /* GraphObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

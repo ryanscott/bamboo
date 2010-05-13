@@ -1,6 +1,7 @@
 #import "PadRootController.h"
 #import "FacebookProxy.h"
 #import "GraphAPI.h"
+#import "GraphObject.h"
 #import "JSON.h"
 
 @interface PadRootController (_PrivateMethods)
@@ -265,11 +266,13 @@
 		if ( nil == self._profileImage.superview )
 			[self.view addSubview:self._profileImage];
 
-		NSString* me = [self._graph getObject:@"me"];
+		NSString* me_s = [self._graph getObject:@"me"];
 		
-		NSDictionary* jsonDict = [me JSONValue];
+		NSDictionary* jsonDict = [me_s JSONValue];
 		
 		RCLog( @"json dictionary: %@", jsonDict );
+		
+		GraphObject* me = [[GraphObject alloc] initWithString:me_s];
 		
 		NSString* name = [NSString stringWithFormat:@"%@, %@ (%@)", [jsonDict objectForKey:@"last_name"], [jsonDict objectForKey:@"first_name"], [jsonDict objectForKey:@"gender"]];
 		
@@ -277,7 +280,7 @@
 		
 		RCLog( @"connection types = %@", metadata );
 		
-		self._fullText.text = me;
+		self._fullText.text = me_s;
 		
 		NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
 		//	NSString* searchText = [self._graph searchTerms:@"context" objectType:kSearchUsers];

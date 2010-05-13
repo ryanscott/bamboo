@@ -208,6 +208,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				94112FDA119A5024001F1111 /* Documents */,
 				947BF3CC1194CA270044AB96 /* Classes */,
 				9495A182119164FC00BA21E3 /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -236,6 +237,13 @@
 				947BF4951194CEF50044AB96 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94112FDA119A5024001F1111 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documents;
 			sourceTree = "<group>";
 		};
 		942616D01198D35E002FDB6F /* bamboo */ = {

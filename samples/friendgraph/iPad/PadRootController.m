@@ -301,7 +301,8 @@
 		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"bamboo test", @"message", nil];
 		[self._graph putToObject:@"me" connectionType:@"feed" args:args];
 		
-		//		1394987957_115365565169546
+		// a test comment, something we can more freely POST to that wont pollute our status message
+		// 1394987957_115365565169546
 		
 		//		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
 		//		if ( [self._graph putToObject:@"1394987957_115365565169546" connectionType:@"comments" args:args] )

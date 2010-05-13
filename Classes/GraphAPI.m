@@ -4,7 +4,8 @@
 NSString* const kGraphAPIServer = @"https://graph.facebook.com/";
 
 // Graph API Argument Keys
-NSString* const kAPIKeyAccessToken = @"access_token";
+NSString* const kArgumentKeyAccessToken = @"access_token";
+NSString* const kArgumentKeyMethod = @"method";
 
 // other dictionary keys
 NSString* const kKeySearchQuery = @"q";
@@ -13,6 +14,7 @@ NSString* const kKeySearchObjectType = @"type";
 // other things...
 NSString* const kRequestVerbGet = @"get";
 NSString* const kRequestVerbPost = @"post";
+NSString* const kRequestVerbDelete = @"delete";
 
 NSString* const kPostStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
 
@@ -47,7 +49,7 @@ NSString* const kConnectionGroups = @"groups";
 
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args;
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args verb:(NSString*)verb;
--(NSData*)makeSynchronousRequest:(NSString*)path args:(NSDictionary*)request_args verb:(NSString*)verb;
+-(NSData*)makeSynchronousRequest:(NSString*)path args:(NSMutableDictionary*)request_args verb:(NSString*)verb;
 
 -(NSString*)encodeParams:(NSDictionary*)request_args;
 -(NSData*)generatePostBody:(NSDictionary*)request_args;
@@ -223,6 +225,21 @@ NSString* const kConnectionGroups = @"groups";
 	return successResponse;
 }
 
+-(bool)deleteObject:(NSString*)obj_id
+{
+	NSString* path = obj_id;	
+	NSData* responseData = [self api:path args:nil verb:kRequestVerbDelete];
+	responseData;
+//	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
+
+	// [ryan:5-13-10] todo - I'm not sure what to check for here, 
+	// will have to test the responses to DELETE in koala maybe
+	
+	bool successResponse = true;
+	
+	return successResponse;
+}
+
 // stuff from Koala, left to do.  convenience posting methods
 //
 //def put_comment(object_id, message)
@@ -257,7 +274,7 @@ NSString* const kConnectionGroups = @"groups";
 		{
 			request_args = [NSMutableDictionary dictionaryWithCapacity:1];
 		}
-		[request_args setObject:self._accessToken forKey:kAPIKeyAccessToken];
+		[request_args setObject:self._accessToken forKey:kArgumentKeyAccessToken];
 	}
 								 
 	// will probably want to generally use async calls, but building this with sync first is easiest
@@ -271,12 +288,15 @@ NSString* const kConnectionGroups = @"groups";
 	return response;
 }
 
--(NSData*)makeSynchronousRequest:(NSString*)path args:(NSDictionary*)request_args verb:(NSString*)verb
+-(NSData*)makeSynchronousRequest:(NSString*)path args:(NSMutableDictionary*)request_args verb:(NSString*)verb
 {
-	// todo - this
 	//# if the verb isn't get or post, send it as a post argument
-	//args.merge!({:method => verb}) && verb = "post" if verb != "get" && verb != "post"
-	
+	if ( kRequestVerbGet != verb && kRequestVerbPost != verb )
+	{
+		[request_args setObject:verb forKey:kArgumentKeyMethod];
+		verb = kRequestVerbPost;
+	}
+
 //	NSString* responseString = nil;
 	self._responseData = nil;
 	NSString* urlString;

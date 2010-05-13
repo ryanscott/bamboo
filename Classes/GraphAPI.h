@@ -30,6 +30,8 @@
 
 -(bool)putToObject:(NSString*)parent_obj_id connectionType:(NSString*)connection args:(NSDictionary*)request_args;
 
+-(bool)deleteObject:(NSString*)obj_id;
+
 @end
 
 // Graph API Argument Keys

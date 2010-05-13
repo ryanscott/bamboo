@@ -276,6 +276,9 @@
 		
 		NSString* name = [NSString stringWithFormat:@"%@, %@ (%@)", [jsonDict objectForKey:@"last_name"], [jsonDict objectForKey:@"first_name"], [jsonDict objectForKey:@"gender"]];
 		
+		// alternatively, using the Graph Object, it would be
+		name = [me name];
+		
 		NSArray* metadata = [self._graph getConnectionTypesForObject:@"me"];
 		
 		RCLog( @"connection types = %@", metadata );

@@ -1,7 +1,7 @@
 #import "GraphAPI.h"
 #import "JSON.h"
 
-NSString* const kGraphAPIServer = @"http://graph.facebook.com/";
+NSString* const kGraphAPIServer = @"https://graph.facebook.com/";
 
 // Graph API Argument Keys
 NSString* const kAPIKeyAccessToken = @"access_token";

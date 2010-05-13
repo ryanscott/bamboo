@@ -14,6 +14,7 @@
 
 -(NSString*)getObject:(NSString*)obj_id;
 -(NSString*)getObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args;
+
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id;
 -(UIImage*)getLargeProfilePhotoForObject:(NSString*)obj_id;
 
@@ -33,6 +34,7 @@
 
 // Graph API Argument Keys
 extern NSString* const kKeyArgumentMetadata;
+
 extern NSString* const kKeyAttachmentMessage;
 
 // search method objectType parameter values

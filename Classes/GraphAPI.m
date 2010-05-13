@@ -23,7 +23,6 @@ NSString* const kKeyArgumentMetadata = @"metadata";
 
 NSString* const kKeyAttachmentMessage = @"message";
 
-
 // search method objectType parameter values
 NSString* const kSearchPosts = @"post";
 NSString* const kSearchUsers = @"user";

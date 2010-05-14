@@ -38,10 +38,9 @@ Integration Instructions
 	<li>Install bamboo and dependencies from your project directory:</li>
 
 <pre><code>git clone http://github.com/ryanscott/bamboo.git
-git clone http://github.com/facebook/facebook-iphone-sdk.git
-git clone http://github.com/stig/json-framework.git</pre></code>
+git clone http://github.com/facebook/facebook-iphone-sdk.git</pre></code>
 
-<li>Open your project, make a group called "Libraries," and add all source files from bamboo, json-framework, and facebook-iphone-sdk</li>
+<li>Open your project, make a group called "Libraries," and add all source files from bamboo and facebook-iphone-sdk</li>
 
 <li>Define the following 4 global variables:</li>
 
@@ -94,7 +93,7 @@ Generally speaking, your app needs to get an access_token to use graph.facebook.
 Dependencies
 -----
 
-Bamboo relies on the official Facebook Connect iPhone SDK for login.  Additionally, I use json-framework for parsing the responses from Facebook.  Both of these are not 100% necessary in theory, so if you want a version of bamboo with no dependencies whatsoever it can easily be done...it just won't be very usable.
+Bamboo relies on the official Facebook Connect iPhone SDK for login.  Additionally, I use json-framework for parsing the responses from Facebook.  Both of these are not 100% necessary in theory, so if you want a version of bamboo with no dependencies whatsoever it can easily be done...it just won't be as usable.
 
 <a href="http://github.com/facebook/facebook-iphone-sdk" target="_blank">http://github.com/facebook/facebook-iphone-sdk</a><br/>
 <a href="http://github.com/stig/json-framework" target="_blank">http://github.com/stig/json-framework</a>

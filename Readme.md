@@ -34,8 +34,6 @@ Sample usage:
 Integration Instructions
 -----
 
-Project Integration
-
 <ol>
 	<li>Install bamboo and dependencies from your project directory:</li>
 
@@ -52,8 +50,9 @@ NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
 NSString* const kFBClientID = @"<your_facebook_client_id>";
 NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";</pre></code>
 
-If you need help on any of those, get help at http://developers.facebook.com/docs/api#authorization or http://oauth.twoalex.com/
+If you need help on any of those, get help at <a href="http://developers.facebook.com/docs/api#authorization" target="_blank">http://developers.facebook.com/docs/api#authorization</a> or <a href="http://oauth.twoalex.com/" target="_blank">http://oauth.twoalex.com/</a>
 
+<br/><br/>
 See Constants.m in samples/testgraph for example values.
 
 <li>Include "GraphAPI.h" write the following 2-ish lines of code in your klass.m:</li>
@@ -82,13 +81,13 @@ Check the /samples/ directory, which includes code for an app named testgraph.  
 
 The main integration point is FacebookProxy, which handles all of the messiness of authorization.  The following 4 variables need to be defined in your app.  See Constants.m in testgraph for example values.
 
-// Facebook API
+<pre><code>// Facebook API
 // all of these values need to be set in the client application
 extern NSString* const kFBAPIKey;
 extern NSString* const kFBAppSecret;
 
 extern NSString* const kFBClientID;
-extern NSString* const kFBRedirectURI;
+extern NSString* const kFBRedirectURI;</pre></code>
 
 Generally speaking, your app needs to get an access_token to use graph.facebook.api.  Once you have a token, you can pretty much keep using it ad infinitum as far as I can tell.  The FacebookProxy class handles all the login & token grabbing piping, right now using a oAuth sandbox setup by Alex for Koala.  That will need to be handled by the lib client on an app by app basis.
 
@@ -97,8 +96,8 @@ Dependencies
 
 Bamboo relies on the official Facebook Connect iPhone SDK for login.  Additionally, I use json-framework for parsing the responses from Facebook.  Both of these are not 100% necessary in theory, so if you want a version of bamboo with no dependencies whatsoever it can easily be done...it just won't be very usable.
 
-http://github.com/facebook/facebook-iphone-sdk
-http://github.com/stig/json-framework
+<a href="http://github.com/facebook/facebook-iphone-sdk" target="_blank">http://github.com/facebook/facebook-iphone-sdk</a><br/>
+<a href="http://github.com/stig/json-framework" target="_blank">http://github.com/stig/json-framework</a>
 
 Known Issues
 -----
@@ -114,4 +113,4 @@ Contact / About Me
 -----
 The best, most direct way to reach me is via email (ryan (at) ryanstubblefield [dot] net).
 
-You can find out more about me at http://www.ryanstubblefield.net/
+You can find out more about me at <a href="http://www.ryanstubblefield.net/" target="_blank">http://www.ryanstubblefield.net/</a>

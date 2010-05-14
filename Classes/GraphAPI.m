@@ -63,6 +63,7 @@ NSString* const kConnectionAlbums = @"albums";
 
 -(NSString*)encodeParams:(NSDictionary*)request_args;
 -(NSData*)generatePostBody:(NSDictionary*)request_args;
+-(NSArray*)graphObjectArrayFromJSON:(NSString*)jsonString;
 
 @end
 
@@ -87,19 +88,21 @@ NSString* const kConnectionAlbums = @"albums";
 
 #pragma mark Public API
 
--(NSString*)getObject:(NSString*)obj_id;
+-(GraphObject*)getObject:(NSString*)obj_id;
 {
 	return [self getObject:obj_id withArgs:nil];
 }
 
--(NSString*)getObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args
+-(GraphObject*)getObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args
 {
 	NSString* path = obj_id;
 	NSMutableDictionary* mutableArgs = [NSMutableDictionary dictionaryWithDictionary:request_args];
 	
 	NSData* response = [self api:path args:mutableArgs];
-	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
-	return r_string;
+	NSString* r_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+	GraphObject* r_obj = [[[GraphObject alloc] initWithString:r_string] autorelease];
+	[r_string release];
+	return r_obj;
 }
 
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args
@@ -123,28 +126,30 @@ NSString* const kConnectionAlbums = @"albums";
 	return [self getProfilePhotoForObject:obj_id withArgs:args];
 }
 
--(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id
+-(NSArray*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id
 {
 	NSString* path = [NSString stringWithFormat:@"%@/%@", obj_id, connection_name];
 
 	NSData* response = [self api:path args:nil];
-	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
-	return r_string;
+	NSString* r_string =[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+	
+	NSArray* connections = [self graphObjectArrayFromJSON:r_string];
+	[r_string release];
+	return connections;
 }
 
 -(NSArray*)getConnectionTypesForObject:(NSString*)obj_id
 {
 	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1", kKeyArgumentMetadata, nil];
 	
-	NSString* responseString = [self getObject:obj_id withArgs:args];
+	GraphObject* responseObj = [self getObject:obj_id withArgs:args];
 	
 	NSArray* connections = nil;
 	
 	@try
 	{
-		NSDictionary* jsonDict = [responseString JSONValue];
-		if ( nil != jsonDict )
-			connections = [[[jsonDict objectForKey:kKeyArgumentMetadata] objectForKey:@"connections"] allKeys];
+		if ( nil != responseObj && nil != responseObj._properties )
+			connections = [[[responseObj._properties objectForKey:kKeyArgumentMetadata] objectForKey:@"connections"] allKeys];
 	}
 	@catch (id exception) 
 	{
@@ -153,37 +158,44 @@ NSString* const kConnectionAlbums = @"albums";
 	return connections;
 }
 
--(NSString*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType
+-(NSArray*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType
 {
 	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:search_terms, kKeySearchQuery,
 																																				 objType, kKeySearchObjectType, nil];
 
 	NSString* path = @"search";
 	NSData* response = [self api:path args:args];
-	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
-	return r_string;
+	NSString* r_string =[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+	
+	NSArray* connections = [self graphObjectArrayFromJSON:r_string];
+	[r_string release];
+	return connections;
 }
 
 // This doesn't appear to be working right now
--(NSString*)searchNewsFeedForUser:(NSString*)user_id searchTerms:(NSString*)search_terms
+-(NSArray*)searchNewsFeedForUser:(NSString*)user_id searchTerms:(NSString*)search_terms
 {
 	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:search_terms, kKeySearchQuery, nil];
 	
 	NSString* path = [NSString stringWithFormat:@"%@/home", user_id];
 	NSData* response = [self api:path args:args];
-	NSString* r_string = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
-	return r_string;	
+	NSString* r_string =[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+	
+	NSArray* connections = [self graphObjectArrayFromJSON:r_string];
+	[r_string release];
+	return connections;
 }
 
--(NSString*)putToObject:(NSString*)parent_obj_id connectionType:(NSString*)connection args:(NSDictionary*)request_args
+-(GraphObject*)putToObject:(NSString*)parent_obj_id connectionType:(NSString*)connection args:(NSDictionary*)request_args
 {
 	NSMutableDictionary* mutableArgs = [NSMutableDictionary dictionaryWithDictionary:request_args];
 	
 	NSString* path = [NSString stringWithFormat:@"%@/%@", parent_obj_id, connection];
 	NSData* responseData	= [self api:path args:mutableArgs verb:kRequestVerbPost];
-	NSString* r_string = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
-
-	return r_string;
+	NSString* r_string = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	GraphObject* r_obj = [[[GraphObject alloc] initWithString:r_string] autorelease];
+	[r_string release];
+	return r_obj;
 }
 
 //# attachment adds a structured attachment to the status message being
@@ -195,7 +207,7 @@ NSString* const kConnectionAlbums = @"albums";
 //#      "description": "This is a longer description of the attachment",
 //#      "picture": "http://www.example.com/thumbnail.jpg"}
 
--(NSString*)putWallPost:(NSString*)profile_id message:(NSString*)message attachment:(NSDictionary*)attachment_args
+-(GraphObject*)putWallPost:(NSString*)profile_id message:(NSString*)message attachment:(NSDictionary*)attachment_args
 {
 	NSMutableDictionary* mutableArgs = nil;
 
@@ -212,12 +224,12 @@ NSString* const kConnectionAlbums = @"albums";
 	return [self putToObject:profile_id connectionType:kConnectionWall args:mutableArgs];
 }
 
--(NSString*)likeObject:(NSString*)obj_id
+-(GraphObject*)likeObject:(NSString*)obj_id
 {
 	return [self putToObject:obj_id connectionType:kConnectionLikes args:nil];
 }
 
--(NSString*)putCommentToObject:(NSString*)obj_id message:(NSString*)message
+-(GraphObject*)putCommentToObject:(NSString*)obj_id message:(NSString*)message
 {
 	NSMutableDictionary* args = [NSMutableDictionary dictionaryWithObjectsAndKeys:message, kKeyArgumentMessage, nil];
 	return [self putToObject:obj_id connectionType:kConnectionComments args:args];
@@ -234,7 +246,6 @@ NSString* const kConnectionAlbums = @"albums";
 	
 	return successResponse;
 }
-
 
 #pragma mark Private Implementation Methods
 
@@ -311,8 +322,7 @@ NSString* const kConnectionAlbums = @"albums";
 
 	// async
 	// self._connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-	
-	
+		
 //	if ( [verb isEqualToString:kRequestVerbPost] )
 //	{
 //		NSLog( @"Post response:" );
@@ -402,6 +412,32 @@ NSString* const kConnectionAlbums = @"albums";
   return body;
 }
 
-
+-(NSArray*)graphObjectArrayFromJSON:(NSString*)jsonString
+{
+	GraphObject* r_obj = [[GraphObject alloc] initWithString:jsonString];
+	NSMutableArray* connections = nil;
+	
+	@try
+	{
+		if ( nil != r_obj && nil != r_obj._properties )
+		{
+			// this should be an array of dictionaries, we turn it into an array of GraphObjects
+			NSArray* jsonConnections = [r_obj._properties objectForKey:@"data"];
+			connections = [NSMutableArray arrayWithCapacity:[jsonConnections count]];
+			for ( NSDictionary* i_like in jsonConnections )
+			{
+				GraphObject* i_obj = [[GraphObject alloc] initWithDict:i_like];
+				[connections addObject:i_obj];
+				[i_obj release];				
+			}
+		}
+	}
+	@catch (id exception) 
+	{
+	}
+	
+	[r_obj release];
+	return connections;	
+}
 
 @end

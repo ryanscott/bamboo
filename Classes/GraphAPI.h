@@ -15,30 +15,35 @@
 
 -(id)initWithAccessToken:(NSString*)access_token;
 
--(NSString*)getObject:(NSString*)obj_id;
--(NSString*)getObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args;
+-(GraphObject*)getObject:(NSString*)obj_id;
+-(GraphObject*)getObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args;
 
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id;
 -(UIImage*)getLargeProfilePhotoForObject:(NSString*)obj_id;
 
--(NSString*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id;
+// returns an array of GraphObjects
+-(NSArray*)getConnections:(NSString*)connection_name forObject:(NSString*)obj_id;
 
-// this uses the introspection feature of the graph API, returns an array of possible connection types
-// (use with self.getConnections) for this object
+// this uses the introspection feature of the graph API, returns an array of possible connection types for this object
+// (use with self.getConnections) 
+//
+// returns an array of NSStrings
 -(NSArray*)getConnectionTypesForObject:(NSString*)obj_id;
 
--(NSString*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType;
+// returns an array of GraphObjects
+-(NSArray*)searchTerms:(NSString*)search_terms objectType:(NSString*)objType;
 
 // This doesn't appear to be working right now
--(NSString*)searchNewsFeedForUser:(NSString*)user_id searchTerms:(NSString*)search_terms;
+// returns an array of GraphObjects
+-(NSArray*)searchNewsFeedForUser:(NSString*)user_id searchTerms:(NSString*)search_terms;
 
--(NSString*)putToObject:(NSString*)parent_obj_id connectionType:(NSString*)connection args:(NSDictionary*)request_args;
+-(GraphObject*)putToObject:(NSString*)parent_obj_id connectionType:(NSString*)connection args:(NSDictionary*)request_args;
 -(bool)deleteObject:(NSString*)obj_id;
 
 // these 3 are just convenience methods that wrap putToObject, nothing special about them
--(NSString*)likeObject:(NSString*)obj_id;
--(NSString*)putCommentToObject:(NSString*)obj_id message:(NSString*)message;
--(NSString*)putWallPost:(NSString*)profile_id message:(NSString*)message attachment:(NSDictionary*)attachment_args;
+-(GraphObject*)likeObject:(NSString*)obj_id;
+-(GraphObject*)putCommentToObject:(NSString*)obj_id message:(NSString*)message;
+-(GraphObject*)putWallPost:(NSString*)profile_id message:(NSString*)message attachment:(NSDictionary*)attachment_args;
 
 @end
 

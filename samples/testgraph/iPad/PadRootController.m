@@ -68,7 +68,8 @@
 	y += height + v_buf;
 	l_frame = CGRectMake(x, y, width, height);
 	
-	self._walkButton = [self buttonWithFrame:l_frame title:@"Walk" action:@selector(doWalk)];
+//	self._walkButton = [self buttonWithFrame:l_frame title:@"Walk" action:@selector(doWalk)];
+	self._walkButton = [self buttonWithFrame:l_frame title:@"Search" action:@selector(doWalk)];
 	
 	y = 220.0f;
 	width = 300.0f - x;
@@ -230,8 +231,13 @@
 			self._graph = [[FacebookProxy instance] newGraph];	
 
 		self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;
-		
-		self._profileImage.image = [self._graph getLargeProfilePhotoForObject:@"me"];	
+
+		GraphObject* me = [self._graph getObject:@"me"];
+		self._profileImage.image = [me largePicture];
+
+		// this one call is more efficient than the above code, which makes two calls to the graph.
+		// but the code above tests the picture accessors of GraphObject
+		//[self._graph getLargeProfilePhotoForObject:@"me"];	
 		
 		if ( nil == self._profileImage.superview )
 			[self.view addSubview:self._profileImage];
@@ -272,34 +278,25 @@
 		if ( nil == self._profileImage.superview )
 			[self.view addSubview:self._profileImage];
 
-		NSString* me_s = [self._graph getObject:@"me"];
-		
-		NSDictionary* jsonDict = [me_s JSONValue];
-		
-		NSLog( @"json dictionary: %@", jsonDict );
-		
-		GraphObject* me = [[GraphObject alloc] initWithString:me_s];
-		
-		NSString* name = [NSString stringWithFormat:@"%@, %@ (%@)", [jsonDict objectForKey:@"last_name"], [jsonDict objectForKey:@"first_name"], [jsonDict objectForKey:@"gender"]];
-		
-		// alternatively, using the Graph Object, it would be
-		name = [me name];
+		GraphObject* me = [self._graph getObject:@"me"];
+		NSString* name = [me name];
 		
 		NSArray* metadata = [self._graph getConnectionTypesForObject:@"me"];
 		
 		NSLog( @"connection types = %@", metadata );
 		
-		self._fullText.text = me_s;
+		NSArray* likes = [self._graph getConnections:@"likes" forObject:me.objectID];
 		
-		NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
-		//	NSString* searchText = [self._graph searchTerms:@"context" objectType:kSearchUsers];
+		if ( [likes count] > 0)
+		{
+			NSString* likesText = [[likes objectAtIndex:0] name];
 		
-		// this doesn't seem to work at all
-		//	NSString* searchNewsText = [self._graph searchNewsFeedForUser:@"me" searchTerms:@"mother"];
-		
-		self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@", name, likesText, self._fullText.text];
-		//	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@\n\nSearch\n%@", name, likesText, self._fullText.text, searchText];
-		//	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@\n\nNews for mother\n%@", likesText, self._fullText.text, searchText, searchNewsText];
+			self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@", name, likesText];
+		}
+		else 
+		{
+			self._fullText.text = name;
+		}
 	}
 }
 
@@ -307,28 +304,42 @@
 {
 	if ( [self haveGraph] )
 	{
+		// POST test #1
 		// post something 
-		// 	graph.put_object("me", "feed", :message => "Hello, world from bamboo!")
 		
 //		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"bamboo test", @"message", nil];
 //		[self._graph putToObject:@"me" connectionType:@"feed" args:args];
 		
+		
+		// POST test #2
 		// a test comment, something we can more freely POST to that wont pollute our status message
-		// <test_comment_id>
+
+		// change this to switch between valid / invalid comment test
+		NSString* test_comment_id = @"dkjfghsudfhgluerg";
 		
-//		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
-//		if ( [self._graph putToObject:@"<test_comment_id>" connectionType:@"comments" args:args] )
-//		{
-//			self._statusInfo.text = @"Post success!";
-//		}
-//		else
-//		{
-//			self._statusInfo.text = @"Post failure, probably auth";
-//		}
-		
-		// now clean up after yourself
-		//		[self._graph deleteObject:@"<test_comment_id>"];
-		
+		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
+		GraphObject* post_result = [self._graph putToObject:test_comment_id connectionType:@"comments" args:args];
+		if ( nil != post_result.objectID )
+		{		
+			NSLog( @"post_result = %@", post_result.objectID );
+			self._statusInfo.text = [NSString stringWithFormat:@"Post success!\ncomment id = %@", post_result.objectID];
+
+			// DELETE test
+			// now clean up after yourself
+			if ( [self._graph deleteObject:test_comment_id] )
+			{
+				NSLog( @"DELETE success" );
+			}
+			else
+			{
+				NSLog( @"DELETE failure" );
+			}
+		}
+		else
+		{
+			NSLog( @"post_result = %@", post_result.error );
+			self._statusInfo.text = [NSString stringWithFormat:@"Post failure\n%@", post_result.error];
+		}
 	}
 }
 
@@ -336,12 +347,21 @@
 {
 	if ( [self haveGraph] )
 	{
-		NSString* searchNewsText = [self._graph searchNewsFeedForUser:@"me" searchTerms:@"mother"];
-
-		self._fullText.text = searchNewsText;
+		// this search doesn't seem to work at all		
+//		NSString* searchNewsText = [self._graph searchNewsFeedForUser:@"me" searchTerms:@"mother"];
+//		self._fullText.text = searchNewsText;
+		
+		// this search does work
+		NSArray* searchResults = [self._graph searchTerms:@"context" objectType:kSearchUsers];
+		
+		if ( [searchResults count] > 1)
+		{
+			NSString* searchText = [[searchResults objectAtIndex:1] name];
+			NSLog( @"searchText = %@", searchText );
+			
+			self._fullText.text = searchText;
+		}
 	}
-	
-//	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@", name, likesText, self._fullText.text];
 }
 
 @end

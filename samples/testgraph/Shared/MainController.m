@@ -155,32 +155,25 @@
 
 -(void)doneAuthorizing
 {
-	self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;
-	
-	if ( nil == self._graph )
-		self._graph = [[FacebookProxy instance] newGraph];
-	
-	NSString* me = [self._graph getObject:@"me"];
-	
-	NSDictionary* jsonDict = [me JSONValue];
+//	self._statusInfo.text = [FacebookProxy instance]._oAuthAccessToken;
+//	
+//	if ( nil == self._graph )
+//		self._graph = [[FacebookProxy instance] newGraph];
+//	
+//	GraphObject* me = [self._graph getObject:@"me"];
+//	NSString* name = [me name];
+//	
+//	NSArray* metadata = [self._graph getConnectionTypesForObject:@"me"];
+//	
+//	NSLog( @"connection types = %@", metadata );
 
-	NSLog( @"json dictionary: %@", jsonDict );
-	
-	NSString* name = [NSString stringWithFormat:@"%@, %@ (%@)", [jsonDict objectForKey:@"last_name"], [jsonDict objectForKey:@"first_name"], [jsonDict objectForKey:@"gender"]];
-	
-	NSArray* metadata = [self._graph getConnectionTypesForObject:@"me"];
-	
-	NSLog( @"connection types = %@", metadata );
-
-	self._fullText.text = me;
-
-	NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
+//	NSString* likesText = [self._graph getConnections:@"likes" forObject:@"me"];
 //	NSString* searchText = [self._graph searchTerms:@"context" objectType:kSearchUsers];
 
 	// this doesn't seem to work at all
 	//	NSString* searchNewsText = [self._graph searchNewsFeedForUser:@"me" searchTerms:@"mother"];
 	
-	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@", name, likesText, self._fullText.text];
+//	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@", name, likesText, self._fullText.text];
 //	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@\n\nSearch\n%@", name, likesText, self._fullText.text, searchText];
 //	self._fullText.text = [NSString stringWithFormat:@"Likes\n%@\n\nObject\n%@\n\nSearch\n%@\n\nNews for mother\n%@", likesText, self._fullText.text, searchText, searchNewsText];
 	

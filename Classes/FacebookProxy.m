@@ -341,7 +341,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 		NSLog( @"connectionDidFinishLoading._auth" );
 		
 		NSString* responseBody = [[NSString alloc] initWithData:self._authResponse encoding:NSASCIIStringEncoding];
-		NSLog( @"response: %@", responseBody );
+//		NSLog( @"response: %@", responseBody );
 		[responseBody release];
 		responseBody = nil;
 		
@@ -353,7 +353,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 	{
 		NSLog( @"connectionDidFinishLoading._token" );
 		NSString* responseBody = [[NSString alloc] initWithData:self._accessTokenResponse encoding:NSASCIIStringEncoding];
-		NSLog( @"response: %@", responseBody );
+//		NSLog( @"response: %@", responseBody );
 		
 		// the entire response body is just access_token=xxx, the access token is the goods that we're doing all this for. example is:
 		// access_token=119908831367602|674667c45691cbca6a03d480-1394987957|dRiaWMp7ZoqrRy_jHDEutHC5AP0.

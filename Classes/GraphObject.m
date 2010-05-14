@@ -1,9 +1,9 @@
 #import "GraphObject.h"
 #import "JSON.h"
+#import "GraphAPI.h"
 
 @interface GraphObject (_PrivateStuff) 
-
-
+-(GraphAPI*)getGraph;
 @end
 
 @implementation GraphObject
@@ -24,7 +24,7 @@
 {
 	if ( self = [super init] )
 	{
-		_properties = [jsonString JSONValue];
+		_properties = [[NSDictionary alloc] initWithDictionary:[jsonString JSONValue]];
 		[self initSelf];
 	}
 	return self;
@@ -79,15 +79,41 @@
 	return [self propertyWithKey:@"name"];
 }
 
-// handle photos later, will need access to the graph
+-(NSString*)error
+{
+	return [self propertyWithKey:@"error"];
+}
+
+// [ryan:5-14-10] todo
+// redo photos later, will need access to the graphAPI object, not sure how I want to make that accessible here
+// I want to be able to lazy-load them and not force the client to keep track of anything
+
+
+-(GraphAPI*)getGraph
+{
+	// this will work for now, to lazy-load images and not force client to know or keep track of anything
+	// not a good long-term, general purpose solution
+	return [[FacebookProxy instance] newGraph];
+}
+
 -(UIImage*)smallPicture
 {
-	return nil;
+	if ( nil == _profilePictureSmall )
+	{
+		GraphAPI* graph = [self getGraph];
+		self._profilePictureSmall = [graph getProfilePhotoForObject:self.objectID];
+	}
+  return self._profilePictureSmall;
 }
 
 -(UIImage*)largePicture
 {
-	return nil;
+	if ( nil == _profilePictureLarge )
+	{
+		GraphAPI* graph = [self getGraph];
+		self._profilePictureLarge = [graph getLargeProfilePhotoForObject:self.objectID];
+	}
+  return self._profilePictureLarge;
 }
 
 @end

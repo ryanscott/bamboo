@@ -48,8 +48,8 @@
 	
 	CGFloat x = h_buf;
 	CGFloat y = v_buf;
-	CGFloat width = kDefaultButtonWidth;
-	CGFloat height = kDefaultButtonHeight;
+	CGFloat width = 80.0f;
+	CGFloat height = 30.0f;
 	
 	CGRect l_frame = CGRectMake(x, y, width, height);
 	
@@ -82,7 +82,7 @@
 	self._statusInfo.text = @"waiting on API";	
 	
 	y += height + h_buf;
-	height = (kApplicationFrame.size.height - h_buf) - y;
+	height = ([UIScreen mainScreen].applicationFrame.size.height - h_buf) - y;
 	
 	l_frame = CGRectMake(x, y, width, height);
 	self._fullText = [[UITextView alloc] initWithFrame:l_frame];
@@ -155,7 +155,6 @@
 
 - (void)didReceiveMemoryWarning 
 {
-	RCLibFreeMemory();
 	[super didReceiveMemoryWarning];
 }
 
@@ -221,8 +220,12 @@
 
 -(void)doneAuthorizing
 {
+	// FacebookProxy is useful as a way to have users login to Facebook, and a convenient way to get an access_token
+	// you are welcome to use it, or provide your own facebook login mechanism
+	
 	if ( nil != [FacebookProxy instance]._oAuthAccessToken )
 	{
+		// either way, the GraphAPI object is what you want.  this method creates a new GraphAPI object using the FacebookProxy's access_token		
 		if ( nil == self._graph )
 			self._graph = [[FacebookProxy instance] newGraph];	
 
@@ -252,6 +255,9 @@
 -(void)doAuth
 {
 	self._statusInfo.text = @"authorizing...";
+
+	// this method will invoke all the necessary network calls that by the time your callback is called,
+	// FacebookProxy should have a valid access_token which you can use to access the GraphAPI
 	[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(doneAuthorizing)];
 }
 
@@ -270,7 +276,7 @@
 		
 		NSDictionary* jsonDict = [me_s JSONValue];
 		
-		RCLog( @"json dictionary: %@", jsonDict );
+		NSLog( @"json dictionary: %@", jsonDict );
 		
 		GraphObject* me = [[GraphObject alloc] initWithString:me_s];
 		
@@ -281,7 +287,7 @@
 		
 		NSArray* metadata = [self._graph getConnectionTypesForObject:@"me"];
 		
-		RCLog( @"connection types = %@", metadata );
+		NSLog( @"connection types = %@", metadata );
 		
 		self._fullText.text = me_s;
 		
@@ -308,20 +314,20 @@
 //		[self._graph putToObject:@"me" connectionType:@"feed" args:args];
 		
 		// a test comment, something we can more freely POST to that wont pollute our status message
-		// 1394987957_115365565169546
+		// <test_comment_id>
 		
-		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
-		if ( [self._graph putToObject:@"1394987957_115365565169546" connectionType:@"comments" args:args] )
-		{
-			self._statusInfo.text = @"Post success!";
-		}
-		else
-		{
-			self._statusInfo.text = @"Post failure, probably auth";
-		}
+//		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
+//		if ( [self._graph putToObject:@"<test_comment_id>" connectionType:@"comments" args:args] )
+//		{
+//			self._statusInfo.text = @"Post success!";
+//		}
+//		else
+//		{
+//			self._statusInfo.text = @"Post failure, probably auth";
+//		}
 		
 		// now clean up after yourself
-		//		[self._graph deleteObject:@"1394987957_121775964514199"];
+		//		[self._graph deleteObject:@"<test_comment_id>"];
 		
 	}
 }

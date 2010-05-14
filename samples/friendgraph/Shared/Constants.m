@@ -7,19 +7,11 @@
 // http://github.com/arsduo/koala
 // http://oauth.twoalex.com/
 
+// see the Facebook authentication guide for instructions on what values to use for your app
+// http://developers.facebook.com/docs/api#authorization 
+
 NSString* const kFBAPIKey = @"25e1cec0df2b3bfa781da3ed78da3a1e";
 NSString* const kFBAppSecret = @"e45e55a333eec232d4206d2703de1307";
 
 NSString* const kFBClientID = @"119908831367602";
 NSString* const kFBRedirectURI = @"http://oauth.twoalex.com/";
-
-// App Constants
-//
-//@implementation Globals
-//
-//@synthesize kScreenFrame;
-//
-//-(void)initialize
-//{
-//	kScreenFrame = CGRectMake( kApplicationFrame.origin.x, kApplicationFrame.origin.y + kTopBarHeight, kApplicationFrame.size.width, kApplicationFrame.size.height - kTopBarHeight - kGridMenuBarHeight );
-//}

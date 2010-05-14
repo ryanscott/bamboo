@@ -34,24 +34,6 @@
 		9426185E1199F2C1002FDB6F /* PadRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426185D1199F2C1002FDB6F /* PadRootController.m */; };
 		9450F85F119CD6B600D7B22F /* GraphObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9450F85E119CD6B600D7B22F /* GraphObject.m */; };
 		947BF3CF1194CA590044AB96 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF3CE1194CA590044AB96 /* MainController.m */; };
-		947BF4641194CC320044AB96 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF44F1194CC320044AB96 /* Util.m */; };
-		947BF4651194CC320044AB96 /* rcloudlibconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4501194CC320044AB96 /* rcloudlibconstants.m */; };
-		947BF4661194CC320044AB96 /* UIControl-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4521194CC320044AB96 /* UIControl-Expanded.m */; };
-		947BF4671194CC320044AB96 /* UITextView-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4531194CC320044AB96 /* UITextView-Expanded.m */; };
-		947BF4681194CC320044AB96 /* UIViewController-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4541194CC320044AB96 /* UIViewController-Expanded.m */; };
-		947BF4691194CC320044AB96 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4551194CC320044AB96 /* UIColor-Expanded.m */; };
-		947BF46A1194CC320044AB96 /* UIView-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4561194CC320044AB96 /* UIView-Expanded.m */; };
-		947BF46B1194CC320044AB96 /* UIImage-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4571194CC320044AB96 /* UIImage-Expanded.m */; };
-		947BF46C1194CC320044AB96 /* UISwitch-Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4581194CC320044AB96 /* UISwitch-Extended.m */; };
-		947BF46D1194CC320044AB96 /* BitmapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF45A1194CC320044AB96 /* BitmapView.m */; };
-		947BF46E1194CC320044AB96 /* FieldEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF45B1194CC320044AB96 /* FieldEditController.m */; };
-		947BF46F1194CC320044AB96 /* RCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF45C1194CC320044AB96 /* RCLabel.m */; };
-		947BF4701194CC320044AB96 /* CustomFontBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF45D1194CC320044AB96 /* CustomFontBase.m */; };
-		947BF4711194CC320044AB96 /* ImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF45E1194CC320044AB96 /* ImagePickerController.m */; };
-		947BF4721194CC320044AB96 /* ImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF45F1194CC320044AB96 /* ImageButton.m */; };
-		947BF4731194CC320044AB96 /* BusyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4601194CC320044AB96 /* BusyViewController.m */; };
-		947BF4741194CC320044AB96 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF4611194CC320044AB96 /* RoundedView.m */; };
-		947BF4751194CC320044AB96 /* 1_bar_table_transcorners.png in Resources */ = {isa = PBXBuildFile; fileRef = 947BF4631194CC320044AB96 /* 1_bar_table_transcorners.png */; };
 		947BF48C1194CD3E0044AB96 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF48B1194CD3E0044AB96 /* Constants.m */; };
 		947BF4961194CEF50044AB96 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BF4951194CEF50044AB96 /* QuartzCore.framework */; };
 		9495A1841191650F00BA21E3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9495A1831191650F00BA21E3 /* Entitlements.plist */; };
@@ -112,42 +94,6 @@
 		9450F85E119CD6B600D7B22F /* GraphObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphObject.m; path = ../../Classes/GraphObject.m; sourceTree = SOURCE_ROOT; };
 		947BF3CD1194CA590044AB96 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = ../Shared/MainController.h; sourceTree = "<group>"; };
 		947BF3CE1194CA590044AB96 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainController.m; path = ../Shared/MainController.m; sourceTree = "<group>"; };
-		947BF43A1194CC320044AB96 /* rcloudlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcloudlib.h; sourceTree = "<group>"; };
-		947BF43B1194CC320044AB96 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
-		947BF43C1194CC320044AB96 /* rcloudlibconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcloudlibconstants.h; sourceTree = "<group>"; };
-		947BF43E1194CC320044AB96 /* UIControl-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl-Expanded.h"; sourceTree = "<group>"; };
-		947BF43F1194CC320044AB96 /* UITextView-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView-Expanded.h"; sourceTree = "<group>"; };
-		947BF4401194CC320044AB96 /* UIViewController-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController-Expanded.h"; sourceTree = "<group>"; };
-		947BF4411194CC320044AB96 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
-		947BF4421194CC320044AB96 /* UIView-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView-Expanded.h"; sourceTree = "<group>"; };
-		947BF4431194CC320044AB96 /* UIImage-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Expanded.h"; sourceTree = "<group>"; };
-		947BF4441194CC320044AB96 /* UISwitch-Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch-Extended.h"; sourceTree = "<group>"; };
-		947BF4461194CC320044AB96 /* BitmapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitmapView.h; sourceTree = "<group>"; };
-		947BF4471194CC320044AB96 /* FieldEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldEditController.h; sourceTree = "<group>"; };
-		947BF4481194CC320044AB96 /* RCLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCLabel.h; sourceTree = "<group>"; };
-		947BF4491194CC320044AB96 /* CustomFontBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFontBase.h; sourceTree = "<group>"; };
-		947BF44A1194CC320044AB96 /* ImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerController.h; sourceTree = "<group>"; };
-		947BF44B1194CC320044AB96 /* ImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageButton.h; sourceTree = "<group>"; };
-		947BF44C1194CC320044AB96 /* BusyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusyViewController.h; sourceTree = "<group>"; };
-		947BF44D1194CC320044AB96 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedView.h; sourceTree = "<group>"; };
-		947BF44F1194CC320044AB96 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = ../../../rcloudlib/Classes/Util.m; sourceTree = SOURCE_ROOT; };
-		947BF4501194CC320044AB96 /* rcloudlibconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = rcloudlibconstants.m; path = ../../../rcloudlib/Classes/rcloudlibconstants.m; sourceTree = SOURCE_ROOT; };
-		947BF4521194CC320044AB96 /* UIControl-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIControl-Expanded.m"; path = "../../../rcloudlib/Classes/UIControl-Expanded.m"; sourceTree = SOURCE_ROOT; };
-		947BF4531194CC320044AB96 /* UITextView-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextView-Expanded.m"; path = "../../../rcloudlib/Classes/UITextView-Expanded.m"; sourceTree = SOURCE_ROOT; };
-		947BF4541194CC320044AB96 /* UIViewController-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController-Expanded.m"; path = "../../../rcloudlib/Classes/UIViewController-Expanded.m"; sourceTree = SOURCE_ROOT; };
-		947BF4551194CC320044AB96 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor-Expanded.m"; path = "../../../rcloudlib/Classes/UIColor-Expanded.m"; sourceTree = SOURCE_ROOT; };
-		947BF4561194CC320044AB96 /* UIView-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView-Expanded.m"; path = "../../../rcloudlib/Classes/UIView-Expanded.m"; sourceTree = SOURCE_ROOT; };
-		947BF4571194CC320044AB96 /* UIImage-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage-Expanded.m"; path = "../../../rcloudlib/Classes/UIImage-Expanded.m"; sourceTree = SOURCE_ROOT; };
-		947BF4581194CC320044AB96 /* UISwitch-Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISwitch-Extended.m"; path = "../../../rcloudlib/Classes/UISwitch-Extended.m"; sourceTree = SOURCE_ROOT; };
-		947BF45A1194CC320044AB96 /* BitmapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BitmapView.m; path = ../../../rcloudlib/Classes/BitmapView.m; sourceTree = SOURCE_ROOT; };
-		947BF45B1194CC320044AB96 /* FieldEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FieldEditController.m; path = ../../../rcloudlib/Classes/FieldEditController.m; sourceTree = SOURCE_ROOT; };
-		947BF45C1194CC320044AB96 /* RCLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCLabel.m; path = ../../../rcloudlib/Classes/RCLabel.m; sourceTree = SOURCE_ROOT; };
-		947BF45D1194CC320044AB96 /* CustomFontBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomFontBase.m; path = ../../../rcloudlib/Classes/CustomFontBase.m; sourceTree = SOURCE_ROOT; };
-		947BF45E1194CC320044AB96 /* ImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagePickerController.m; path = ../../../rcloudlib/Classes/ImagePickerController.m; sourceTree = SOURCE_ROOT; };
-		947BF45F1194CC320044AB96 /* ImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageButton.m; path = ../../../rcloudlib/Classes/ImageButton.m; sourceTree = SOURCE_ROOT; };
-		947BF4601194CC320044AB96 /* BusyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusyViewController.m; path = ../../../rcloudlib/Classes/BusyViewController.m; sourceTree = SOURCE_ROOT; };
-		947BF4611194CC320044AB96 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundedView.m; path = ../../../rcloudlib/Classes/RoundedView.m; sourceTree = SOURCE_ROOT; };
-		947BF4631194CC320044AB96 /* 1_bar_table_transcorners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1_bar_table_transcorners.png; path = ../../../rcloudlib/Images/1_bar_table_transcorners.png; sourceTree = SOURCE_ROOT; };
 		947BF48A1194CD3E0044AB96 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Shared/Constants.h; sourceTree = "<group>"; };
 		947BF48B1194CD3E0044AB96 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = Shared/Constants.m; sourceTree = "<group>"; };
 		947BF4951194CEF50044AB96 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -326,118 +272,8 @@
 				942618211199ED56002FDB6F /* FBConnect */,
 				942616DE1198D395002FDB6F /* json-framework */,
 				942616D01198D35E002FDB6F /* bamboo */,
-				947BF41B1194CBF30044AB96 /* rcloudlib */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		947BF41B1194CBF30044AB96 /* rcloudlib */ = {
-			isa = PBXGroup;
-			children = (
-				947BF4781194CC7B0044AB96 /* Public */,
-				947BF4621194CC320044AB96 /* Resources */,
-				947BF44E1194CC320044AB96 /* Classes */,
-				947BF4381194CC320044AB96 /* include */,
-			);
-			name = rcloudlib;
-			sourceTree = "<group>";
-		};
-		947BF4381194CC320044AB96 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				947BF4771194CC6A0044AB96 /* Class Extensions */,
-				947BF4761194CC560044AB96 /* Controls */,
-				947BF43B1194CC320044AB96 /* Util.h */,
-				947BF43C1194CC320044AB96 /* rcloudlibconstants.h */,
-			);
-			name = include;
-			path = ../../../rcloudlib/include;
-			sourceTree = SOURCE_ROOT;
-		};
-		947BF44E1194CC320044AB96 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				947BF4591194CC320044AB96 /* Controls */,
-				947BF4511194CC320044AB96 /* Class Extensions */,
-				947BF44F1194CC320044AB96 /* Util.m */,
-				947BF4501194CC320044AB96 /* rcloudlibconstants.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		947BF4511194CC320044AB96 /* Class Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				947BF4521194CC320044AB96 /* UIControl-Expanded.m */,
-				947BF4531194CC320044AB96 /* UITextView-Expanded.m */,
-				947BF4541194CC320044AB96 /* UIViewController-Expanded.m */,
-				947BF4551194CC320044AB96 /* UIColor-Expanded.m */,
-				947BF4561194CC320044AB96 /* UIView-Expanded.m */,
-				947BF4571194CC320044AB96 /* UIImage-Expanded.m */,
-				947BF4581194CC320044AB96 /* UISwitch-Extended.m */,
-			);
-			name = "Class Extensions";
-			sourceTree = "<group>";
-		};
-		947BF4591194CC320044AB96 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				947BF45A1194CC320044AB96 /* BitmapView.m */,
-				947BF45B1194CC320044AB96 /* FieldEditController.m */,
-				947BF45C1194CC320044AB96 /* RCLabel.m */,
-				947BF45D1194CC320044AB96 /* CustomFontBase.m */,
-				947BF45E1194CC320044AB96 /* ImagePickerController.m */,
-				947BF45F1194CC320044AB96 /* ImageButton.m */,
-				947BF4601194CC320044AB96 /* BusyViewController.m */,
-				947BF4611194CC320044AB96 /* RoundedView.m */,
-			);
-			name = Controls;
-			sourceTree = "<group>";
-		};
-		947BF4621194CC320044AB96 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				947BF4631194CC320044AB96 /* 1_bar_table_transcorners.png */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		947BF4761194CC560044AB96 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				947BF4461194CC320044AB96 /* BitmapView.h */,
-				947BF4471194CC320044AB96 /* FieldEditController.h */,
-				947BF4481194CC320044AB96 /* RCLabel.h */,
-				947BF4491194CC320044AB96 /* CustomFontBase.h */,
-				947BF44A1194CC320044AB96 /* ImagePickerController.h */,
-				947BF44B1194CC320044AB96 /* ImageButton.h */,
-				947BF44C1194CC320044AB96 /* BusyViewController.h */,
-				947BF44D1194CC320044AB96 /* RoundedView.h */,
-			);
-			name = Controls;
-			sourceTree = "<group>";
-		};
-		947BF4771194CC6A0044AB96 /* Class Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				947BF43E1194CC320044AB96 /* UIControl-Expanded.h */,
-				947BF43F1194CC320044AB96 /* UITextView-Expanded.h */,
-				947BF4401194CC320044AB96 /* UIViewController-Expanded.h */,
-				947BF4411194CC320044AB96 /* UIColor-Expanded.h */,
-				947BF4421194CC320044AB96 /* UIView-Expanded.h */,
-				947BF4431194CC320044AB96 /* UIImage-Expanded.h */,
-				947BF4441194CC320044AB96 /* UISwitch-Extended.h */,
-			);
-			name = "Class Extensions";
-			sourceTree = "<group>";
-		};
-		947BF4781194CC7B0044AB96 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				947BF43A1194CC320044AB96 /* rcloudlib.h */,
-			);
-			name = Public;
-			path = ../../../rcloudlib/include;
 			sourceTree = "<group>";
 		};
 		9495A182119164FC00BA21E3 /* Resources */ = {
@@ -492,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9495A1841191650F00BA21E3 /* Entitlements.plist in Resources */,
-				947BF4751194CC320044AB96 /* 1_bar_table_transcorners.png in Resources */,
 				9426183F1199ED56002FDB6F /* FBConnect.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,23 +343,6 @@
 				2860E328111B887F00E27156 /* AppDelegate_Phone.m in Sources */,
 				2860E32E111B888700E27156 /* AppDelegate_Pad.m in Sources */,
 				947BF3CF1194CA590044AB96 /* MainController.m in Sources */,
-				947BF4641194CC320044AB96 /* Util.m in Sources */,
-				947BF4651194CC320044AB96 /* rcloudlibconstants.m in Sources */,
-				947BF4661194CC320044AB96 /* UIControl-Expanded.m in Sources */,
-				947BF4671194CC320044AB96 /* UITextView-Expanded.m in Sources */,
-				947BF4681194CC320044AB96 /* UIViewController-Expanded.m in Sources */,
-				947BF4691194CC320044AB96 /* UIColor-Expanded.m in Sources */,
-				947BF46A1194CC320044AB96 /* UIView-Expanded.m in Sources */,
-				947BF46B1194CC320044AB96 /* UIImage-Expanded.m in Sources */,
-				947BF46C1194CC320044AB96 /* UISwitch-Extended.m in Sources */,
-				947BF46D1194CC320044AB96 /* BitmapView.m in Sources */,
-				947BF46E1194CC320044AB96 /* FieldEditController.m in Sources */,
-				947BF46F1194CC320044AB96 /* RCLabel.m in Sources */,
-				947BF4701194CC320044AB96 /* CustomFontBase.m in Sources */,
-				947BF4711194CC320044AB96 /* ImagePickerController.m in Sources */,
-				947BF4721194CC320044AB96 /* ImageButton.m in Sources */,
-				947BF4731194CC320044AB96 /* BusyViewController.m in Sources */,
-				947BF4741194CC320044AB96 /* RoundedView.m in Sources */,
 				947BF48C1194CD3E0044AB96 /* Constants.m in Sources */,
 				942616D51198D372002FDB6F /* FacebookProxy.m in Sources */,
 				942616D61198D372002FDB6F /* GraphAPI.m in Sources */,

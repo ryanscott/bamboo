@@ -1,53 +1,101 @@
 Bamboo
 ====
-Bamboo (<a href="http://github.com/ryanscott/bamboo" target="_blank">http://github.com/ryanscott/bamboo</a>) is a new Facebook Graph library for use in iPhone development.  It is currently in development, and barely functions, but works just enough for me to write this.  The library is designed very similarly to Koala (<a href="http://github.com/arsduo/koala" target="_blank">http://github.com/arsduo/koala</a>), a Ruby port of the Python library that Facebook published.  The basic API structure is largely the same, and for the most part the design goals are the same.  Divergence will come over time as this library evolves, but initially I expect it to be rather isomorphic. 
+Bamboo (<a href="http://github.com/ryanscott/bamboo" target="_blank">http://github.com/ryanscott/bamboo</a>) is a new Facebook Graph library for use in iPhone development.  Bamboo is a simple, lightweight, robust alternative to using the old Facebook Connect API, and a time-saving alternative to directly writing your own network code.  The library is designed very similarly to Koala (<a href="http://github.com/arsduo/koala" target="_blank">http://github.com/arsduo/koala</a>), a Ruby port of the Python library that Facebook published.  Bamboo is more or less an objective-c port of the ruby port.  The basic API structure is the same, and for the most part the design goals are the same.
 
-To understand the GraphAPI concepts, for now read the Koala documentation and walkthrough.
+This is as easy as it gets at integrating Facebook into an iPhone application.  Using Bamboo will save you hours, probably days, of development time.
 
-Really Basic usage:
+To understand the GraphAPI concepts from the perspective of a third-party library, read the Koala documentation and walkthrough.
 
-	(from MainController.m in friendgraph)
+http://wiki.github.com/arsduo/koala/
 
-	-(void)buttonHandler
-	{
-		// this method will invoke all the necessary network calls that by the time your callback is called,
-		// FacebookProxy should have a valid access_token which you can use to access the GraphAPI
-		[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(doneAuthorizing)];
-	}
-	
-	-(void)doneAuthorizing
-	{
-		// FacebookProxy is useful as a way to have users login to Facebook, and a convenient way to get an access_token
-		// you are welcome to use it, or provide your own facebook login mechanism
+Alex also wrote a fabulous, very in-depth tutorial on how to use Koala, and everything he says applies to Bamboo, even the method names are the same, for your convenience.
 
-		// eithe way, the GraphAPI object is what you want.  this method creates a new GraphAPI object using the FacebookProxy's access_token
-		self._graph = [[FacebookProxy instance] newGraph];
+http://blog.twoalex.com/2010/05/03/introducing-koala-a-new-gem-for-facebooks-new-graph-api/
 
-		// full JSON text of any object
-		self._fullText.text = [self._graph getObject:@"me"];
+Sample usage:
 
-		// profile picture of any object
-		self._profileImage.image = [self._graph getProfilePhotoForObject:@"me"];
-	}
+	[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(finishedAuthorizing)];
+	GraphAPI* graph = [[FacebookProxy instance] newGraph];
 
+	NSString* myFullInfo = [graph getObject:@"me"];
+	UIImage* myProfileImage = [graph getProfilePhotoForObject:@"me"];
+
+	NSString* stuffILike = [graph getConnections:@"likes" forObject:@"me"];	
+
+
+Integration Instructions
+-----
+
+Project Integration
+
+1. Install bamboo and dependencies from your project directory:
+
+git clone http://github.com/ryanscott/bamboo.git
+git clone http://github.com/facebook/facebook-iphone-sdk.git
+git clone http://github.com/stig/json-framework.git
+
+for friendgraph sample application to run, also run:
+
+git clone http://github.com/ryanscott/rcloudlib.git
+
+2. Open your project, make a group called "Libraries," and add all files from bamboo, json-framework, and facebook-iphone-sdk
+
+3. Define the following 4 global variables
+
+NSString* const kFBAPIKey = @"<your_facebook_api_key>";
+NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
+
+NSString* const kFBClientID = @"<your_facebook_client_id>";
+NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";
+
+If you need help on any of those, get help at http://developers.facebook.com/docs/api#authorization or http://oauth.twoalex.com/
+
+See Constants.m in friendgraph for example values.
+
+4. Include "GraphAPI.h" write the following 2-ish lines of code in your klass.m:
+
+[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(finishedAuthorizing)];
+
+-(void)finishedAuthorizing
+{
+	self._graph = [[FacebookProxy instance] newGraph];
+}
+
+4.1. and define this property in your klass.h
+
+GraphAPI* _graph; 
+@property (nonatomic, retain) GraphAPI* _graph;
+
+5. Make calls to the Facebook graph using your GraphAPI object.  
+
+See GraphAPI.h for interface.  See /samples/friendgraph/PadRootController.m for some example usage.
+
+More documentation and better sample app forthcoming.
 
 Examples and More Details 
 -----
 Check the /samples/ directory, which includes code for an app named friendgraph.  I use this app as an area to develop and test new functionality.
 
-Generally speaking, your app needs to get an access_token to use graph.facebook.api.  Once you have a token, you can pretty much keep using it ad infinitum as far as I can tell.  The FacebookProxy class handles all the login & token grabbing piping, right now using a auth sandbox setup by Alex for Koala.  That will need to be handled by the lib client on an app by app basis.
+The main integration point is FacebookProxy, which handles all of the messiness of authorization.  The following 4 variables need to be defined in your app.  See Constants.m in friendgraph for example values.
 
-vis-a-vis the to the actual Graph API, most of the complexity is going to be in Application logic.  The API itself is extremely simple, as it really should be...nice and RESTful.  I expect Bamboo to add objects for various useful entities in the Facebook space on top of the basic API calls, whereas Koala basically just keeps everything flat...as per Ruby convention.
+// Facebook API
+// all of these values need to be set in the client application
+extern NSString* const kFBAPIKey;
+extern NSString* const kFBAppSecret;
+
+extern NSString* const kFBClientID;
+extern NSString* const kFBRedirectURI;
+
+Generally speaking, your app needs to get an access_token to use graph.facebook.api.  Once you have a token, you can pretty much keep using it ad infinitum as far as I can tell.  The FacebookProxy class handles all the login & token grabbing piping, right now using a auth sandbox setup by Alex for Koala.  That will need to be handled by the lib client on an app by app basis.
 
 Dependencies
 -----
 
+Bamboo relies on the offical Facebook Connect iPhone SDK for login.  Additionally, I use json-framework for parsing the responses from facebook.  Both of these are not 100% necessary in theory, so if you want a version of bamboo with no dependencies whatsoever it can easily be done...it just won't be very usable.
 
-Bamboo relies on the offical Facebook Connect iPhone SDK for login.  Additionally, I us
+http://github.com/facebook/facebook-iphone-sdk
 http://github.com/stig/json-framework
 
 Known Issues
 -----
-post not working
-
-No asynchronous network access
+No asynchronous network access (design choice, for now)

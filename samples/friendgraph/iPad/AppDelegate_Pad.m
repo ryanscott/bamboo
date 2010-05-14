@@ -9,7 +9,6 @@
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
-	initRCLib();
 	[FacebookProxy loadDefaults];
 	_mainController = [[PadRootController alloc] init];
 	
@@ -25,7 +24,6 @@
 
 -(void)dealloc 
 {
-	terminateRCLib();
 	[_mainController release];
 	[window release];
 	[super dealloc];

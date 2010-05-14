@@ -37,7 +37,7 @@
 	self._statusInfo.text = @"waiting on API";	
 	
 	y += height + h_buf;
-	height = (kApplicationFrame.size.height - h_buf) - y;
+	height = ([UIScreen mainScreen].applicationFrame.size.height - h_buf) - y;
 	
 	l_frame = CGRectMake(x, y, width, height);
 	self._fullText = [[UITextView alloc] initWithFrame:l_frame];
@@ -64,7 +64,7 @@
 		width = 200.0f;
 		height = 200.0f;
 #endif
-	x = kApplicationFrame.size.width - h_buf - width;
+	x = [UIScreen mainScreen].applicationFrame.size.width - h_buf - width;
 	y = h_buf;
 	
 	l_frame = CGRectMake(x, y, width, height);
@@ -124,7 +124,6 @@
 
 - (void)didReceiveMemoryWarning 
 {
-	RCLibFreeMemory();
 	[super didReceiveMemoryWarning];
 }
 
@@ -165,13 +164,13 @@
 	
 	NSDictionary* jsonDict = [me JSONValue];
 
-	RCLog( @"json dictionary: %@", jsonDict );
+	NSLog( @"json dictionary: %@", jsonDict );
 	
 	NSString* name = [NSString stringWithFormat:@"%@, %@ (%@)", [jsonDict objectForKey:@"last_name"], [jsonDict objectForKey:@"first_name"], [jsonDict objectForKey:@"gender"]];
 	
 	NSArray* metadata = [self._graph getConnectionTypesForObject:@"me"];
 	
-	RCLog( @"connection types = %@", metadata );
+	NSLog( @"connection types = %@", metadata );
 
 	self._fullText.text = me;
 

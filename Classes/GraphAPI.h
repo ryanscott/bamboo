@@ -1,3 +1,6 @@
+#include "FacebookProxy.h"
+#include "GraphObject.h"
+
 @interface GraphAPI : NSObject 
 {
 	NSString* _accessToken;

@@ -3,7 +3,7 @@
 
 // URL Formats for code & access_token
 NSString* const kFBAuthURLFormat = @"https://graph.facebook.com/oauth/authorize?client_id=%@&redirect_uri=%@";
-NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@&scope=publish_stream,read_stream";
+NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@&scope=%@";
 
 // Serialization keys
 NSString* const kFacebookProxyKey = @"kFacebookProxyKey";
@@ -259,7 +259,9 @@ static FacebookProxy* gFacebookProxy = NULL;
 	// an example url is:
 	// https://graph.facebook.com/oauth/access_token?client_id=119908831367602&redirect_uri=http://oauth.twoalex.com/&client_secret=e45e55a333eec232d4206d2703de1307&code=674667c45691cbca6a03d480-1394987957%7CjN-9MVsdl0kjyoKRvQq3DbwxL4c.
 
-	NSString* accessTokenURL = [NSString stringWithFormat:kFBAccessTokenURLFormat, kFBClientID, kFBRedirectURI, kFBAppSecret, self._codeString];
+	// we default to asking for read_stream and publish_stream, if your app needs something different...this is the code to change
+	// hardcoded for now, so at least we don't break when Facebook changes permissions on June 1
+	NSString* accessTokenURL = [NSString stringWithFormat:kFBAccessTokenURLFormat, kFBClientID, kFBRedirectURI, kFBAppSecret, self._codeString, @"publish_stream,read_stream"];
 
 	NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:accessTokenURL]
 																							cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -391,6 +393,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 	
 	// release the connection, and the data object
 	[connection release];
+	self._authResponse = nil;
 // todo - manage this memory in a way that makes sense
 //	// receivedData is declared as a method instance elsewhere
 //	[receivedData release];

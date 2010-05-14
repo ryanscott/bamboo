@@ -301,36 +301,41 @@
 {
 	if ( [self haveGraph] )
 	{
-		//post something 
-		// 	graph.put_object("me", "feed", :message => "Hello, world")
+		// post something 
+		// 	graph.put_object("me", "feed", :message => "Hello, world from bamboo!")
 		
-		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"bamboo test", @"message", nil];
-		[self._graph putToObject:@"me" connectionType:@"feed" args:args];
+//		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"bamboo test", @"message", nil];
+//		[self._graph putToObject:@"me" connectionType:@"feed" args:args];
 		
 		// a test comment, something we can more freely POST to that wont pollute our status message
 		// 1394987957_115365565169546
 		
-		//		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
-		//		if ( [self._graph putToObject:@"1394987957_115365565169546" connectionType:@"comments" args:args] )
-		//		{
-		//			self._statusInfo.text = @"Post success!";
-		//		}
-		//		else
-		//		{
-		//			self._statusInfo.text = @"Post failure, probably auth";
-		//		}
-
-
+		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
+		if ( [self._graph putToObject:@"1394987957_115365565169546" connectionType:@"comments" args:args] )
+		{
+			self._statusInfo.text = @"Post success!";
+		}
+		else
+		{
+			self._statusInfo.text = @"Post failure, probably auth";
+		}
+		
 		// now clean up after yourself
 		//		[self._graph deleteObject:@"1394987957_121775964514199"];
 		
-
 	}
 }
 
 -(void)doWalk
 {
+	if ( [self haveGraph] )
+	{
+		NSString* searchNewsText = [self._graph searchNewsFeedForUser:@"me" searchTerms:@"mother"];
+
+		self._fullText.text = searchNewsText;
+	}
 	
+//	self._fullText.text = [NSString stringWithFormat:@"%@ Likes\n%@\n\nObject\n%@", name, likesText, self._fullText.text];
 }
 
 @end

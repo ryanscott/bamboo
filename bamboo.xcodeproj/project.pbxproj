@@ -20,6 +20,8 @@
 		9426163A1198BFF8002FDB6F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426162D1198BFF8002FDB6F /* SBJsonParser.m */; };
 		9426163B1198BFF8002FDB6F /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9426162E1198BFF8002FDB6F /* SBJsonWriter.h */; };
 		9426163C1198BFF8002FDB6F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426162F1198BFF8002FDB6F /* SBJsonWriter.m */; };
+		9450F863119CD6D000D7B22F /* GraphObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9450F861119CD6D000D7B22F /* GraphObject.h */; };
+		9450F864119CD6D000D7B22F /* GraphObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9450F862119CD6D000D7B22F /* GraphObject.m */; };
 		94E95CBD11975F4B00A462E1 /* FacebookProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E95CB911975F4B00A462E1 /* FacebookProxy.h */; };
 		94E95CBE11975F4B00A462E1 /* FacebookProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E95CBA11975F4B00A462E1 /* FacebookProxy.m */; };
 		94E95CBF11975F4B00A462E1 /* GraphAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E95CBB11975F4B00A462E1 /* GraphAPI.h */; };
@@ -54,6 +56,8 @@
 		9426162F1198BFF8002FDB6F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		942616BD1198D0B0002FDB6F /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = License.txt; path = ../bamboo/License.txt; sourceTree = SOURCE_ROOT; };
 		942616BE1198D0B0002FDB6F /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Readme.md; path = ../bamboo/Readme.md; sourceTree = SOURCE_ROOT; };
+		9450F861119CD6D000D7B22F /* GraphObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphObject.h; path = Classes/GraphObject.h; sourceTree = "<group>"; };
+		9450F862119CD6D000D7B22F /* GraphObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphObject.m; path = Classes/GraphObject.m; sourceTree = "<group>"; };
 		94E95CB911975F4B00A462E1 /* FacebookProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookProxy.h; path = Classes/FacebookProxy.h; sourceTree = "<group>"; };
 		94E95CBA11975F4B00A462E1 /* FacebookProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookProxy.m; path = Classes/FacebookProxy.m; sourceTree = "<group>"; };
 		94E95CBB11975F4B00A462E1 /* GraphAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphAPI.h; path = Classes/GraphAPI.h; sourceTree = "<group>"; };
@@ -108,10 +112,12 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				94E95CB911975F4B00A462E1 /* FacebookProxy.h */,
-				94E95CBA11975F4B00A462E1 /* FacebookProxy.m */,
 				94E95CBB11975F4B00A462E1 /* GraphAPI.h */,
 				94E95CBC11975F4B00A462E1 /* GraphAPI.m */,
+				94E95CB911975F4B00A462E1 /* FacebookProxy.h */,
+				94E95CBA11975F4B00A462E1 /* FacebookProxy.m */,
+				9450F861119CD6D000D7B22F /* GraphObject.h */,
+				9450F862119CD6D000D7B22F /* GraphObject.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 				942616371198BFF8002FDB6F /* SBJsonBase.h in Headers */,
 				942616391198BFF8002FDB6F /* SBJsonParser.h in Headers */,
 				9426163B1198BFF8002FDB6F /* SBJsonWriter.h in Headers */,
+				9450F863119CD6D000D7B22F /* GraphObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +265,7 @@
 				942616381198BFF8002FDB6F /* SBJsonBase.m in Sources */,
 				9426163A1198BFF8002FDB6F /* SBJsonParser.m in Sources */,
 				9426163C1198BFF8002FDB6F /* SBJsonWriter.m in Sources */,
+				9450F864119CD6D000D7B22F /* GraphObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,11 +6,11 @@ This is as easy as it gets at integrating Facebook into an iPhone application.  
 
 To understand the GraphAPI concepts from the perspective of a third-party library, read the Koala documentation and walkthrough.
 
-http://wiki.github.com/arsduo/koala/
+<a href="http://wiki.github.com/arsduo/koala/" target="_blank">http://wiki.github.com/arsduo/koala/</a>
 
 Alex also wrote a fabulous, very in-depth tutorial on how to use Koala, and everything he says applies to Bamboo, even the method names are the same, for your convenience.
 
-http://blog.twoalex.com/2010/05/03/introducing-koala-a-new-gem-for-facebooks-new-graph-api/
+<a href="http://blog.twoalex.com/2010/05/03/introducing-koala-a-new-gem-for-facebooks-new-graph-api/" target="_blank">http://blog.twoalex.com/2010/05/03/introducing-koala-a-new-gem-for-facebooks-new-graph-api/</a>
 
 Sample usage:
 
@@ -38,18 +38,18 @@ Project Integration
 
 1. Install bamboo and dependencies from your project directory:
 
-	git clone http://github.com/ryanscott/bamboo.git
-	git clone http://github.com/facebook/facebook-iphone-sdk.git
-	git clone http://github.com/stig/json-framework.git
+    git clone http://github.com/ryanscott/bamboo.git
+    git clone http://github.com/facebook/facebook-iphone-sdk.git
+    git clone http://github.com/stig/json-framework.git
 
 2. Open your project, make a group called "Libraries," and add all files from bamboo, json-framework, and facebook-iphone-sdk
 
 3. Define the following 4 global variables
 
-	NSString* const kFBAPIKey = @"<your_facebook_api_key>";
-	NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
-	NSString* const kFBClientID = @"<your_facebook_client_id>";
-	NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";
+    NSString* const kFBAPIKey = @"<your_facebook_api_key>";
+    NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
+    NSString* const kFBClientID = @"<your_facebook_client_id>";
+    NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";
 
 If you need help on any of those, get help at http://developers.facebook.com/docs/api#authorization or http://oauth.twoalex.com/
 
@@ -57,12 +57,12 @@ See Constants.m in samples/testgraph for example values.
 
 4. Include "GraphAPI.h" write the following 2-ish lines of code in your klass.m:
 
-	[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(finishedAuthorizing)];
-
-	-(void)finishedAuthorizing
-	{
-		self._graph = [[FacebookProxy instance] newGraph];
-	}
+    [[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(finishedAuthorizing)];
+    
+    -(void)finishedAuthorizing
+    {
+        self._graph = [[FacebookProxy instance] newGraph];
+    }
 
 4.1. and define this property in your klass.h
 

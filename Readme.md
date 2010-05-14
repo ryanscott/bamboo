@@ -38,21 +38,18 @@ Project Integration
 
 1. Install bamboo and dependencies from your project directory:
 
-git clone http://github.com/ryanscott/bamboo.git
-git clone http://github.com/facebook/facebook-iphone-sdk.git
-git clone http://github.com/stig/json-framework.git
+	git clone http://github.com/ryanscott/bamboo.git
+	git clone http://github.com/facebook/facebook-iphone-sdk.git
+	git clone http://github.com/stig/json-framework.git
 
 2. Open your project, make a group called "Libraries," and add all files from bamboo, json-framework, and facebook-iphone-sdk
 
 3. Define the following 4 global variables
 
-NSString* const kFBAPIKey = @"<your_facebook_api_key>";
-
-NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
-
-NSString* const kFBClientID = @"<your_facebook_client_id>";
-
-NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";
+	NSString* const kFBAPIKey = @"<your_facebook_api_key>";
+	NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
+	NSString* const kFBClientID = @"<your_facebook_client_id>";
+	NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";
 
 If you need help on any of those, get help at http://developers.facebook.com/docs/api#authorization or http://oauth.twoalex.com/
 
@@ -60,18 +57,17 @@ See Constants.m in samples/testgraph for example values.
 
 4. Include "GraphAPI.h" write the following 2-ish lines of code in your klass.m:
 
-[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(finishedAuthorizing)];
+	[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(finishedAuthorizing)];
 
--(void)finishedAuthorizing
-{
-self._graph = [[FacebookProxy instance] newGraph];
-}
+	-(void)finishedAuthorizing
+	{
+		self._graph = [[FacebookProxy instance] newGraph];
+	}
 
 4.1. and define this property in your klass.h
 
-GraphAPI* _graph; 
-
-@property (nonatomic, retain) GraphAPI* _graph;
+	GraphAPI* _graph; 
+	@property (nonatomic, retain) GraphAPI* _graph;
 
 5. Make calls to the Facebook graph using your GraphAPI object.  
 

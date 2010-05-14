@@ -77,8 +77,8 @@ More documentation and more extensive sample app forthcoming.
 
 Examples and More Details 
 -----
-Check the /samples/ directory, which includes code for an app named testgraph.  I use this app as an area to develop and test new functionality.
-<a href="http://github.com/ryanscott/bamboo/blob/master/samples/testgraph/iPad/PadRootController.m" target="_blank">/samples/testgraph/PadRootController.m</a>
+Check the /samples/ directory, which includes code for an app named testgraph.  I use this app as an area to develop and test new functionality.  
+
 The main integration point is <a href="http://github.com/ryanscott/bamboo/blob/master/Classes/FacebookProxy.h" target="_blank">FacebookProxy</a>, which handles all of the messiness of authorization.  The following 4 variables need to be defined in your app.  See <a href="http://github.com/ryanscott/bamboo/blob/master/samples/testgraph/Shared/Constants.m" target="_blank">Constants.m</a> in testgraph for example values.
 
 <pre><code>// Facebook API

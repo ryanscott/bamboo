@@ -71,15 +71,15 @@ GraphAPI* _graph;
 
 <li>Make calls to the Facebook graph using your GraphAPI object.</li>
 </ol>
-See GraphAPI.h for interface.  See /samples/testgraph/PadRootController.m for some example usage.
+See GraphAPI.h for interface.  See <a href="http://github.com/ryanscott/bamboo/blob/master/samples/testgraph/iPad/PadRootController.m" target="_blank">/samples/testgraph/PadRootController.m</a> for some example usage.
 
 More documentation and more extensive sample app forthcoming.
 
 Examples and More Details 
 -----
 Check the /samples/ directory, which includes code for an app named testgraph.  I use this app as an area to develop and test new functionality.
-
-The main integration point is FacebookProxy, which handles all of the messiness of authorization.  The following 4 variables need to be defined in your app.  See Constants.m in testgraph for example values.
+<a href="http://github.com/ryanscott/bamboo/blob/master/samples/testgraph/iPad/PadRootController.m" target="_blank">/samples/testgraph/PadRootController.m</a>
+The main integration point is <a href="http://github.com/ryanscott/bamboo/blob/master/Classes/FacebookProxy.h" target="_blank">FacebookProxy</a>, which handles all of the messiness of authorization.  The following 4 variables need to be defined in your app.  See <a href="http://github.com/ryanscott/bamboo/blob/master/samples/testgraph/Shared/Constants.m" target="_blank">Constants.m</a> in testgraph for example values.
 
 <pre><code>// Facebook API
 // all of these values need to be set in the client application

@@ -37,19 +37,21 @@ Integration Instructions
 Project Integration
 
 * Install bamboo and dependencies from your project directory:
-
+<pre><code>
     git clone http://github.com/ryanscott/bamboo.git
     git clone http://github.com/facebook/facebook-iphone-sdk.git
     git clone http://github.com/stig/json-framework.git
+</pre></code>
 
 * Open your project, make a group called "Libraries," and add all files from bamboo, json-framework, and facebook-iphone-sdk
 
 * Define the following 4 global variables
-
+<pre><code>
     NSString* const kFBAPIKey = @"<your_facebook_api_key>";
     NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
     NSString* const kFBClientID = @"<your_facebook_client_id>";
     NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";
+</pre></code>
 
 If you need help on any of those, get help at http://developers.facebook.com/docs/api#authorization or http://oauth.twoalex.com/
 

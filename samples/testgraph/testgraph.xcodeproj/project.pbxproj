@@ -41,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* friendgraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = friendgraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* testgraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testgraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2860E325111B887F00E27156 /* AppDelegate_Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_Phone.h; sourceTree = "<group>"; };
 		2860E326111B887F00E27156 /* AppDelegate_Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_Phone.m; sourceTree = "<group>"; };
@@ -49,8 +49,8 @@
 		2860E32C111B888700E27156 /* AppDelegate_Pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_Pad.m; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* friendgraph_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendgraph_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* friendgraph-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "friendgraph-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* testgraph_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testgraph_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* testgraph-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "testgraph-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		942616D11198D372002FDB6F /* FacebookProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacebookProxy.h; path = ../../Classes/FacebookProxy.h; sourceTree = SOURCE_ROOT; };
 		942616D21198D372002FDB6F /* FacebookProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FacebookProxy.m; path = ../../Classes/FacebookProxy.m; sourceTree = SOURCE_ROOT; };
 		942616D31198D372002FDB6F /* GraphAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphAPI.h; path = ../../Classes/GraphAPI.h; sourceTree = SOURCE_ROOT; };
@@ -118,7 +118,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* friendgraph.app */,
+				1D6058910D05DD3D006BFB54 /* testgraph.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,7 +171,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* friendgraph_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* testgraph_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -280,7 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				9495A1831191650F00BA21E3 /* Entitlements.plist */,
-				8D1107310486CEB800E47090 /* friendgraph-Info.plist */,
+				8D1107310486CEB800E47090 /* testgraph-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -288,9 +288,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* friendgraph */ = {
+		1D6058900D05DD3D006BFB54 /* testgraph */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "friendgraph" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "testgraph" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -300,9 +300,9 @@
 			);
 			dependencies = (
 			);
-			name = friendgraph;
-			productName = friendgraph;
-			productReference = 1D6058910D05DD3D006BFB54 /* friendgraph.app */;
+			name = testgraph;
+			productName = testgraph;
+			productReference = 1D6058910D05DD3D006BFB54 /* testgraph.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -310,14 +310,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "friendgraph" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "testgraph" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* friendgraph */,
+				1D6058900D05DD3D006BFB54 /* testgraph */,
 			);
 		};
 /* End PBXProject section */
@@ -377,15 +377,15 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = friendgraph_Prefix.pch;
-				INFOPLIST_FILE = "friendgraph-Info.plist";
+				GCC_PREFIX_HEADER = testgraph_Prefix.pch;
+				INFOPLIST_FILE = "testgraph-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../facebook-iphone-sdk/src/build/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)/../../build/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)/../../../facebook-iphone-sdk/src/build/Debug-iphoneos\"",
 				);
-				PRODUCT_NAME = friendgraph;
+				PRODUCT_NAME = testgraph;
 			};
 			name = Debug;
 		};
@@ -395,15 +395,15 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = friendgraph_Prefix.pch;
-				INFOPLIST_FILE = "friendgraph-Info.plist";
+				GCC_PREFIX_HEADER = testgraph_Prefix.pch;
+				INFOPLIST_FILE = "testgraph-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../facebook-iphone-sdk/src/build/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)/../../build/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)/../../../facebook-iphone-sdk/src/build/Debug-iphoneos\"",
 				);
-				PRODUCT_NAME = friendgraph;
+				PRODUCT_NAME = testgraph;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -456,7 +456,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "friendgraph" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "testgraph" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -465,7 +465,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "friendgraph" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "testgraph" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

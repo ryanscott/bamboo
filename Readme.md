@@ -34,10 +34,6 @@ git clone http://github.com/ryanscott/bamboo.git
 git clone http://github.com/facebook/facebook-iphone-sdk.git
 git clone http://github.com/stig/json-framework.git
 
-for friendgraph sample application to run, also run:
-
-git clone http://github.com/ryanscott/rcloudlib.git
-
 2. Open your project, make a group called "Libraries," and add all files from bamboo, json-framework, and facebook-iphone-sdk
 
 3. Define the following 4 global variables
@@ -50,7 +46,7 @@ NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";
 
 If you need help on any of those, get help at http://developers.facebook.com/docs/api#authorization or http://oauth.twoalex.com/
 
-See Constants.m in friendgraph for example values.
+See Constants.m in samples/testgraph for example values.
 
 4. Include "GraphAPI.h" write the following 2-ish lines of code in your klass.m:
 
@@ -68,15 +64,15 @@ GraphAPI* _graph;
 
 5. Make calls to the Facebook graph using your GraphAPI object.  
 
-See GraphAPI.h for interface.  See /samples/friendgraph/PadRootController.m for some example usage.
+See GraphAPI.h for interface.  See /samples/testgraph/PadRootController.m for some example usage.
 
-More documentation and better sample app forthcoming.
+More documentation and more extensive sample app forthcoming.
 
 Examples and More Details 
 -----
-Check the /samples/ directory, which includes code for an app named friendgraph.  I use this app as an area to develop and test new functionality.
+Check the /samples/ directory, which includes code for an app named testgraph.  I use this app as an area to develop and test new functionality.
 
-The main integration point is FacebookProxy, which handles all of the messiness of authorization.  The following 4 variables need to be defined in your app.  See Constants.m in friendgraph for example values.
+The main integration point is FacebookProxy, which handles all of the messiness of authorization.  The following 4 variables need to be defined in your app.  See Constants.m in testgraph for example values.
 
 // Facebook API
 // all of these values need to be set in the client application
@@ -99,3 +95,15 @@ http://github.com/stig/json-framework
 Known Issues
 -----
 No asynchronous network access (design choice, for now)
+
+Contributions
+-----
+Being a really early stage library, Bamboo will most certainly need work to support all the various app environments.  I have designed the base library to meet the most common needs that I have imagined, and as the user base grows, I expect the API to grow as well.  If you are using the library, or want to use it, and your needs are only partially met, please let me know so I can grow the library design to meet your needs.
+
+If you are interested in contributing to Bamboo, by all means please contact me (ryan (at) ryanstubblefield [dot] net).  I welcome anyone who wants to help, and I would prefer to keep forks to a minimum.
+
+Contact / About Me
+-----
+The best, most direct way to reach me is via email (ryan (at) ryanstubblefield [dot] net).
+
+You can find out more about me via the various links off http://www.ryanstubblefield.net/

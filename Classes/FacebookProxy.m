@@ -3,7 +3,7 @@
 
 // URL Formats for code & access_token
 NSString* const kFBAuthURLFormat = @"https://graph.facebook.com/oauth/authorize?client_id=%@&redirect_uri=%@";
-NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@&scope=publish_stream";
+NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@&scope=publish_stream,read_stream";
 
 // Serialization keys
 NSString* const kFacebookProxyKey = @"kFacebookProxyKey";
@@ -451,7 +451,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 	return n_graph;
 }
 
-#pragma mark Event Handlers
-#pragma mark Button Handlers
+//#pragma mark Event Handlers
+//#pragma mark Button Handlers
 
 @end

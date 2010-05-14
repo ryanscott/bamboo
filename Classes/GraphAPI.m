@@ -12,9 +12,9 @@ NSString* const kKeySearchQuery = @"q";
 NSString* const kKeySearchObjectType = @"type";
 
 // other things...
-NSString* const kRequestVerbGet = @"get";
-NSString* const kRequestVerbPost = @"post";
-NSString* const kRequestVerbDelete = @"delete";
+NSString* const kRequestVerbGet = @"GET";
+NSString* const kRequestVerbPost = @"POST";
+NSString* const kRequestVerbDelete = @"DELETE";
 
 NSString* const kPostStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
 
@@ -98,7 +98,7 @@ NSString* const kConnectionGroups = @"groups";
 }
 
 // example url:
-// http://graph.facebook.com/ryan.stubblefield/picture
+// https://graph.facebook.com/ryan.stubblefield/picture
 
 -(UIImage*)getProfilePhotoForObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args
 {
@@ -177,7 +177,6 @@ NSString* const kConnectionGroups = @"groups";
 
 -(bool)putToObject:(NSString*)parent_obj_id connectionType:(NSString*)connection args:(NSDictionary*)request_args
 {
-	// [ryan:5-10-10] this will not work until we implement extended permissions
 	NSMutableDictionary* mutableArgs = [NSMutableDictionary dictionaryWithDictionary:request_args];
 	
 	NSString* path = [NSString stringWithFormat:@"%@/%@", parent_obj_id, connection];
@@ -235,6 +234,11 @@ NSString* const kConnectionGroups = @"groups";
 	// [ryan:5-13-10] todo - I'm not sure what to check for here, 
 	// will have to test the responses to DELETE in koala maybe
 	
+	// this should return true/false, as per Alex.
+	
+	// ruby, wrap in array, take :0
+	// or special case
+	
 	bool successResponse = true;
 	
 	return successResponse;
@@ -250,11 +254,6 @@ NSString* const kConnectionGroups = @"groups";
 //def put_like(object_id)
 //# Likes the given post.
 //self.put_object(object_id, "likes")
-//end
-//
-//def delete_object(id)
-//# Deletes the object with the given ID from the graph.
-//api(id, {}, "delete")
 //end
 
 
@@ -275,6 +274,8 @@ NSString* const kConnectionGroups = @"groups";
 			request_args = [NSMutableDictionary dictionaryWithCapacity:1];
 		}
 		[request_args setObject:self._accessToken forKey:kArgumentKeyAccessToken];
+//		[request_args setObject:@"119908831367602|674667c45691cbca6a03d480-1394987957|dRiaWMp7ZoqrRy_jHDEutHC5AP0." forKey:kArgumentKeyAccessToken];
+		
 	}
 								 
 	// will probably want to generally use async calls, but building this with sync first is easiest
@@ -316,6 +317,7 @@ NSString* const kConnectionGroups = @"groups";
 	else
 	{
 		urlString = [NSString stringWithFormat:@"%@%@", kGraphAPIServer, path];
+//		urlString = [NSString stringWithFormat:@"%@", @"http://www.allforyoga.com"];
 		
 		r_url = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
 														 cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -334,18 +336,21 @@ NSString* const kConnectionGroups = @"groups";
 	NSError* error;
 	
 	NSLog( @"fetching url:\n%@", urlString );
+	
+	NSLog( @"request headers: %@", [r_url allHTTPHeaderFields] );
+
 	// synchronous call
 	self._responseData = [NSURLConnection sendSynchronousRequest:r_url returningResponse:&response error:&error];
 	// async
 	//		self._connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
 	
-	if ( [verb isEqualToString:kRequestVerbPost] )
+//	if ( [verb isEqualToString:kRequestVerbPost] )
 	{
 		NSLog( @"Post response:" );
 		NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
 
 		NSLog( @"status: %d, %@", [httpResponse statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[httpResponse statusCode]] );	
-		NSLog( @"headers: %@", [httpResponse allHeaderFields] );
+		NSLog( @"response headers: %@", [httpResponse allHeaderFields] );
 		NSLog( @"response: %@", self._responseData );
 	}
 	

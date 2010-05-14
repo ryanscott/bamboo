@@ -319,7 +319,12 @@
 		//		{
 		//			self._statusInfo.text = @"Post failure, probably auth";
 		//		}
+
+
+		// now clean up after yourself
+		//		[self._graph deleteObject:@"1394987957_121775964514199"];
 		
+
 	}
 }
 

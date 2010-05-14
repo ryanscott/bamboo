@@ -36,42 +36,40 @@ Integration Instructions
 
 Project Integration
 
-* Install bamboo and dependencies from your project directory:
-<pre><code>
-    git clone http://github.com/ryanscott/bamboo.git
-    git clone http://github.com/facebook/facebook-iphone-sdk.git
-    git clone http://github.com/stig/json-framework.git
-</pre></code>
+1. Install bamboo and dependencies from your project directory:
 
-* Open your project, make a group called "Libraries," and add all files from bamboo, json-framework, and facebook-iphone-sdk
+<pre><code>git clone http://github.com/ryanscott/bamboo.git
+git clone http://github.com/facebook/facebook-iphone-sdk.git
+git clone http://github.com/stig/json-framework.git</pre></code>
 
-* Define the following 4 global variables
-<pre><code>
-    NSString* const kFBAPIKey = @"<your_facebook_api_key>";
-    NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
-    NSString* const kFBClientID = @"<your_facebook_client_id>";
-    NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";
-</pre></code>
+2. Open your project, make a group called "Libraries," and add all files from bamboo, json-framework, and facebook-iphone-sdk
+
+3. Define the following 4 global variables
+
+<pre><code>NSString* const kFBAPIKey = @"<your_facebook_api_key>";
+NSString* const kFBAppSecret = @"<your_facebook_app_secret>";
+NSString* const kFBClientID = @"<your_facebook_client_id>";
+NSString* const kFBRedirectURI = @"<redirect_url_for_oath>";</pre></code>
 
 If you need help on any of those, get help at http://developers.facebook.com/docs/api#authorization or http://oauth.twoalex.com/
 
 See Constants.m in samples/testgraph for example values.
 
-* Include "GraphAPI.h" write the following 2-ish lines of code in your klass.m:
+4. Include "GraphAPI.h" write the following 2-ish lines of code in your klass.m:
 
-    // klass.m
-    [[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(finishedAuthorizing)];
-    
-    -(void)finishedAuthorizing
-    {
-        self._graph = [[FacebookProxy instance] newGraph];
-    }
-	
-	// klass.h
-	GraphAPI* _graph; 
-	@property (nonatomic, retain) GraphAPI* _graph;
+<pre><code>// klass.m
+[[FacebookProxy instance] loginAndAuthorizeWithTarget:self callback:@selector(finishedAuthorizing)];
 
-* Make calls to the Facebook graph using your GraphAPI object.  
+-(void)finishedAuthorizing
+{
+	self._graph = [[FacebookProxy instance] newGraph];
+}
+
+// klass.h
+GraphAPI* _graph; 
+@property (nonatomic, retain) GraphAPI* _graph;</pre></code>
+
+5. Make calls to the Facebook graph using your GraphAPI object.  
 
 See GraphAPI.h for interface.  See /samples/testgraph/PadRootController.m for some example usage.
 

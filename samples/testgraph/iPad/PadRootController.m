@@ -338,7 +338,19 @@
 		else
 		{
 			NSLog( @"post_result = %@", post_result.error );
-			self._statusInfo.text = [NSString stringWithFormat:@"Post failure\n%@", post_result.error];
+			self._statusInfo.text = @"Post failure";
+			
+//			GraphObject* errorObj = [[GraphObject alloc] initWithString:post_result.error];
+			GraphObject* errorObj = [[GraphObject alloc] initWithDict:post_result.error];
+			NSString* errorMessage = [errorObj propertyWithKey:@"message"];
+			if ( nil != errorMessage)
+			{
+				self._fullText.text = [NSString stringWithFormat:@"%@", errorMessage];
+			}
+			else
+			{
+				self._fullText.text = [NSString stringWithFormat:@"%@", post_result.error];
+			}
 		}
 	}
 }

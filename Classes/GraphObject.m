@@ -79,7 +79,7 @@
 	return [self propertyWithKey:@"name"];
 }
 
--(NSString*)error
+-(NSDictionary*)error
 {
 	return [self propertyWithKey:@"error"];
 }

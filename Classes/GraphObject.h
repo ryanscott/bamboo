@@ -20,11 +20,13 @@
 
 @property (nonatomic, readonly) NSString* objectID;
 @property (nonatomic, readonly) NSString* name;
-@property (nonatomic, readonly) NSString* error;
+@property (nonatomic, readonly) NSDictionary* error;
 
 
 -(id)initWithString:(NSString*)jsonString;
 -(id)initWithDict:(NSDictionary*)newProperties;
+
+-(id)propertyWithKey:(id)key;
 
 -(UIImage*)smallPicture;
 -(UIImage*)largePicture;

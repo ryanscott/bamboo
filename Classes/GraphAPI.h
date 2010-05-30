@@ -1,19 +1,28 @@
 #include "FacebookProxy.h"
 #include "GraphObject.h"
+#include "GraphDelegate.h"
 
 @interface GraphAPI : NSObject 
 {
 	NSString* _accessToken;
 
-//	NSURLConnection* _connection;
+	NSMutableArray* _connections;
+	GraphDelegate* _asyncronousDelegate;
+	
 	NSData* _responseData;
+	BOOL _isSynchronous;
 }
 
 @property (nonatomic, retain) NSString* _accessToken;
-//@property (nonatomic, retain) NSURLConnection* _connection;
+@property (nonatomic, retain) NSMutableArray* _connections;
+@property (nonatomic, retain) GraphDelegate* _asyncronousDelegate;
 @property (nonatomic, retain) NSData* _responseData;
+@property (nonatomic, assign) BOOL _isSynchronous;
 
 -(id)initWithAccessToken:(NSString*)access_token;
+
+// pass YES for synchronous, NO for asynchronous.  YES (synchronous) is default
+-(void)setSynchronousMode:(BOOL)isSynchronous;  
 
 -(GraphObject*)getObject:(NSString*)obj_id;
 -(GraphObject*)getObject:(NSString*)obj_id withArgs:(NSDictionary*)request_args;

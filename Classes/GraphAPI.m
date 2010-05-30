@@ -60,6 +60,7 @@ NSString* const kConnectionAlbums = @"albums";
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args;
 -(NSData*)api:(NSString*)obj_id args:(NSMutableDictionary*)request_args verb:(NSString*)verb;
 -(NSData*)makeSynchronousRequest:(NSString*)path args:(NSMutableDictionary*)request_args verb:(NSString*)verb;
+-(NSData*)makeAsynchronousRequest:(NSString*)path args:(NSMutableDictionary*)request_args verb:(NSString*)verb;
 
 -(NSString*)encodeParams:(NSDictionary*)request_args;
 -(NSData*)generatePostBody:(NSDictionary*)request_args;
@@ -70,8 +71,10 @@ NSString* const kConnectionAlbums = @"albums";
 @implementation GraphAPI
 
 @synthesize _accessToken;
-//@synthesize _connection;
+@synthesize _connections;
+@synthesize _asyncronousDelegate;
 @synthesize _responseData;
+@synthesize _isSynchronous;
 
 #pragma mark Initialization
 
@@ -80,10 +83,30 @@ NSString* const kConnectionAlbums = @"albums";
 	if ( self = [super init] )
 	{
 		self._accessToken = access_token;
-//		self._connection = nil;
+		self._connections = nil;
+		self._asyncronousDelegate = nil;
 		self._responseData = nil;
+		self._isSynchronous = YES;
 	}
 	return self;	
+}
+
+-(void)setSynchronousMode:(BOOL)isSynchronous
+{
+	if ( self._isSynchronous != isSynchronous )
+	{
+		// something else will probably happen here too
+		self._isSynchronous = isSynchronous;
+	}
+}
+
+-(void)dealloc
+{
+	[_accessToken release];
+	[_connections release];
+	[_asyncronousDelegate release];
+	[_responseData release];
+	[super dealloc];	
 }
 
 #pragma mark Public API
@@ -265,10 +288,82 @@ NSString* const kConnectionAlbums = @"albums";
 		[request_args setObject:self._accessToken forKey:kArgumentKeyAccessToken];
 	}
 								 
+	NSData* response = nil;
+
 	// will probably want to generally use async calls, but building this with sync first is easiest
-	NSData* response = [self makeSynchronousRequest:obj_id args:request_args verb:verb];
+	if (self._isSynchronous)
+		response = [self makeSynchronousRequest:obj_id args:request_args verb:verb];
+	else
+		response = [self makeAsynchronousRequest:obj_id args:request_args verb:verb];
 	
 	return response;
+}
+
+-(NSData*)makeAsynchronousRequest:(NSString*)path args:(NSMutableDictionary*)request_args verb:(NSString*)verb
+{
+	// if the verb isn't get or post, send it as a post argument
+	if ( kRequestVerbGet != verb && kRequestVerbPost != verb )
+	{
+		[request_args setObject:verb forKey:kArgumentKeyMethod];
+		verb = kRequestVerbPost;
+	}
+	
+	//	NSString* responseString = nil;
+	self._responseData = nil;
+	NSString* urlString;
+	NSMutableURLRequest* r_url;
+	
+	if ( [verb isEqualToString:kRequestVerbGet] )
+	{
+		NSString* argString = [self encodeParams:request_args];
+		
+		urlString = [NSString stringWithFormat:@"%@%@?%@", kGraphAPIServer, path, argString];
+		
+		r_url = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
+														 cachePolicy:NSURLRequestUseProtocolCachePolicy
+												 timeoutInterval:60.0];
+	}
+	else
+	{
+		urlString = [NSString stringWithFormat:@"%@%@", kGraphAPIServer, path];
+		
+		r_url = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
+																		cachePolicy:NSURLRequestUseProtocolCachePolicy
+																timeoutInterval:60.0];
+		
+		NSData* postBody = [self generatePostBody:request_args];
+		NSString* contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kPostStringBoundary];
+		
+		[r_url setHTTPMethod:kRequestVerbPost];
+		[r_url setValue:contentType forHTTPHeaderField:@"Content-Type"];
+		[r_url setHTTPBody:postBody];			
+	}
+	
+	//	NSLog( @"fetching url:\n%@", urlString );	
+	//	NSLog( @"request headers: %@", [r_url allHTTPHeaderFields] );
+	
+//	NSURLResponse* response;
+	NSError* error;
+	
+	if ( nil == self._asyncronousDelegate )
+		self._asyncronousDelegate = [[GraphDelegate alloc] init];
+	
+	// async call
+	NSURLConnection* newConnection = [[NSURLConnection alloc] initWithRequest:r_url delegate:self._asyncronousDelegate];
+	
+	if ( nil != newConnection )
+	{
+		[self._connections addObject:newConnection];
+	}
+	else
+	{
+		NSLog(@"Connection failed!\n URL = %@\n Error - %@ %@",
+					urlString,
+					[error localizedDescription],						
+					[[error userInfo] objectForKey:@"NSUnderlyingError"]);
+	}
+	
+	return nil;
 }
 
 -(NSData*)makeSynchronousRequest:(NSString*)path args:(NSMutableDictionary*)request_args verb:(NSString*)verb

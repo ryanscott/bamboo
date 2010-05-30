@@ -32,6 +32,7 @@
 		9426183E1199ED56002FDB6F /* FBStreamDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 942618341199ED56002FDB6F /* FBStreamDialog.m */; };
 		9426183F1199ED56002FDB6F /* FBConnect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 942618351199ED56002FDB6F /* FBConnect.bundle */; };
 		9426185E1199F2C1002FDB6F /* PadRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9426185D1199F2C1002FDB6F /* PadRootController.m */; };
+		942F5BF211B3108100173380 /* GraphDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 942F5BF111B3108100173380 /* GraphDelegate.m */; };
 		9450F85F119CD6B600D7B22F /* GraphObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9450F85E119CD6B600D7B22F /* GraphObject.m */; };
 		947BF3CF1194CA590044AB96 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF3CE1194CA590044AB96 /* MainController.m */; };
 		947BF48C1194CD3E0044AB96 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BF48B1194CD3E0044AB96 /* Constants.m */; };
@@ -90,6 +91,8 @@
 		942618351199ED56002FDB6F /* FBConnect.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBConnect.bundle; path = "../../../facebook-iphone-sdk/src/FBConnect.bundle"; sourceTree = SOURCE_ROOT; };
 		9426185C1199F2C1002FDB6F /* PadRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadRootController.h; sourceTree = "<group>"; };
 		9426185D1199F2C1002FDB6F /* PadRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadRootController.m; sourceTree = "<group>"; };
+		942F5BF011B3108100173380 /* GraphDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphDelegate.h; path = ../../Classes/GraphDelegate.h; sourceTree = SOURCE_ROOT; };
+		942F5BF111B3108100173380 /* GraphDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphDelegate.m; path = ../../Classes/GraphDelegate.m; sourceTree = SOURCE_ROOT; };
 		9450F85D119CD6B600D7B22F /* GraphObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphObject.h; path = ../../Classes/GraphObject.h; sourceTree = SOURCE_ROOT; };
 		9450F85E119CD6B600D7B22F /* GraphObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphObject.m; path = ../../Classes/GraphObject.m; sourceTree = SOURCE_ROOT; };
 		947BF3CD1194CA590044AB96 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainController.h; path = ../Shared/MainController.h; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 		942616D01198D35E002FDB6F /* bamboo */ = {
 			isa = PBXGroup;
 			children = (
+				942F5BF011B3108100173380 /* GraphDelegate.h */,
+				942F5BF111B3108100173380 /* GraphDelegate.m */,
 				942616D11198D372002FDB6F /* FacebookProxy.h */,
 				942616D21198D372002FDB6F /* FacebookProxy.m */,
 				942616D31198D372002FDB6F /* GraphAPI.h */,
@@ -363,6 +368,7 @@
 				9426183E1199ED56002FDB6F /* FBStreamDialog.m in Sources */,
 				9426185E1199F2C1002FDB6F /* PadRootController.m in Sources */,
 				9450F85F119CD6B600D7B22F /* GraphObject.m in Sources */,
+				942F5BF211B3108100173380 /* GraphDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

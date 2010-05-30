@@ -2,8 +2,8 @@
 #import "GraphAPI.h"
 
 // URL Formats for code & access_token
-NSString* const kFBAuthURLFormat = @"https://graph.facebook.com/oauth/authorize?client_id=%@&redirect_uri=%@";
-NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@&scope=%@";
+NSString* const kFBAuthURLFormat = @"https://graph.facebook.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@";
+NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@";
 
 // Serialization keys
 NSString* const kFacebookProxyKey = @"kFacebookProxyKey";
@@ -229,7 +229,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 {
 	if ( ![self isAuthorized] )
 	{
-		NSString* accessTokenURL = [NSString stringWithFormat:kFBAuthURLFormat, kFBClientID, kFBRedirectURI];
+		NSString* accessTokenURL = [NSString stringWithFormat:kFBAuthURLFormat, kFBClientID, kFBRedirectURI, @"publish_stream,read_stream"];
 
 		NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:accessTokenURL]
 																							cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -261,7 +261,7 @@ static FacebookProxy* gFacebookProxy = NULL;
 
 	// we default to asking for read_stream and publish_stream, if your app needs something different...this is the code to change
 	// hardcoded for now, so at least we don't break when Facebook changes permissions on June 1
-	NSString* accessTokenURL = [NSString stringWithFormat:kFBAccessTokenURLFormat, kFBClientID, kFBRedirectURI, kFBAppSecret, self._codeString, @"publish_stream,read_stream"];
+	NSString* accessTokenURL = [NSString stringWithFormat:kFBAccessTokenURLFormat, kFBClientID, kFBRedirectURI, kFBAppSecret, self._codeString];
 
 	NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:accessTokenURL]
 																							cachePolicy:NSURLRequestUseProtocolCachePolicy

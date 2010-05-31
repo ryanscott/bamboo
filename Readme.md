@@ -1,5 +1,7 @@
 Bamboo
 ====
+most succinctly: <i>Bamboo aims to meet all your Facebook needs as an iPhone application developer.</i>
+
 Bamboo (<a href="http://github.com/ryanscott/bamboo" target="_blank">http://github.com/ryanscott/bamboo</a>) is a new Facebook Graph library for use in iPhone development.  Bamboo is a simple, lightweight, robust alternative to using the old Facebook Connect API, and a time-saving alternative to directly writing your own network code.  The library is designed very similarly to Koala (<a href="http://github.com/arsduo/koala" target="_blank">http://github.com/arsduo/koala</a>), a Ruby port of the Python library that Facebook published.  Bamboo is more or less an objective-c port of the ruby port.  The basic API structure is the same, and for the most part the design goals are the same.
 
 This is as easy as it gets at integrating Facebook into an iPhone application.  Using Bamboo will save you hours, probably days, of development time.

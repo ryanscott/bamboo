@@ -9,7 +9,8 @@
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
-	[FacebookProxy loadDefaults];
+	// stop doing this, it's breaking my testing
+	//	[FacebookProxy loadDefaults];
 	_mainController = [[PadRootController alloc] init];
 	
 	window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

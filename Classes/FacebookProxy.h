@@ -10,7 +10,17 @@ extern NSString* const kFBRedirectURI;
 
 @class GraphAPI;
 
-@interface FacebookProxy : NSObject <NSCoding, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
+@interface FBDataDialog : FBDialog
+{
+	NSData* _webPageData;
+}
+
+@property (nonatomic, retain) NSData* _webPageData;
+
+@end
+
+
+@interface FacebookProxy : NSObject <NSCoding, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate> //, UIWebViewDelegate>
 {
 	FBSession* _session;
 	FBUID _uid;
@@ -29,6 +39,9 @@ extern NSString* const kFBRedirectURI;
 //	NSURLRequest* _accessTokenConnection;
 	NSURLConnection* _authConnection;
 	NSURLConnection* _accessTokenConnection;
+	
+	FBLoginDialog* _loginDialog;
+	FBDataDialog* _permissionDialog;	
 }
 
 @property (nonatomic, retain) FBSession* _session;
@@ -45,6 +58,9 @@ extern NSString* const kFBRedirectURI;
 
 @property (nonatomic, retain) NSURLConnection* _authConnection;
 @property (nonatomic, retain) NSURLConnection* _accessTokenConnection;
+
+@property (nonatomic, retain) FBLoginDialog* _loginDialog;
+@property (nonatomic, retain) FBDataDialog* _permissionDialog;
 
 
 +(FacebookProxy*)instance;

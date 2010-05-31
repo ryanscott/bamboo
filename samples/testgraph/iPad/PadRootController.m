@@ -316,6 +316,7 @@
 
 		// change this to switch between valid / invalid comment test
 		NSString* test_comment_id = @"dkjfghsudfhgluerg";
+//		test_comment_id = @"744407303_123977144285804";
 		
 		NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:@"Bamboo comment test", @"message", nil];
 		GraphObject* post_result = [self._graph putToObject:test_comment_id connectionType:@"comments" args:args];

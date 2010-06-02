@@ -8,7 +8,7 @@
 #import "FBDialog.h"
 
 // URL Formats for code & access_token
-NSString* const kFBAuthURLFormat = @"https://graph.facebook.com/oauth/authorize?client_id=%@&redirect_uri=%@&scope=%@";
+NSString* const kFBAuthURLFormat = @"https://graph.facebook.com/oauth/authorize?display=touch&client_id=%@&redirect_uri=%@&scope=%@";
 NSString* const kFBAccessTokenURLFormat = @"https://graph.facebook.com/oauth/access_token?client_id=%@&redirect_uri=%@&client_secret=%@&code=%@";
 
 // Serialization keys
@@ -51,7 +51,7 @@ NSString* const kKeyAccessToken = @"kKeyAccessToken";
 {
 	if ( nil != self._webPageData )
 	{
-		[self._webView loadData:self._webPageData MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:[NSURL URLWithString:@""]];
+		[_webView loadData:self._webPageData MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:[NSURL URLWithString:@""]];
 //		[self loadData:self._webPageData MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:[NSURL URLWithString:@"https://www.facebook.com/connect/uiserver.php"]];
 	}
 }
